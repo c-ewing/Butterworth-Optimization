@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
   }
 
   // Initialize Butterworth filter
-  double cutoffFreq = 1000.0;  // Example cutoff frequency
-  double sampleRate = 5000.0;  // Example sample rate
+  double cutoffFreq = 2000.0; // 2 kHz cutoff frequency
+  double sampleRate = 22000.0;  // 22 kHz sampling rate
   initButterworth(&filter, cutoffFreq, sampleRate);
 
   // Process input samples and apply the filter
