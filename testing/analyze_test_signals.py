@@ -46,31 +46,22 @@ def main():
             f'Error, input samples mismatched with filtered samples: Expected {unfiltered_samples.shape} but found {filtered_samples.shape}')
         return -1
 
-    # Normalize the input signals to the range [0, 1]
-    normalized_unfiltered_samples = (
-        unfiltered_samples - MIN_INTENSITY) / (MAX_INTENSITY - MIN_INTENSITY)
-    normalized_filtered_samples = (
-        filtered_samples - MIN_INTENSITY) / (MAX_INTENSITY - MIN_INTENSITY)
-
-    print(normalized_unfiltered_samples[4975:5026])
-    print(normalized_filtered_samples[4975:5026])
-
     # Calculate the FFT of the impulse signal
-    unfiltered_fft = fft(normalized_unfiltered_samples)
-    filtered_fft = fft(normalized_filtered_samples)
+    unfiltered_fft = fft(unfiltered_samples)
+    filtered_fft = fft(filtered_samples)
 
     # Calculate frequency values to plot
-    frequencies_impulse = np.linspace(0, normalized_unfiltered_samples.size *
-                                      SAMPLING_FREQUENCY / normalized_unfiltered_samples.size / 2, normalized_unfiltered_samples.size // 2)
+    frequencies_impulse = np.linspace(0, unfiltered_samples.size *
+                                      SAMPLING_FREQUENCY / unfiltered_samples.size / 2, unfiltered_samples.size // 2)
 
-    frequencies_filtered_impulse = np.linspace(0, normalized_filtered_samples.size *
-                                               SAMPLING_FREQUENCY / normalized_filtered_samples.size / 2, normalized_filtered_samples.size // 2)
+    frequencies_filtered_impulse = np.linspace(0, filtered_samples.size *
+                                               SAMPLING_FREQUENCY / filtered_samples.size / 2, filtered_samples.size // 2)
 
     # Calculate the amplitude values to plot
     amplitudes_impulse = np.abs(unfiltered_fft)[
-        :normalized_unfiltered_samples.size // 2]
+        :unfiltered_samples.size // 2]
     amplitudes_filtered_impulse = np.abs(filtered_fft)[
-        :normalized_filtered_samples.size // 2]
+        :filtered_samples.size // 2]
 
     # Plot the frequency spectrum of the impulse signal
     plt.plot(frequencies_impulse, amplitudes_impulse,

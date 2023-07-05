@@ -16,3 +16,4 @@ $(EXECUTABLE): $(SOURCE)
 # Target to clean up generated files
 clean:
 	rm -f $(EXECUTABLE)
+	rm -f testing/*.dat
