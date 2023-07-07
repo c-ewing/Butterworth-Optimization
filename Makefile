@@ -11,9 +11,8 @@ all: $(EXECUTABLE)
 
 # Compile the source file into an executable, with the given flags and libraries
 $(EXECUTABLE): $(SOURCE)
-	$(CC) $(CFLAGS) $< -o $@  -lm
+	$(CC) $(CFLAGS) $< -o $@ -lm
 
 # Target to clean up generated files
 clean:
 	rm -f $(EXECUTABLE)
-	rm -f testing/*.dat
