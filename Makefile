@@ -21,7 +21,7 @@ debug: $(SOURCE)
 
 # Callgrind the executable
 callgrind: debug
-	valgrind --tool=callgrind ./$(EXECUTABLE)_debug test_files/test_signal_impulse.dat removeme.dat
+	valgrind --tool=callgrind --dump-instr=yes ./$(EXECUTABLE)_debug test_files/test_signal_impulse.dat removeme.dat
 	callgrind_annotate --auto=yes callgrind.out.* > performance_report.txt
 
 # Target to clean up generated files
