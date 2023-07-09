@@ -25,7 +25,7 @@ def main():
     parser.add_argument("filtered_samples", type=str,
                         help="Path to filtered sample data")
     parser.add_argument("--sample-rate", type=int,
-                        default=10000, help="Sample rate (default: 10_000)")
+                        default=22000, help="Sample rate (default: 22_000)")
     parser.add_argument("--min-intensity", type=int, default=0,
                         help="Minimum intensity (default: 0)")
     parser.add_argument("--max-intensity", type=int,
