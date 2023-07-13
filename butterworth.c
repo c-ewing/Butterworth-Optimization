@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdint.h>
 
 #define PI 3.14159265359
 
 typedef struct {
-  int b0, b1, b2;  // Numerator coefficients
-  int a1, a2;      // Denominator coefficients
-  int x1, x2;      // Input delay elements
-  int y1, y2;      // Output delay elements
+  uint16_t b0, b1, b2;  // Numerator coefficients
+  uint16_t a1, a2;      // Denominator coefficients
+  uint16_t x1, x2;      // Input delay elements
+  uint16_t y1, y2;      // Output delay elements
 } ButterworthFilter;
 
 void initButterworth(ButterworthFilter *filter, double cutoffFreq, double sampleRate) {
   double omegaC = tan(PI * cutoffFreq / sampleRate);
   double omegaC2 = omegaC * omegaC;
-  int scale_factor = 1 << 8;  // Scaling factor for fixed-point representation
+  uint32_t scale_factor = 1 << 16;  // Scaling factor for fixed-point representation
 
   filter->b0 = round(scale_factor / (1.0 + 2.0 * omegaC + omegaC2));
   filter->b1 = round(2.0 * filter->b0);
@@ -27,14 +28,14 @@ void initButterworth(ButterworthFilter *filter, double cutoffFreq, double sample
   filter->y2 = 0;
 }
 
-int applyButterworth(ButterworthFilter *filter, int input) {
-  int output = filter->b0 * input + filter->b1 * filter->x1 + filter->b2 * filter->x2
-             - filter->a1 * filter->y1 - filter->a2 * filter->y2;
+uint16_t applyButterworth(ButterworthFilter *filter, uint16_t input) {
+  uint32_t output = ((uint32_t)filter->b0 * input) + ((uint32_t)filter->b1 * filter->x1) + ((uint32_t)filter->b2 * filter->x2)
+             - ((uint32_t)filter->a1 * filter->y1) - ((uint32_t)filter->a2 * filter->y2);
 
   filter->x2 = filter->x1;
   filter->x1 = input;
   filter->y2 = filter->y1;
-  filter->y1 = output >> 8;  // Apply scaling factor by right shifting
+  filter->y1 = (uint32_t)(output >> 16);  // Apply scaling factor by right shifting
 
   return filter->y1;
 }
@@ -46,7 +47,7 @@ int main(int argc, char *argv[]) {
   }
 
   FILE *input_file, *output_file;
-  int input, filtered_output;
+  uint16_t input, filtered_output;
   ButterworthFilter filter;
 
   // Open input and output files
@@ -59,14 +60,14 @@ int main(int argc, char *argv[]) {
   }
 
   // Initialize Butterworth filter
-  double cutoffFreq = 2000.0; // 2 kHz cutoff frequency
-  double sampleRate = 22000.0;  // 22 kHz sampling rate
+  uint16_t cutoffFreq = 2000; // 2 kHz cutoff frequency
+  uint16_t sampleRate = 22000;  // 22 kHz sampling rate
   initButterworth(&filter, cutoffFreq, sampleRate);
 
   // Process input samples and apply the filter
-  while (fscanf(input_file, "%d", &input) != EOF) {
+  while (fscanf(input_file, "%hu", &input) != EOF) {
     filtered_output = applyButterworth(&filter, input);
-    fprintf(output_file, "%d\n", filtered_output);
+    fprintf(output_file, "%hu\n", filtered_output);
   }
 
   // Close files
