@@ -1,7 +1,8 @@
 /*
 REFERENCES:
-[1] https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Discretization/Discretization-of-a-fourth-order-Butterworth-filter.html
-[2] https://en.wikipedia.org/wiki/Butterworth_filter
+[1]     https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Discretization/Discretization-of-a-fourth-order-Butterworth-filter.html
+[2]     https://en.wikipedia.org/wiki/Butterworth_filter
+[3,4]   https://www.youtube.com/watch?v=HJ-C4Incgpw AND https://github.com/curiores/ArduinoTutorials/blob/main/BasicFilters/Design/LowPass/ButterworthFilter.ipynb
 */
 
 #include <stdio.h>
