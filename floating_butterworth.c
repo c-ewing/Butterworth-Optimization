@@ -1,6 +1,7 @@
 /*
 REFERENCES:
 [1] https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Discretization/Discretization-of-a-fourth-order-Butterworth-filter.html
+[2] https://en.wikipedia.org/wiki/Butterworth_filter
 */
 
 #include <stdio.h>
