@@ -9,6 +9,7 @@ REFERENCES:
 #include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 // Define M_PI if not already defined
 #ifndef M_PI
@@ -171,6 +172,7 @@ int main(int argc, char *argv[])
         }
     }
 
+    clock_t start = clock();
     // Initialize the filter
     ButterworthFilter ButterworthFilter;
     butterworthFilterInit(&ButterworthFilter);
@@ -186,6 +188,9 @@ int main(int argc, char *argv[])
         // }
     }
 
+    clock_t end = clock();
+    double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
+    printf("Filtering Complete. Elapsed time: %f seconds\n", time_spent);
     // Write output samples to file
     for (size_t i = 0; i < numSamples; ++i)
     {
