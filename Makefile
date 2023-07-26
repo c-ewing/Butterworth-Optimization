@@ -15,6 +15,10 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(SOURCE)
 	$(CC) $(CFLAGS) $< -o $@ -lm
 
+# Target for testing the executable
+test: $(EXECUTABLE)
+	./$(EXECUTABLE) testing/test_signal_impulse.dat removeme.dat
+
 # Target for debugging the executable
 debug: $(SOURCE)
 	$(CC) $(CFLAGS) $(PROFILEFLAGS) $< -o $(EXECUTABLE)_debug -lm
