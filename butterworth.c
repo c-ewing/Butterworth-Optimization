@@ -75,6 +75,16 @@ FixedPoint fixedPointSetFractional(FixedPoint fp, uint32_t fractional)
     return fp;
 }
 
+// Initialize a FixedPoint:
+FixedPoint fixedPointInit(uint32_t sign, uint32_t integer, uint32_t fractional)
+{
+    FixedPoint fp;
+    fp = fixedPointSetSign(fp, sign);
+    fp = fixedPointSetInteger(fp, integer);
+    fp = fixedPointSetFractional(fp, fractional);
+    return fp;
+}
+
 // Print FixedPoint value:
 void fixedPointPrint(FixedPoint fp)
 {
@@ -138,63 +148,65 @@ uint16_t fixedPointToUint16(FixedPoint fp)
 }
 
 // Structure to hold Butterworth filter coefficients
-// uint32_t is used as it is the largest single register value that can be stored on armV6l
 typedef struct FilterCoefficients
 {
     // Numerator coefficients
-    uint32_t b0, b1, b2;
+    FixedPoint b0, b1, b2;
     // Denominator coefficients
-    uint32_t a0, a1, a2;
+    FixedPoint a0, a1, a2;
 
     // Previous input
-    uint32_t x1, x2;
+    FixedPoint x1, x2;
 
     // Previous output
-    uint32_t y1, y2;
+    FixedPoint y1, y2;
 } ButterworthFilter;
 
 // Function to initialize Butterworth filter
 // TODO: Convert to fixed point
 void butterworthFilterInit(ButterworthFilter *filter)
 {
-    double lambda = 1.0 / tan(M_PI * CUTOFF_FREQUENCY / SAMPLING_RATE);
-    // printf("lambda: %d\n", lambda);
+    // TODO: Switch to a lookup table rather than a calculated value for the specific case
+    // double lambda = 1.0 / tan(M_PI * CUTOFF_FREQUENCY / SAMPLING_RATE);
+    FixedPoint lambda = fixedPointInit(0, 3, 13293); // TODO: Hardcoded the value for now
+    printf("lambda: ");
+    fixedPointPrint(lambda);
 
     // Calculate the coefficients
     // All of these are adjusted so that a0 is normalized to 1.0, a0 is calculated first and then used to scale all the other coefficients.
     // These coefficients are usually divided by a0 but thats slow so instead 1/a0 is calculated and multiplied.
     // TODO: Optimization: pow(lambda, 2) is reused, might be good to try pulling that out into a variable
     // TODO: Optimization: sqrt(2.0) * lambda is reused, might be good to try pulling that out into a variable
-    double inv_a0 = 1.0 / (pow(lambda, 2) + sqrt(2.0) * lambda + 1.0);
+    // double inv_a0 = 1.0 / (pow(lambda, 2) + sqrt(2.0) * lambda + 1.0);
 
     // Calculate the coefficients:
-    filter->a0 = 1.0; // Due to the normalizing around a0, this is always 1.0
-    filter->a1 = (-2.0 * pow(lambda, 2) + 2.0) * inv_a0;
-    filter->a2 = (pow(lambda, 2) - sqrt(2.0) * lambda + 1.0) * inv_a0;
+    // filter->a0 = 1.0; // Due to the normalizing around a0, this is always 1.0
+    // filter->a1 = (-2.0 * pow(lambda, 2) + 2.0) * inv_a0;
+    // filter->a2 = (pow(lambda, 2) - sqrt(2.0) * lambda + 1.0) * inv_a0;
 
     // These are fixed for a second order Butterworth filter using the bilinear transform and adjusted using the value of a0.
     // TODO: Optimization: b0 == b1
-    filter->b0 = 1.0 * inv_a0;
-    filter->b1 = 2.0 * inv_a0;
-    filter->b2 = 1.0 * inv_a0;
+    // filter->b0 = inv_a0;
+    // filter->b1 = 2.0 * inv_a0;
+    // filter->b2 = inv_a0;
 
     // Print the coefficients
-    printf("b0: %d, b1: %d, b2: %d\n", filter->b0, filter->b1, filter->b2);
-    printf("a0: %d, a1: %d, a2: %d\n", filter->a0, filter->a1, filter->a2);
+    // printf("b0: %d, b1: %d, b2: %d\n", filter->b0, filter->b1, filter->b2);
+    // printf("a0: %d, a1: %d, a2: %d\n", filter->a0, filter->a1, filter->a2);
 
     // Initialize the previous input and output values to zero
-    filter->x1 = 0.0;
-    filter->x2 = 0.0;
-    filter->y1 = 0.0;
-    filter->y2 = 0.0;
+    filter->x1 = fixedPointInit(0, 0, 0);
+    filter->x2 = fixedPointInit(0, 0, 0);
+    filter->y1 = fixedPointInit(0, 0, 0);
+    filter->y2 = fixedPointInit(0, 0, 0);
 }
 
 // Function to apply Butterworth filter
 // TODO: Convert to fixed point
-double butterworthFilterApply(ButterworthFilter *f, double input)
+FixedPoint butterworthFilterApply(ButterworthFilter *f, FixedPoint input)
 {
     // Calculate the output
-    double output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
+    FixedPoint output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
 
     // Update the previous input and output values
     f->x2 = f->x1;
@@ -258,14 +270,13 @@ int main(int argc, char *argv[])
         }
     }
 
-    // TODO: NEXT CONVERSION
-    exit(0);
-
     // Initialize the filter
-    // TODO: Convert to fixed point
-    // ButterworthFilter ButterworthFilter;
-    // butterworthFilterInit(&ButterworthFilter);
+    ButterworthFilter ButterworthFilter;
 
+    // TODO: NEXT CONVERSION
+    // Initialize the filter by calculating the coefficients
+    butterworthFilterInit(&ButterworthFilter);
+    exit(0);
     // Apply Butterworth filter
     // for (size_t i = 0; i < numSamples; ++i)
     // {
