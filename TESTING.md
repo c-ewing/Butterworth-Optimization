@@ -32,6 +32,7 @@ Takes five command line arguments:
 - `--sample-rate [int]` The sample rate of the sample files (Default: 22kHz)
 - `--minimum-intensity [int]` The minimum intensity value possible in the sample files (Default: 0)
 - `--maximum-intensity [int]` The maximum intensity value possible in the sample files (Default: 65535)
+- `--output [string]` The output file name, if not provided the output will be displayed in a window
 
 After the program has completed a window will open with a frequency response chart. The chart has the magnitude (intensity/amplitude) of the signal on the vertical axis and the frequency of the signal on the horizontal axis.
 

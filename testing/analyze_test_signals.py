@@ -42,6 +42,9 @@ def main():
     parser.add_argument("--max-intensity", type=int,
                         default=65535, help="Maximum intensity (default: 65_535)")
 
+    parser.add_argument("--output", type=str, default="",
+                        help="Output file path(default: none)")
+
     args = parser.parse_args()
 
     # Assign constants
@@ -122,7 +125,10 @@ def main():
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
-    plt.show()
+    if (args.output == ""):
+        plt.show()
+    else:
+        plt.savefig(f'{args.output}.png', bbox_inches='tight')
 
 
 if __name__ == "__main__":
