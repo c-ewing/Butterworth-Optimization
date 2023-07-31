@@ -32,4 +32,4 @@ callgrind: debug
 clean:
 	rm -f $(EXECUTABLE) $(EXECUTABLE)_debug removeme.dat cachegrind.out.* callgrind.out.* performance_report.txt
 
-.PHONY: all debug callgrind clean
+.PHONY: all debug callgrind clean test
