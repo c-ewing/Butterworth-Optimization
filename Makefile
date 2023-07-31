@@ -17,7 +17,8 @@ $(EXECUTABLE): $(SOURCE)
 
 # Target for testing the executable
 test: $(EXECUTABLE)
-	./$(EXECUTABLE) testing/test_signal_impulse.dat removeme.dat
+	./$(EXECUTABLE) testing/test_signal_impulse.dat removeme.dat && python3 testing/analyze_test_signals.py testing/test_signal_impulse.dat removeme.dat
+
 
 # Target for debugging the executable
 debug: $(SOURCE)
@@ -25,7 +26,7 @@ debug: $(SOURCE)
 
 # Callgrind the executable
 callgrind: debug
-	valgrind --tool=callgrind --dump-instr=yes ./$(EXECUTABLE)_debug test_files/test_signal_impulse.dat removeme.dat
+	valgrind --tool=callgrind --dump-instr=yes ./$(EXECUTABLE)_debug testing/test_signal_impulse.dat removeme.dat
 	callgrind_annotate --auto=yes callgrind.out.* > performance_report.txt
 
 # Target to clean up generated files
