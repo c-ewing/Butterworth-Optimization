@@ -56,6 +56,9 @@ def main():
     filtered_samples = np.fromfile(
         args.filtered_samples, dtype=np.uint16, sep='\n')
 
+    # Adjust for the rezeroing of the signal
+    filtered_samples = (filtered_samples.astype(np.int32) - 32768) * 2
+
     if (unfiltered_samples.shape != filtered_samples.shape):
         print(
             f'Error, input samples mismatched with filtered samples: Expected {unfiltered_samples.shape} but found {filtered_samples.shape}')
