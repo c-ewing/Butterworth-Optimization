@@ -1,5 +1,13 @@
 # Setup:
-To test the Butterworth filter implementation first generate test files using either `generate_signals.ipynb` or `generate_test_signals.py`. Both generate the same test files, `generate_test_signals.py` is intended for automated testing as all options are configurable from the command line. The IPython notebook provides a visual representation of the signal files generated.
+To test the Butterworth filter implementation first generate test files using either `generate_signals.ipynb` or `generate_test_signals.py`. Both generate the same test files, `generate_test_signals.py` is intended for automated testing as all options are configurable from the command line.
+
+Command line arguments:
+- `--sample-rate [int]` The sample rate of the sample files (Default: 22kHz)
+- `--num-samples [int]` The number of samples to generate (Default: 10_000)
+- `--minimum-intensity [int]` The minimum intensity value possible in the sample files (Default: 0)
+- `--maximum-intensity [int]` The maximum intensity value possible in the sample files (Default: 65535)
+- `--dc-ramp [float]` Percentage of the DC samples to ramp [0,1] (Default: 0.125)
+- `--impulse-position [float]` Location of the impulse signal in the samples [0,1] (Default: 0.5)
 
 ## Generated Signals
 The scripts both generate five test signals: A DC signal with configurable ramp, Full/Half/Quarter Nyquist Signal, and an Impulse signal. 
@@ -14,27 +22,23 @@ The DC signal is used to characterize the filter under saturation conditions. Th
 Used to test the filter during extreme input oscillation.
 
 # Analysis:
-Analysis is completed either in `analyze_test_signals.[py|ipynb]` both provide similar functionality. The `.py` file is used to generate a frequency response plot based on the input and output files of the Butterworth filter program. The `.ipynb` file is used to create a response graph for the ideal, floating point, implementation of the Butterworth filter. This is done so the response of the fixed point program can be compared to that of the floating point implementation. Both plots contain the actual decibel difference between the input and output signals on the plots at the cutoff frequency. This is done to verify the properties of the filter. 
+Analysis is completed either in `analyze_test_signals.[py|ipynb]` both provide the same functionality. The `.py` file is intended for automated testing. Both generate a Graph comparing the FFT of the input signal, filtered signal, and a reference filter implementation provided by SciPy. Plotted on the chart is also the gain at the cutoff frequency. This allows verification of hitting -3 decibels at the cutoff frequency.
 
 ## `analyze_test_signals.py`
 Takes five command line arguments:
 - Input sample file (signal before filter processing)
 - Output sample file (signal after the filtering is applied)
+- `--frequency-cutoff [int]` The cutoff frequency (Default: 2kHz)
 - `--sample-rate [int]` The sample rate of the sample files (Default: 22kHz)
 - `--minimum-intensity [int]` The minimum intensity value possible in the sample files (Default: 0)
-- `--maximum-intensity [int` The maximum intensity value possible in the sample files (Default: 65535)
+- `--maximum-intensity [int]` The maximum intensity value possible in the sample files (Default: 65535)
 
-After the program has completed a window will open with a frequency response chart. The chart has the magnitude (intensity/amplitude) of the signal on the vertical axis and the frequency of the signal on the horizontal axis.Unfiltered
-
-## `analyze_test_signals.ipynb`
-As noted above, this tool is similar to the `.py` file. However, instead of taking the output of the filter, it instead generates the ideal filter response curve for the specified filter parameters. A frequency response plot will again be generated within the notebook.
+After the program has completed a window will open with a frequency response chart. The chart has the magnitude (intensity/amplitude) of the signal on the vertical axis and the frequency of the signal on the horizontal axis.
 
 # Performance analysis:
 Performance analysis was performed using the [callgrind](https://valgrind.org/docs/manual/cl-manual.html) tool within [valgrind](https://valgrind.org/). 
 
-Performance is tested against `test_files/test_signal_impulse.dat`. The performance report is placed in the root of the git repo in the file `performance_report.txt`. This file can be generated using the command: `make callgrind`, which automatically builds the binary with debug symbols, generates the performance report, and interprets the report.
-
-Callgrind generates an output fill that is interpreted using `callgrind_annotate` to retrieve the percentage of the applications run time that was spent in each function.
+Performance is tested against `testing/test_signal_impulse.dat` which can be generated using `generate_signals.py`. For all results in this projects `10_000` samples are used. A performance report is generated by running the command: `make callgrind`, which automatically builds the binary with debug symbols, generates the performance report, and interprets the report into `performance_report.txt`.
 
 The tool [KCacheGrind](https://github.com/KDE/kcachegrind) was used to retrieve the number of instructions generated by the compiler. Using the `--dump-instr=yes` option for callgrind, the source code is annotated with the each assembly instructions generated for each line of code. This allows us to determine where the each instruction comes from for further optimization.
 
