@@ -119,17 +119,17 @@ def main():
     parser = argparse.ArgumentParser(
         description="Generate samples with optional arguments.")
     parser.add_argument("--sample-rate", type=int,
-                        default=10000, help="Sample rate (default: 10_000)")
+                        default=22000, help="Sample rate (Default: 22_000)")
     parser.add_argument("--num-samples", type=int, default=10000,
-                        help="Number of samples (default: 10000)")
+                        help="Number of samples (Default: 10000)")
     parser.add_argument("--min-intensity", type=int, default=0,
-                        help="Minimum intensity (default: 0)")
+                        help="Minimum intensity (Default: 0)")
     parser.add_argument("--max-intensity", type=int,
-                        default=65535, help="Maximum intensity (default: 65535)")
+                        default=65535, help="Maximum intensity (Default: 65535)")
     parser.add_argument("--dc-ramp", type=float,
-                        default=0.125, help="Percentage of the DC samples to ramp [0,1] (default: 0.125)")
+                        default=0.125, help="Percentage of the DC samples to ramp [0,1] (Default: 0.125)")
     parser.add_argument("--impluse-position", type=float,
-                        default=0.5, help="Location of the impulse signal in the samples [0,1] (default: 0.5)")
+                        default=0.5, help="Location of the impulse signal in the samples [0,1] (Default: 0.5)")
 
     args = parser.parse_args()
 
