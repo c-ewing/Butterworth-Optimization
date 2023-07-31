@@ -21,7 +21,7 @@ TODO: Format description Q17.15 (17 bits for integer part, 15 bits for fractiona
 (NOTE: 3):  15 bits were dedicated to the fractional part to allow for a reasonable precision
             Resolution: 1 / 2^15 ~= 0.00003
 
-(NOTE: 4):  Addition and subtraction can be done directly with the builtin operators
+(NOTE: 4):  Addition and subtraction can be done directly with the built in operators
 */
 
 #define BIT_WIDTH 32                               // (NOTE: 1)
@@ -42,7 +42,6 @@ typedef uint64_t ulong_fixedpoint_t;
 /*
     Define bit masks for integer and fractional parts
 */
-// TODO: Determine which masks are needed
 
 /*
     Define commonly used constants
@@ -59,7 +58,6 @@ typedef uint64_t ulong_fixedpoint_t;
     Define commonly used macros
 */
 #define fixedpoint_from_real(Val) (fixedpoint_t)((Val)*FIXEDPOINT_ONE + ((Val) >= 0 ? 0.5 : -0.5)) // Rounding conversion
-#define fixedpoint_from_real_trunc(Val) (fixedpoint_t)(Val * FIXEDPOINT_ONE)                       // Truncating conversion
 #define fixedpoint_from_int(Val) (fixedpoint_t)(Val << FRACTIONAL_BITS)                            // Conversion from integer
 
 #define fixedpoint_to_int(Val) (int32_t)(Val >> FRACTIONAL_BITS) // Truncating conversion to integer

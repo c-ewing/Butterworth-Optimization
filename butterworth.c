@@ -82,10 +82,10 @@ void butterworthFilterInit(ButterworthFilter *filter)
 #endif
 
     // Initialize the previous input and output values to zero
-    filter->x1 = 0;
-    filter->x2 = 0;
-    filter->y1 = 0;
-    filter->y2 = 0;
+    filter->x1 = FIXEDPOINT_ZERO;
+    filter->x2 = FIXEDPOINT_ZERO;
+    filter->y1 = FIXEDPOINT_ZERO;
+    filter->y2 = FIXEDPOINT_ZERO;
 }
 
 // Function to apply Butterworth filter to a single input
