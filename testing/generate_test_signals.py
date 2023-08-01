@@ -8,88 +8,19 @@ def write_signal_file(file_path, signal):
 
 
 # Constants:
-FILE_PREFIX = 'test_signal_'
+FILE_PREFIX = 'ts_'
 FILE_SUFFIX = '.dat'
 SAMPLING_FREQUENCY = 22 * 1_000  # 10 kHz
 NUM_SAMPLES = SAMPLING_FREQUENCY * 1  # 1 second
 MIN_INTENSITY = 0  # 0 intensity
 MAX_INTENSITY = 65535  # 1 intensity
-RAMP_AMOUNT = 0.125  # 12.5% of the total number of samples
+
 IMPLUSE_POSITION = 0.5  # Halfway through the samples
 
-
-def generate_dc_test_signal():
-
-    # Create the DC test signal:
-
-    # DC test signal consists of a constant value of max_frequency for all samples after a ramp up period.
-    # The ramp up period consists of floor(0.125 * num_samples) of the total number of samples and starts at min_frequency.
-    # There is at least one sample at min_frequency.
-    num_ramp_up_samples = int(np.floor(RAMP_AMOUNT * NUM_SAMPLES)) + 1
-
-    # Create the numpy array of samples.
-    dc_samples = np.zeros(NUM_SAMPLES, dtype=np.uint16)
-
-    # Ramp up the DC signal.
-    dc_samples[:num_ramp_up_samples] = np.linspace(
-        MIN_INTENSITY, MAX_INTENSITY, num_ramp_up_samples, dtype=np.uint16)
-
-    # Set the DC signal to maximum intensity.
-    dc_samples[num_ramp_up_samples:] = MAX_INTENSITY
-
-    # Write the DC test signal to a file.
-    write_signal_file(FILE_PREFIX + 'dc' + FILE_SUFFIX, dc_samples)
-
-
-def generate_nyquist_test_signal():
-    # Create the Nyquist test signal:
-
-    # Nyquist test signal consists of alternating max and min intensity values.
-    # Create the numpy array of samples.
-    nyquist_samples = np.zeros(NUM_SAMPLES, dtype=np.uint16)
-
-    # Set the Nyquist signal to alternating max and min intensity values.
-    nyquist_samples[::2] = MAX_INTENSITY
-    nyquist_samples[1::2] = MIN_INTENSITY
-
-    # Write the Nyquist test signal to a file.
-    write_signal_file(FILE_PREFIX + 'nyquist' + FILE_SUFFIX, nyquist_samples)
-
-
-def generate_half_nyquist_test_signal():
-    # Create the Half Nyquist test signal:
-
-    # Create the numpy array of samples.
-    half_nyquist_samples = np.zeros(NUM_SAMPLES, dtype=np.uint16)
-
-    # Set the Nyquist signal to alternating max and min intensity values.
-    half_nyquist_samples[::2] = (MAX_INTENSITY-MIN_INTENSITY) / 2
-    half_nyquist_samples[1::4] = MAX_INTENSITY
-    half_nyquist_samples[3::4] = MIN_INTENSITY
-
-    # Write the Half Nyquist test signal to a file.
-    write_signal_file(FILE_PREFIX + 'half_nyquist' +
-                      FILE_SUFFIX, half_nyquist_samples)
-
-
-def generate_quarter_nyquist_test_signal():
-    # Create the Quarter Nyquist test signal:
-
-    # Create the numpy array of samples.
-    quarter_nyquist_samples = np.zeros(NUM_SAMPLES, dtype=np.uint16)
-
-    # Set the Nyquist signal to alternating max and min intensity values.
-    quarter_nyquist_samples[::4] = (MAX_INTENSITY-MIN_INTENSITY) / 2
-    quarter_nyquist_samples[1::8] = (MAX_INTENSITY-MIN_INTENSITY) * 3 / 4
-    quarter_nyquist_samples[2::8] = MAX_INTENSITY
-    quarter_nyquist_samples[3::8] = (MAX_INTENSITY-MIN_INTENSITY) * 3 / 4
-    quarter_nyquist_samples[5::8] = (MAX_INTENSITY-MIN_INTENSITY) / 4
-    quarter_nyquist_samples[6::8] = MIN_INTENSITY
-    quarter_nyquist_samples[7::8] = (MAX_INTENSITY-MIN_INTENSITY) / 4
-
-    # Write the Quarter Nyquist test signal to a file.
-    write_signal_file(FILE_PREFIX + 'quarter_nyquist' +
-                      FILE_SUFFIX, quarter_nyquist_samples)
+CARRIER_FREQUENCY = 500  # 500 Hz
+CARRIER_AMPLITUDE = 0.9  # 90% of the max intensity
+NOISE_FREQUENCY = 3_000  # 3 kHz
+NOISE_AMPLITUDE = 0.1  # 10% of the max intensity
 
 
 def generate_impulse_test_signal():
@@ -108,28 +39,69 @@ def generate_impulse_test_signal():
     write_signal_file(FILE_PREFIX + 'impulse' + FILE_SUFFIX, impulse_samples)
 
 
+def generate_sine_test_signal():
+    # Create the Sine test signal:
+
+    # Sine test signal consists of a carrier signal with noise added.
+    time_points = np.linspace(0, 1 / CARRIER_FREQUENCY *
+                              2, NUM_SAMPLES, endpoint=False)
+    carrier_samples = CARRIER_AMPLITUDE * MAX_INTENSITY/2 * \
+        np.sin(2 * np.pi * CARRIER_FREQUENCY * time_points)
+    noise_samples = NOISE_AMPLITUDE * MAX_INTENSITY/2 * \
+        np.sin(2 * np.pi * NOISE_FREQUENCY * time_points)
+
+    result_samples = carrier_samples + noise_samples
+    # Shift the signal up by half the max intensity to get the signal in the range [0, MAX_INTENSITY]
+    result_samples = np.add(result_samples, MAX_INTENSITY/2)
+
+    # Scale the signal to the range [MIN_INTENSITY, MAX_INTENSITY]
+    result_samples = np.divide(result_samples, MAX_INTENSITY) * \
+        (MAX_INTENSITY - MIN_INTENSITY) + MIN_INTENSITY
+    # print(np.min(result_samples))
+    # print(np.max(result_samples))
+
+    # Plot the Sine test signal.
+    plt.plot(time_points, result_samples, 'b', alpha=0.5)
+    plt.plot(time_points, np.add(carrier_samples, MAX_INTENSITY/2), 'r')
+
+    # Write the Sine test signal to a file.
+    write_signal_file(FILE_PREFIX + 'sine' + FILE_SUFFIX,
+                      result_samples.astype(np.uint16))
+
+
 def main():
     global SAMPLING_FREQUENCY
     global NUM_SAMPLES
     global MIN_INTENSITY
     global MAX_INTENSITY
-    global RAMP_AMOUNT
+
     global IMPLUSE_POSITION
+
+    global CARRIER_FREQUENCY
+    global CARRIER_AMPLITUDE
+    global NOISE_FREQUENCY
+    global NOISE_AMPLITUDE
 
     parser = argparse.ArgumentParser(
         description="Generate samples with optional arguments.")
     parser.add_argument("--sample-rate", type=int,
-                        default=22000, help="Sample rate (Default: 22_000)")
-    parser.add_argument("--num-samples", type=int, default=10000,
-                        help="Number of samples (Default: 10000)")
+                        default=22_000, help="Sample rate (Default: 22_000)")
+    parser.add_argument("--num-samples", type=int, default=10_000,
+                        help="Number of samples (Default: 10_000)")
     parser.add_argument("--min-intensity", type=int, default=0,
                         help="Minimum intensity (Default: 0)")
     parser.add_argument("--max-intensity", type=int,
-                        default=65535, help="Maximum intensity (Default: 65535)")
-    parser.add_argument("--dc-ramp", type=float,
-                        default=0.125, help="Percentage of the DC samples to ramp [0,1] (Default: 0.125)")
+                        default=65_535, help="Maximum intensity (Default: 65_535)")
     parser.add_argument("--impluse-position", type=float,
                         default=0.5, help="Location of the impulse signal in the samples [0,1] (Default: 0.5)")
+    parser.add_argument("--carrier-frequency", type=int,
+                        default=500, help="Sine Carrier frequency (Default: 500)")
+    parser.add_argument("--carrier-amplitude", type=float, default=0.9,
+                        help="Sine Carrier amplitude [0,1] (Default: 0.9)")
+    parser.add_argument("--noise-frequency", type=int,
+                        default=3_000, help="Sine Noise frequency (Default: 3_000)")
+    parser.add_argument("--noise-amplitude", type=float, default=0.1,
+                        help="Sine Noise amplitude [0,1] (Default: 0.1)")
 
     args = parser.parse_args()
 
@@ -152,17 +124,13 @@ def main():
 
     MIN_INTENSITY = args.min_intensity
     MAX_INTENSITY = args.max_intensity
-    RAMP_AMOUNT = args.dc_ramp
     IMPLUSE_POSITION = args.impluse_position
 
-    generate_dc_test_signal()
-    generate_nyquist_test_signal()
-    generate_half_nyquist_test_signal()
-    generate_quarter_nyquist_test_signal()
+    # Generate the test signals.
     generate_impulse_test_signal()
     print(
         f'Generated test signals successfully:')
-    print(f'Sample Rate: {SAMPLING_FREQUENCY} Hz, Number of Samples: {NUM_SAMPLES}, Minimum Intensity: {MIN_INTENSITY}, Maximum Intensity: {MAX_INTENSITY}, Ramp Amount: {RAMP_AMOUNT}, Impulse Position: {IMPLUSE_POSITION}')
+    print(f'Sample Rate: {SAMPLING_FREQUENCY} Hz, Number of Samples: {NUM_SAMPLES}, Minimum Intensity: {MIN_INTENSITY}, Maximum Intensity: {MAX_INTENSITY}, Impulse Position: {IMPLUSE_POSITION}, Carrier Frequency: {CARRIER_FREQUENCY} Hz, Carrier Amplitude: {CARRIER_AMPLITUDE}, Noise Frequency: {NOISE_FREQUENCY} Hz, Noise Amplitude: {NOISE_AMPLITUDE}')
 
 
 if __name__ == "__main__":
