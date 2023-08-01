@@ -66,7 +66,7 @@ def main():
 
     plt.xlim(0, SAMPLING_FREQUENCY * 0.005)
 
-    plt.title('Filtering applied to a noisy Sine Wave')
+    plt.title('Filtering applied to a noisy sine wave')
     plt.xlabel('Sample Number')
     plt.ylabel('Intensity')
     plt.legend()
