@@ -17,7 +17,7 @@ $(EXECUTABLE): $(SOURCE)
 
 # Target for testing the executable
 test: $(EXECUTABLE)
-	./$(EXECUTABLE) testing/ts_impulse.dat removeme.dat && python3 testing/analyze_test_signals.py testing/ts_impulse.dat removeme.dat --output testing/ts_impulse
+	./$(EXECUTABLE) testing/ts_impulse.dat removeme.dat && python3 testing/analyze_frequency_response.py testing/ts_impulse.dat removeme.dat --output testing/ts_impulse
 
 
 # Target for debugging the executable
