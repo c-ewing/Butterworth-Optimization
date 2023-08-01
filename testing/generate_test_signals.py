@@ -25,6 +25,17 @@ NOISE_AMPLITUDE = 0.1  # 10% of the max intensity
 
 def generate_impulse_test_signal():
     # Create the Impulse test signal:
+    global SAMPLING_FREQUENCY
+    global NUM_SAMPLES
+    global MIN_INTENSITY
+    global MAX_INTENSITY
+
+    global IMPLUSE_POSITION
+
+    global CARRIER_FREQUENCY
+    global CARRIER_AMPLITUDE
+    global NOISE_FREQUENCY
+    global NOISE_AMPLITUDE
 
     # Ensure the impulse position is within the bounds of the samples.
     position = np.clip(
@@ -41,6 +52,17 @@ def generate_impulse_test_signal():
 
 def generate_sine_test_signal():
     # Create the Sine test signal:
+    global SAMPLING_FREQUENCY
+    global NUM_SAMPLES
+    global MIN_INTENSITY
+    global MAX_INTENSITY
+
+    global IMPLUSE_POSITION
+
+    global CARRIER_FREQUENCY
+    global CARRIER_AMPLITUDE
+    global NOISE_FREQUENCY
+    global NOISE_AMPLITUDE
 
     # Sine test signal consists of a carrier signal with noise added.
     time_points = np.linspace(0, 1 / CARRIER_FREQUENCY *
@@ -102,6 +124,8 @@ def main():
                         default=3_000, help="Sine Noise frequency (Default: 3_000)")
     parser.add_argument("--noise-amplitude", type=float, default=0.1,
                         help="Sine Noise amplitude [0,1] (Default: 0.1)")
+    parser.add_argument("-q", "--quiet", action="store_true",
+                        default=False, help="Suppress output (Default: False)")
 
     args = parser.parse_args()
 
@@ -128,9 +152,15 @@ def main():
 
     # Generate the test signals.
     generate_impulse_test_signal()
-    print(
-        f'Generated test signals successfully:')
-    print(f'Sample Rate: {SAMPLING_FREQUENCY} Hz, Number of Samples: {NUM_SAMPLES}, Minimum Intensity: {MIN_INTENSITY}, Maximum Intensity: {MAX_INTENSITY}, Impulse Position: {IMPLUSE_POSITION}, Carrier Frequency: {CARRIER_FREQUENCY} Hz, Carrier Amplitude: {CARRIER_AMPLITUDE}, Noise Frequency: {NOISE_FREQUENCY} Hz, Noise Amplitude: {NOISE_AMPLITUDE}')
+    generate_sine_test_signal()
+
+    if not args.quiet:
+        print(f'Generated test signals successfully:')
+        print(
+            f'\tSample Rate: {SAMPLING_FREQUENCY} Hz, Number of Samples: {NUM_SAMPLES}, Minimum Intensity: {MIN_INTENSITY}, Maximum Intensity: {MAX_INTENSITY}')
+        print(f'\tImpulse Position: {IMPLUSE_POSITION}')
+        print(
+            f'\tCarrier Frequency: {CARRIER_FREQUENCY} Hz, Carrier Amplitude: {CARRIER_AMPLITUDE}, Noise Frequency: {NOISE_FREQUENCY} Hz, Noise Amplitude: {NOISE_AMPLITUDE}')
 
 
 if __name__ == "__main__":
