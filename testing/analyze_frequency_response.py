@@ -128,7 +128,7 @@ def main():
     if (args.output == ""):
         plt.show()
     else:
-        plt.savefig(f'{args.output}.png', bbox_inches='tight')
+        plt.savefig(f'{args.output}', bbox_inches='tight')
 
 
 if __name__ == "__main__":
