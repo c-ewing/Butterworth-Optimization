@@ -1,5 +1,4 @@
 import argparse
-import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -79,12 +78,6 @@ def generate_sine_test_signal():
     # Scale the signal to the range [MIN_INTENSITY, MAX_INTENSITY]
     result_samples = np.divide(result_samples, MAX_INTENSITY) * \
         (MAX_INTENSITY - MIN_INTENSITY) + MIN_INTENSITY
-    # print(np.min(result_samples))
-    # print(np.max(result_samples))
-
-    # Plot the Sine test signal.
-    plt.plot(time_points, result_samples, 'b', alpha=0.5)
-    plt.plot(time_points, np.add(carrier_samples, MAX_INTENSITY/2), 'r')
 
     # Write the Sine test signal to a file.
     write_signal_file(FILE_PREFIX + 'sine' + FILE_SUFFIX,
