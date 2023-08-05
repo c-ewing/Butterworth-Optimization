@@ -2,8 +2,18 @@
 
 ## Virtual Machine:
 
-- Install valgrind from source as the available version is too old
-  - dnf install -y wget tar lbzip2 # Install wget and tar (and the bzip2 library), used to get and unpack the valgrind source
+The version of Valgrind available in the Fedora Repositories is too old to be used for this project. To install the latest version of Valgrind from source run the following commands:
+```bash
+dnf install -y wget tar lbzip2 # Install wget and tar (and the bzip2 library), used to get and unpack the valgrind source
+
+wget https://sourceware.org/pub/valgrind/valgrind-3.21.0.tar.bz2 # Download the valgrind source, 3.21.0 is the latest version at the time of writing
+tar -xvf valgrind-3.21.0.tar.bz2 # Unpack the source
+
+cd valgrind-3.21.0 # Change directory into the unpacked source
+./configure # Configure the source for the host machine
+make # Build the source
+make install # Install the built binaries
+```
 
 ## Host Machine:
 
@@ -87,18 +97,40 @@ To view the report within KCacheGrind, open the generated `callgrind.out.*` file
 
 # Optimizations Attempted:
 The main source of optimization is likely to occur in the `fixedpoint.h` library that we wrote. Applying the filter requires a large number of fixed point operations, so optimizing this library will have the largest impact on performance. 
-## 1. GCC Optimization Flags
+GCC Optimization Flags
 Firstly no code changes were made and the compiler was used to optimize the code. The following flags were used:
 - `-O0` No optimization, used as a baseline
 - `-O1` Basic optimization
 - `-O2` More advanced optimization
 - `-O3` All optimizations, at the cost of binary size
-- `-Ofast` All optimizations, including unsafe optimizations that break standards compliance
 - `-Os` Optimize for binary size, included to see if reducing the number of instructions would improve performance
-- `-Oz` Optimize for binary size, more aggressive than `-Os`
+- `-Ofast` All optimizations, including unsafe optimizations that break standards compliance
+
+## 1. Operator Strength Reduction
+Care was taken while writing the filter to avoid division operations. In this hand optimization pass further attempts were made to replace multiplication and division with less expensive operations. This optimization was tested with all optimization flags noted above.
+
+Line 70 of butterworth.c was changed from:
+```c
+    filter->b1 = fixedpoint_mul(FIXEDPOINT_TWO, inv_a0);
+```
+to:
+```c
+    filter->b1 = inv_a0 << 1;
+```
+This removes a multiplication by 2 operation and replaces it with a bit shift.
+
+Line 111 of butterworth.c was changed from:
+```c
+    fixedpoint_t adjusted = fixedpoint_div(input, FIXEDPOINT_TWO);
+```
+to:
+```c
+    fixedpoint_t adjusted = input >> 1;
+```
+This removes a division by 2 operation and replaces it with a bit shift. This optimization is valid because the underlying type of fixedpoint_t is a signed integer. Arithmetic right shift is used for signed integers, which preserves the sign bit.
 
 ## 2. Inline Functions
-The `fixedpoint.h` library is used extensively throughout the code, so inlining the functions should improve performance. This was done by adding the `inline` keyword to the function declarations in `fixedpoint.h`. This optimization was tested with all optimization flags noted above.
+The `fixedpoint.h` library is used extensively throughout the code, so inlining the functions should improve performance. This was done by adding the `inline` keyword to the function declarations in `fixedpoint.h`. The `inline` keyword was also added to `butterworthFilterApply()` and `butterworthFilterApply()` This optimization was tested with all optimization flags noted above.
 
 ## 3. Macro Functions
 Instead of using functions, macros can be used to move work to compile time. This was done by replacing the function declarations in `fixedpoint.h` with macros. This optimization was tested with all optimization flags noted above.
@@ -113,7 +145,6 @@ Memory Aliasing? Localize variables? Unaligned memory access(unlikely)? Register
 
 
 ## Techniques not attempted or noted:
-- Operator Strength Reduction: When writing the initial code, care was taken to reduce the number of divides and similar expensive operations. Therefore this optimization was not explored any further.
 - Boolean Expression Simplification: The code was written to be as simple as possible and does not contain complex boolean expressions or branching. Therefore this optimization was not explored any further.
 - Constant Folding, Sub Expression Elimination: Not explored as the compiler should be able to do this automatically (-O1+).
 - Dead Code Elimination: Not explored as the compiler will complain if there is dead code (-Wall -Werror).
