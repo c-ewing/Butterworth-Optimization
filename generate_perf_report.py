@@ -6,7 +6,7 @@ import argparse
 
 # TARGET_DIRECTORY:
 #   Directory where the benchmarked program is located.
-TARGET = ""
+TARGET = "optimization/reference/"
 EXECUTABLE_NAME = "butterworth"
 
 # Compiler Configuration
@@ -36,10 +36,11 @@ CALLGRIND_ANNOTATE_FLAGS = ["--auto=yes",
 
 # Test signal configuration
 SIGNAL_GEN = "python3"
-# Low number is used to reduce benchmarking time on the VM
-SIGNAL_NUM_SAMPLES = "11000"
+SIGNAL_NUM_SAMPLES_HYPER = "44000"
+# Low number is used to reduce benchmarking time on the VM and is still large enough to see the effects of optimization.
+SIGNAL_NUM_SAMPLES_CALLGRIND = "11000"
 SIGNAL_FLAGS = ["testing/generate_test_signals.py", "--sample-rate",
-                "22000", "--num-samples", "44000"]
+                "22000", "--num-samples"]
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(
@@ -53,15 +54,13 @@ parser.add_argument("--skip-callgrind", action="store_true",
 
 args = parser.parse_args()
 
-
-# First we need to generate the test signals.
-if not args.skip_signal_gen:
-    print("Generating test signals")
-    subprocess.run([SIGNAL_GEN, *SIGNAL_FLAGS])
-
 # Second we need to compile the program with different optimization flags and benchmark it using hyperfine.
 # Hyperfine will generate a markdown file with the results.
 if not args.skip_hyperfine:
+    if not args.skip_signal_gen:
+        print("Generating test signals for hyperfine.")
+        subprocess.run([SIGNAL_GEN, *SIGNAL_FLAGS, SIGNAL_NUM_SAMPLES_HYPER])
+
     for flag in OPTIMIZATION_FLAGS:
         # Compile the program with the current optimization flag using subprocess
         print(f"Compiling {TARGET} with {flag}")
@@ -74,6 +73,7 @@ if not args.skip_hyperfine:
 
     # Clean up the executables and signal data
     print(f"Cleaning benchmarking step for {TARGET}\n")
+    subprocess.run(["rm", f"ts_impulse.dat", f"ts_sine.dat"])
     for flag in OPTIMIZATION_FLAGS:
         subprocess.run(["rm", f"{TARGET}removeme_{flag}.dat"])
         subprocess.run(["rm", f"{TARGET}{EXECUTABLE_NAME}_{flag}"])
@@ -81,6 +81,11 @@ if not args.skip_hyperfine:
 # Finally use Callgrind to find instructions executed and the largest contributor to execution time.
 # This will generate a callgrind.out file that can be viewed using kcachegrind.
 if not args.skip_callgrind:
+    if not args.skip_signal_gen:
+        print("Generating test signals for callgrind.")
+        subprocess.run([SIGNAL_GEN, *SIGNAL_FLAGS,
+                       SIGNAL_NUM_SAMPLES_CALLGRIND])
+
     print(f"Running Callgrind on target: {TARGET}")
     for flag in OPTIMIZATION_FLAGS:
         # Compile the program with the current optimization flag and debug symbols using subprocess
@@ -105,6 +110,6 @@ if not args.skip_callgrind:
         subprocess.run(["rm", f"{TARGET}removeme_{flag}.dat",
                         f"{TARGET}{EXECUTABLE_NAME}_{flag}"])
 
-# Clean up the signal data
-print(f"Cleaning signal data for target: {TARGET}\n")
-subprocess.run(["rm", f"ts_impulse.dat", f"ts_sine.dat"])
+    # Clean up the signal data
+    print(f"Cleaning callgrind signal data for target: {TARGET}\n")
+    subprocess.run(["rm", f"ts_impulse.dat", f"ts_sine.dat"])
