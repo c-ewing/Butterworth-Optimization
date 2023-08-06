@@ -39,11 +39,10 @@ make
 ```
 This will build the project and generate the executable `butterworth`. The executable takes two arguments, the input file and the output file. The input file is the signal to be filtered and the output file is the filtered signal.
 
-This project is built with the following flags:
+This project is built with the following flags by default:
 - `-Wall` Enable all warnings
 - `-Werror` Treat warnings as errors
 - `-march=native` Enable all CPU extensions available on the host machine
-- `-msoft-float` Disable floating point hardware support, the code should not contain any floating point operations, this is a safety measure.
 - `std=c99 -pedantic` Use the C99 standard and enforce strict standards compliance
 - `-O0` No optimization
 

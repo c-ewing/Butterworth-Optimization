@@ -8,7 +8,7 @@ EXECUTABLE_NAME = "butterworth"
 # Compiler Configuration
 COMPILER = "gcc"
 COMPILER_FLAGS = ["-Wall", "-Werror", "-march=native",
-                  "-msoft-float", "-std=c99", "-pedantic"]
+                  "-std=c99", "-pedantic"]
 COMPILER_DEBUG_SYMBOLS = ["-g"]
 OPTIMIZATION_FLAGS = ["O0", "O1", "O2", "O3", "Os", "Ofast"]
 

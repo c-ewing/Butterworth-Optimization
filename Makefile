@@ -1,7 +1,7 @@
 # Compiler and compilation flags
 CC := gcc
 # -g enable debug information
-CFLAGS := -Wall -Werror -march=native -msoft-float -std=c99 -pedantic -O0
+CFLAGS := -Wall -Werror -march=native -std=c99 -pedantic -O0
 PROFILEFLAGS := -g 
 
 # Source file and executable name
