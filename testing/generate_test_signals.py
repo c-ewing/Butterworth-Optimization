@@ -64,7 +64,8 @@ def generate_sine_test_signal():
     global NOISE_AMPLITUDE
 
     # Sine test signal consists of a carrier signal with noise added.
-    time_points = np.linspace(0, 1, NUM_SAMPLES, endpoint=False)
+    time_points = np.linspace(
+        0, NUM_SAMPLES/SAMPLING_FREQUENCY, NUM_SAMPLES, endpoint=False)
     carrier_samples = CARRIER_AMPLITUDE * MAX_INTENSITY/2 * \
         np.sin(2 * np.pi * CARRIER_FREQUENCY * time_points)
     noise_samples = NOISE_AMPLITUDE * MAX_INTENSITY/2 * \
