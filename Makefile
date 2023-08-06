@@ -27,7 +27,7 @@ debug: $(SOURCE)
 # Callgrind the executable
 callgrind: debug
 	valgrind --tool=callgrind --dump-instr=yes ./$(EXECUTABLE)_debug testing/ts_impulse.dat removeme.dat
-	callgrind_annotate --auto=yes callgrind.out.* > performance_report.txt
+	callgrind_annotate --auto=yes --show-percs=yes callgrind.out.* > performance_report.txt
 
 # Target to clean up generated files
 clean:
