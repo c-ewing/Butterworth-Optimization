@@ -34,7 +34,7 @@ typedef struct FilterCoefficients
 } ButterworthFilter;
 
 // Function to initialize Butterworth filter
-inline void butterworthFilterInit(ButterworthFilter *filter)
+static inline void butterworthFilterInit(ButterworthFilter *filter)
 {
     // TODO: Switch to a lookup table rather than a calculated value for the specific case
     // double lambda = 1.0 / tan(M_PI * CUTOFF_FREQUENCY / SAMPLING_RATE);
@@ -89,7 +89,7 @@ inline void butterworthFilterInit(ButterworthFilter *filter)
 }
 
 // Function to apply Butterworth filter to a single input
-inline fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
+static inline fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
 {
     // Calculate the output
     // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
@@ -105,7 +105,7 @@ inline fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t in
     return output;
 }
 
-inline uint16_t fixedpoint_to_uint16(fixedpoint_t input)
+static inline uint16_t fixedpoint_to_uint16(fixedpoint_t input)
 {
     // Adjust the range from [0,65535] of the input to [-32727, 32727] of the output
     fixedpoint_t adjusted = fixedpoint_div(input, FIXEDPOINT_TWO);
