@@ -1,0 +1,137 @@
+--------------------------------------------------------------------------------
+Profile data file 'optimization/reference/butterworth_Ofast.out' (creator: callgrind-3.21.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 3693144
+Trigger: Program termination
+Profiled target:  ./optimization/reference/butterworth_Ofast ts_sine.dat optimization/reference/removeme_Ofast.dat (PID 2141, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                  
+--------------------------------------------------------------------------------
+18,912,132 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                  file:function
+--------------------------------------------------------------------------------
+6,055,528 (32.02%)  ???:_IO_vfscanf [/usr/lib/libc-2.28.so]
+4,147,064 (21.93%)  ???:vfprintf [/usr/lib/libc-2.28.so]
+2,068,000 (10.93%)  ???:____strtoul_l_internal [/usr/lib/libc-2.28.so]
+  888,938 ( 4.70%)  ???:getc'2 [/usr/lib/libc-2.28.so]
+  814,084 ( 4.30%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
+  792,073 ( 4.19%)  optimization/reference/butterworth.c:fseek
+  715,563 ( 3.78%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+  671,000 ( 3.55%)  ???:_itoa_word [/usr/lib/libc-2.28.so]
+  671,000 ( 3.55%)  ???:strchrnul [/usr/lib/libc-2.28.so]
+  635,006 ( 3.36%)  optimization/reference/butterworth.c:_IO_default_uflow
+  395,982 ( 2.09%)  ???:_IO_sputbackc [/usr/lib/libc-2.28.so]
+  329,954 ( 1.74%)  ???:__memcpy_neon [/usr/lib/libc-2.28.so]
+  242,000 ( 1.28%)  ???:fprintf [/usr/lib/libc-2.28.so]
+  110,000 ( 0.58%)  ???:__strtoul_internal [/usr/lib/libc-2.28.so]
+  110,000 ( 0.58%)  ???:mempcpy [/usr/lib/ld-2.28.so]
+   65,988 ( 0.35%)  ???:0x0485b064 [???]
+   58,459 ( 0.31%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: optimization/reference/butterworth.c
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 115 ----------------------------------------
+      .               printf("fp val:\t%s\n", fixedpoint_str(input));
+      .               printf("adj:\t%s\n", fixedpoint_str(adjusted));
+      .               printf("uint16:\t%s\n", fixedpoint_str(scaled));
+      .           #endif
+      .               return fixedpoint_to_int(scaled);
+      .           }
+      .           
+      .           int main(int argc, char *argv[])
+      4 ( 0.00%)  {
+     23 ( 0.00%)      printf("Applying Butterworth Filter\n");
+18,732,098 (99.05%)  => ???:fopen@@GLIBC_2.4 (1x)
+ 60,200 ( 0.32%)  => ???:puts (1x)
+  2,029 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
+      .               if (argc < 3)
+      .               {
+      .                   printf("Usage: %s <input_file> <output_file>\n", argv[0]);
+      .                   return 1;
+      .               }
+      .           
+      1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
+      7 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
+18,731,440 (99.04%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+      .           
+      8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
+      .               {
+      .                   printf("Failed to open input or output file\n");
+      .                   return 1;
+      .               }
+      .           
+      .               // Count the number of lines in the input file
+      .               // TODO: Optimization: dont scan the file, instead apply as reading the file
+      .               size_t numSamples = 0;
+      .               int c;
+635,012 ( 3.36%)      while ((c = fgetc(inputFile)) != EOF)
+18,729,818 (99.04%)  => ???:getc (1x)
+    972 ( 0.01%)  => ???:_dl_runtime_resolve (1x)
+      .               {
+      3 ( 0.00%)          if (c == '\n')
+      .                   {
+      .                       numSamples++;
+      .                   }
+      .               }
+      .               numSamples++; // Add one for the last line
+      .               // Reset the file pointer to the beginning of the file
+      .               fseek(inputFile, 0, SEEK_SET);
+      .           
+      .               // Allocate memory for input and output buffers
+792,073 ( 4.19%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
+9,446,223 (49.95%)  => ???:__isoc99_fscanf (11,000x)
+6,955,733 (36.78%)  => ???:fprintf (11,000x)
+  4,259 ( 0.02%)  => ???:_dl_runtime_resolve (4x)
+  2,699 ( 0.01%)  => ???:fclose@@GLIBC_2.4 (1x)
+    454 ( 0.00%)  => ???:malloc (2x)
+    204 ( 0.00%)  => ???:puts (1x)
+      .               fixedpoint_t *outputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
+      .           
+      .               // Read input samples from file
+      .               uint16_t sample;
+      .               for (size_t i = 0; i < numSamples; i++)
+      .               {
+      .                   if (fscanf(inputFile, "%hu", &sample) != 1)
+      .                   {
+-- line 164 ----------------------------------------
+-- line 190 ----------------------------------------
+      .               {
+      .                   fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
+      .               }
+      .           
+      .               printf("Finished Applying Butterworth Filter\n");
+      .           
+      .               // Cleanup
+      .               fclose(inputFile);
+      5 ( 0.00%)      fclose(outputFile);
+  2,075 ( 0.01%)  => ???:fclose@@GLIBC_2.4'2 (1x)
+     18 ( 0.00%)      free(inputBuffer);
+  1,054 ( 0.01%)  => ???:_dl_runtime_resolve (1x)
+    335 ( 0.00%)  => ???:free (2x)
+      .               free(outputBuffer);
+      .           
+      .               return 0;
+      .           }
+      1 ( 0.00%)  <counts for unidentified lines in optimization/reference/butterworth.c>
+
+--------------------------------------------------------------------------------
+Ir                 
+--------------------------------------------------------------------------------
+1,427,154 ( 7.55%)  events annotated
+
