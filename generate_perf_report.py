@@ -18,7 +18,7 @@ OPTIMIZATION_FLAGS = ["O0", "O1", "O2", "O3", "Os", "Ofast"]
 
 # Hyperfine Configuration
 HYPERFINE = "hyperfine"
-HYPERFINE_RUNS = "20"
+HYPERFINE_RUNS = "25"
 HYPERFINE_FLAGS = ["--warmup", "5", "--runs",
                    HYPERFINE_RUNS, "-L", "flag", "O0,O1,O2,O3,Os,Ofast", "--export-markdown", f"{TARGET}{EXECUTABLE_NAME}_perf.md"]
 HYPERFINE_COMMAND = [
@@ -36,7 +36,7 @@ CALLGRIND_ANNOTATE_FLAGS = ["--auto=yes",
 
 # Test signal configuration
 SIGNAL_GEN = "python3"
-SIGNAL_NUM_SAMPLES_HYPER = "44000"
+SIGNAL_NUM_SAMPLES_HYPER = "66000"
 # Low number is used to reduce benchmarking time on the VM and is still large enough to see the effects of optimization.
 SIGNAL_NUM_SAMPLES_CALLGRIND = "11000"
 SIGNAL_FLAGS = ["testing/generate_test_signals.py", "--sample-rate",

@@ -67,29 +67,13 @@ typedef uint64_t ulong_fixedpoint_t;
 /*
     Define commonly used functions
 */
-inline fixedpoint_t fixedpoint_add(fixedpoint_t a, fixedpoint_t b)
-{
-    // (NOTE: 4)
-    return a + b;
-}
+#define fixedpoint_add(a, b) (fixedpoint_t)(a + b)
 
-inline fixedpoint_t fixedpoint_sub(fixedpoint_t a, fixedpoint_t b)
-{
-    // (NOTE: 4)
-    return a - b;
-}
+#define fixedpoint_sub(a, b) (fixedpoint_t)(a - b)
 
-inline fixedpoint_t fixedpoint_mul(fixedpoint_t a, fixedpoint_t b)
-{
-    // First cast up to long to avoid overflow, then shift out the added fractional bits
-    return (fixedpoint_t)(((long_fixedpoint_t)a * (long_fixedpoint_t)b) >> FRACTIONAL_BITS);
-}
+#define fixedpoint_mul(a, b) (fixedpoint_t)(((long_fixedpoint_t)a * (long_fixedpoint_t)b) >> FRACTIONAL_BITS)
 
-inline fixedpoint_t fixedpoint_div(fixedpoint_t a, fixedpoint_t b)
-{
-    // First cast up to long to avoid overflow
-    return (((long_fixedpoint_t)a << FRACTIONAL_BITS) / (long_fixedpoint_t)b);
-}
+#define fixedpoint_div(a, b) (fixedpoint_t)(((long_fixedpoint_t)a << FRACTIONAL_BITS) / (long_fixedpoint_t)b)
 
 /*
     Define printing functions
