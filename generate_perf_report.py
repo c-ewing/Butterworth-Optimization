@@ -4,9 +4,24 @@ import argparse
 # This script will generate a performance report for the Butterworth filter.
 # It will compile the program with different optimization flags and benchmark it using hyperfine.
 
+# Parse command line arguments
+parser = argparse.ArgumentParser(
+    description="Generate a performance report for the Butterworth filter.")
+parser.add_argument("--target", type=str, default="optimization/reference/",
+                    help="Directory where the benchmarked program is located.")
+parser.add_argument("--skip-signal-gen", action="store_true",
+                    default=False, help="Skip generating the test signals.")
+parser.add_argument("--skip-hyperfine", action="store_true",
+                    default=False, help="Skip running hyperfine.")
+parser.add_argument("--skip-callgrind", action="store_true",
+                    default=False, help="Skip running callgrind.")
+
+args = parser.parse_args()
+
+
 # TARGET_DIRECTORY:
 #   Directory where the benchmarked program is located.
-TARGET = "optimization/reference/"
+TARGET = args.target
 EXECUTABLE_NAME = "butterworth"
 
 # Compiler Configuration
@@ -41,22 +56,6 @@ SIGNAL_NUM_SAMPLES_HYPER = "66000"
 SIGNAL_NUM_SAMPLES_CALLGRIND = "11000"
 SIGNAL_FLAGS = ["testing/generate_test_signals.py", "--sample-rate",
                 "22000", "--num-samples"]
-
-# Parse command line arguments
-parser = argparse.ArgumentParser(
-    description="Generate a performance report for the Butterworth filter.")
-parser.add_argument("--target", type=str, default=TARGET,
-                    help="Directory where the benchmarked program is located.")
-parser.add_argument("--skip-signal-gen", action="store_true",
-                    default=False, help="Skip generating the test signals.")
-parser.add_argument("--skip-hyperfine", action="store_true",
-                    default=False, help="Skip running hyperfine.")
-parser.add_argument("--skip-callgrind", action="store_true",
-                    default=False, help="Skip running callgrind.")
-
-args = parser.parse_args()
-
-TARGET = args.target
 
 # Second we need to compile the program with different optimization flags and benchmark it using hyperfine.
 # Hyperfine will generate a markdown file with the results.
