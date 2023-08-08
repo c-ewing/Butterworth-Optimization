@@ -4,9 +4,9 @@ Profile data file 'optimization/macro/butterworth_Ofast.out' (creator: callgrind
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 3693134
+Timerange: Basic block 0 - 3693128
 Trigger: Program termination
-Profiled target:  ./optimization/macro/butterworth_Ofast ts_sine.dat optimization/macro/removeme_Ofast.dat (PID 1705, part 1)
+Profiled target:  ./optimization/macro/butterworth_Ofast ts_sine.dat optimization/macro/removeme_Ofast.dat (PID 1162, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,7 +18,7 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir                  
 --------------------------------------------------------------------------------
-18,912,105 (100.0%)  PROGRAM TOTALS
+18,912,097 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                  file:function
