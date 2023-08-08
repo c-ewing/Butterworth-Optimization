@@ -4,9 +4,9 @@ Profile data file 'optimization/strength_reduction/butterworth_Os.out' (creator:
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 3748154
+Timerange: Basic block 0 - 43087
 Trigger: Program termination
-Profiled target:  ./optimization/strength_reduction/butterworth_Os ts_sine.dat optimization/strength_reduction/removeme_Os.dat (PID 1299, part 1)
+Profiled target:  ./optimization/strength_reduction/butterworth_Os ts_sine.dat optimization/strength_reduction/removeme_Os.dat (PID 952, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -16,233 +16,262 @@ User annotated:
 Auto-annotation:  on
 
 --------------------------------------------------------------------------------
-Ir                  
---------------------------------------------------------------------------------
-18,934,172 (100.0%)  PROGRAM TOTALS
-
---------------------------------------------------------------------------------
-Ir                  file:function
---------------------------------------------------------------------------------
-6,055,528 (31.98%)  ???:_IO_vfscanf [/usr/lib/libc-2.28.so]
-4,147,088 (21.90%)  ???:vfprintf [/usr/lib/libc-2.28.so]
-2,068,000 (10.92%)  ???:____strtoul_l_internal [/usr/lib/libc-2.28.so]
-  888,938 ( 4.69%)  ???:getc'2 [/usr/lib/libc-2.28.so]
-  814,078 ( 4.30%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
-  715,563 ( 3.78%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
-  671,000 ( 3.54%)  ???:_itoa_word [/usr/lib/libc-2.28.so]
-  671,000 ( 3.54%)  ???:strchrnul [/usr/lib/libc-2.28.so]
-  635,005 ( 3.35%)  optimization/strength_reduction/butterworth.c:_IO_default_uflow
-  395,982 ( 2.09%)  ???:_IO_sputbackc [/usr/lib/libc-2.28.so]
-  329,954 ( 1.74%)  ???:__memcpy_neon [/usr/lib/libc-2.28.so]
-  242,026 ( 1.28%)  optimization/strength_reduction/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_Os]
-  242,000 ( 1.28%)  ???:fprintf [/usr/lib/libc-2.28.so]
-  242,000 ( 1.28%)  optimization/strength_reduction/fixedpoint.h:butterworthFilterApply
-  187,027 ( 0.99%)  optimization/strength_reduction/butterworth.c:fseek
-  143,000 ( 0.76%)  optimization/strength_reduction/butterworth.c:butterworthFilterApply [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_Os]
-  110,000 ( 0.58%)  ???:__strtoul_internal [/usr/lib/libc-2.28.so]
-  110,000 ( 0.58%)  ???:mempcpy [/usr/lib/ld-2.28.so]
-   65,988 ( 0.35%)  ???:0x0485b064 [???]
-   58,459 ( 0.31%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
-
---------------------------------------------------------------------------------
--- Auto-annotated source: optimization/strength_reduction/fixedpoint.h
---------------------------------------------------------------------------------
 Ir               
+--------------------------------------------------------------------------------
+194,253 (100.0%)  PROGRAM TOTALS
 
--- line 77 ----------------------------------------
-      .           {
-      .               // (NOTE: 4)
-      .               return a - b;
-      .           }
-      .           
-      .           fixedpoint_t fixedpoint_mul(fixedpoint_t a, fixedpoint_t b)
-      .           {
-      .               // First cast up to long to avoid overflow, then shift out the added fractional bits
-242,000 ( 1.28%)      return (fixedpoint_t)(((long_fixedpoint_t)a * (long_fixedpoint_t)b) >> FRACTIONAL_BITS);
-      .           }
-      .           
-      .           fixedpoint_t fixedpoint_div(fixedpoint_t a, fixedpoint_t b)
-      .           {
-      .               // First cast up to long to avoid overflow
-      .               return (((long_fixedpoint_t)a << FRACTIONAL_BITS) / (long_fixedpoint_t)b);
-      .           }
-      .           
--- line 93 ----------------------------------------
+--------------------------------------------------------------------------------
+Ir                file:function
+--------------------------------------------------------------------------------
+194,253 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,249 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+112,400 (57.86%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
+103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
+103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
+102,224 (52.62%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
+ 99,813 (51.38%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
+ 96,461 (49.66%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
+ 90,106 (46.39%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
+ 87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
+ 86,640 (44.60%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
+ 80,089 (41.23%)  ???:0x000106ec [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_Os]
+ 78,956 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,719 (40.52%)  /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c:main
+ 76,506 (39.38%)  optimization/strength_reduction/butterworth.c:main [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_Os]
+ 76,394 (39.33%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
+ 61,633 (31.73%)  ???:malloc [/usr/lib/ld-2.28.so]
+ 60,693 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
+ 60,682 (31.24%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 60,481 (31.14%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
+ 60,441 (31.11%)  ???:puts [/usr/lib/libc-2.28.so]
+ 60,433 (31.11%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 59,699 (30.73%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
+ 59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
+ 58,843 (30.29%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
+ 58,815 (30.28%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
+ 14,227 ( 7.32%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 14,225 ( 7.32%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 14,221 ( 7.32%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 13,577 ( 6.99%)  optimization/strength_reduction/butterworth.c:__fopen_internal
+ 13,570 ( 6.99%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
+ 13,070 ( 6.73%)  ???:check_match [/usr/lib/ld-2.28.so]
+ 12,937 ( 6.66%)  optimization/strength_reduction/butterworth.c:__fopen_internal'2
+ 11,948 ( 6.15%)  ???:getc [/usr/lib/libc-2.28.so]
+ 11,937 ( 6.15%)  ???:__uflow [/usr/lib/libc-2.28.so]
+ 11,915 ( 6.13%)  ???:__aeabi_uidivmod [/usr/lib/ld-2.28.so]
+ 11,901 ( 6.13%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
+ 11,450 ( 5.89%)  optimization/strength_reduction/butterworth.c:_IO_default_uflow
+ 11,341 ( 5.84%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
+ 11,160 ( 5.75%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
+ 11,061 ( 5.69%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
+ 10,143 ( 5.22%)  ???:fseek [/usr/lib/libc-2.28.so]
+  9,867 ( 5.08%)  optimization/strength_reduction/butterworth.c:fseek
+  9,688 ( 4.99%)  ???:strcmp [/usr/lib/ld-2.28.so]
+  8,766 ( 4.51%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
+  8,338 ( 4.29%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
+  7,179 ( 3.70%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
+  6,105 ( 3.14%)  optimization/strength_reduction/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_Os]
+  6,090 ( 3.14%)  optimization/strength_reduction/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_Os]
+  4,577 ( 2.36%)  ???:openaux [/usr/lib/ld-2.28.so]
+  4,294 ( 2.21%)  ???:open_verify.constprop.8 [/usr/lib/ld-2.28.so]
+  3,958 ( 2.04%)  ???:_dl_new_object'2 [/usr/lib/ld-2.28.so]
+  3,281 ( 1.69%)  ???:_dl_map_object_from_fd [/usr/lib/ld-2.28.so]
+  3,064 ( 1.58%)  ???:_dl_name_match_p [/usr/lib/ld-2.28.so]
+  2,773 ( 1.43%)  ???:do_preload [/usr/lib/ld-2.28.so]
+  2,740 ( 1.41%)  ???:_dl_catch_error [/usr/lib/ld-2.28.so]
+  2,667 ( 1.37%)  ???:map_doit [/usr/lib/ld-2.28.so]
+  2,547 ( 1.31%)  ???:fclose@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+  2,374 ( 1.22%)  ???:memcpy [/usr/lib/ld-2.28.so]
+  2,300 ( 1.18%)  ???:version_check_doit [/usr/lib/ld-2.28.so]
+  2,289 ( 1.18%)  ???:_dl_check_all_versions [/usr/lib/ld-2.28.so]
+  2,273 ( 1.17%)  ???:_dl_check_map_versions [/usr/lib/ld-2.28.so]
+  2,236 ( 1.15%)  ???:_dl_important_hwcaps [/usr/lib/ld-2.28.so]
+  2,213 ( 1.14%)  ???:exit [/usr/lib/libc-2.28.so]
+  2,213 ( 1.14%)  ???:main
+  2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
+  2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
+  1,928 ( 0.99%)  optimization/strength_reduction/butterworth.c:fclose@@GLIBC_2.4
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/strength_reduction/butterworth.c
 --------------------------------------------------------------------------------
-Ir               
+Ir          
 
 -- line 55 ----------------------------------------
-      .           
-      .           #ifdef DEBUG
-      .               printf("inv_a0:\t%s\n", fixedpoint_str(inv_a0));
-      .           #endif
-      .           
-      .               // Calculate the coefficients:
-      .               filter->a0 = FIXEDPOINT_ONE; // Due to the normalizing around a0, this is always 1.0
-      .               // a1 = (-2.0 * pow(lambda, 2) + 2.0) * inv_a0;
-      3 ( 0.00%)      filter->a1 = fixedpoint_mul((fixedpoint_mul(fixedpoint_from_int(-2), lambda_squared) + FIXEDPOINT_TWO), inv_a0);
-      .               // a2 = (pow(lambda, 2) - sqrt(2.0) * lambda + 1.0) * inv_a0;
-      2 ( 0.00%)      filter->a2 = fixedpoint_mul((lambda_squared - sqrt2_lambda + FIXEDPOINT_ONE), inv_a0);
-      .           
-      .               // These are fixed for a second order Butterworth filter using the bilinear transform and adjusted using the value of a0.
-      2 ( 0.00%)      filter->b0 = inv_a0;
-      .               // b1 = 2.0 * inv_a0
-      1 ( 0.00%)      filter->b1 = inv_a0 << 1; // OPTIMIZATION: multiply by two converted to left shift.
-      1 ( 0.00%)      filter->b2 = inv_a0;
-      .           
-      .           // Print the coefficients
-      .           #ifdef DEBUG
-      .               printf("b0:\t%s\n", fixedpoint_str(filter->b0));
-      .               printf("b1:\t%s\n", fixedpoint_str(filter->b1));
-      .               printf("b2:\t%s\n", fixedpoint_str(filter->b2));
-      .           
-      .               printf("a0:\t%s\n", fixedpoint_str(filter->a0));
-      .               printf("a1:\t%s\n", fixedpoint_str(filter->a1));
-      .               printf("a2:\t%s\n", fixedpoint_str(filter->a2));
-      .           #endif
-      .           
-      .               // Initialize the previous input and output values to zero
-      2 ( 0.00%)      filter->x1 = FIXEDPOINT_ZERO;
-      1 ( 0.00%)      filter->x2 = FIXEDPOINT_ZERO;
-      1 ( 0.00%)      filter->y1 = FIXEDPOINT_ZERO;
-      1 ( 0.00%)      filter->y2 = FIXEDPOINT_ZERO;
-      1 ( 0.00%)  }
-7,587,851 (40.07%)  => optimization/strength_reduction/butterworth.c:main'2 (1x)
-      .           
-      .           // Function to apply Butterworth filter to a single input
-      .           fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
- 22,000 ( 0.12%)  {
-      .               // Calculate the output
-      .               // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
- 66,000 ( 0.35%)      fixedpoint_t output = (fixedpoint_mul(f->b0, input) + fixedpoint_mul(f->b1, f->x1) + fixedpoint_mul(f->b2, f->x2)) - (fixedpoint_mul(f->a1, f->y1) + fixedpoint_mul(f->a2, f->y2));
-      .           
-      .               // Update the previous input and output values
- 11,000 ( 0.06%)      f->x2 = f->x1;
- 11,000 ( 0.06%)      f->x1 = input;
-      .           
- 11,000 ( 0.06%)      f->y2 = f->y1;
- 11,000 ( 0.06%)      f->y1 = output;
-      .           
-      .               return output;
- 11,000 ( 0.06%)  }
-      .           
-      .           uint16_t fixedpoint_to_uint16(fixedpoint_t input)
-      .           {
-      .               // Adjust the range from [0,65535] of the input to [-32727, 32727] of the output
-      1 ( 0.00%)      fixedpoint_t adjusted = input >> 1; // OPTIMIZATION: divide by two converted to right shift, value is signed so this is an arithmetic shift
-      2 ( 0.00%)      fixedpoint_t scaled = adjusted + fixedpoint_from_int(32767);
-      .           
-      .           #ifdef DEBUG
-      .               printf("fp val:\t%s\n", fixedpoint_str(input));
-      .               printf("adj:\t%s\n", fixedpoint_str(adjusted));
-      .               printf("uint16:\t%s\n", fixedpoint_str(scaled));
-      .           #endif
-      .               return fixedpoint_to_int(scaled);
-      .           }
-      .           
-      .           int main(int argc, char *argv[])
-      4 ( 0.00%)  {
-     23 ( 0.00%)      printf("Applying Butterworth Filter\n");
-18,754,124 (99.05%)  => ???:fopen@@GLIBC_2.4 (1x)
- 60,216 ( 0.32%)  => ???:puts (1x)
-  2,029 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
-      .               if (argc < 3)
-      .               {
-      .                   printf("Usage: %s <input_file> <output_file>\n", argv[0]);
-      .                   return 1;
-      .               }
-      .           
-      1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
-      6 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-18,753,467 (99.05%)  => ???:fopen@@GLIBC_2.4'2 (1x)
-      .           
-      8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
-      .               {
-      .                   printf("Failed to open input or output file\n");
-      .                   return 1;
-      .               }
-      .           
-      .               // Count the number of lines in the input file
-      .               // TODO: Optimization: dont scan the file, instead apply as reading the file
-      .               size_t numSamples = 0;
-      .               int c;
-635,012 ( 3.35%)      while ((c = fgetc(inputFile)) != EOF)
-18,751,845 (99.04%)  => ???:getc (1x)
-    972 ( 0.01%)  => ???:_dl_runtime_resolve (1x)
-      .               {
-      2 ( 0.00%)          if (c == '\n')
-      .                   {
-      .                       numSamples++;
-      .                   }
-      .               }
-      .               numSamples++; // Add one for the last line
-      .               // Reset the file pointer to the beginning of the file
-      .               fseek(inputFile, 0, SEEK_SET);
-      .           
-      .               // Allocate memory for input and output buffers
-187,027 ( 0.99%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-9,446,217 (49.89%)  => ???:__isoc99_fscanf (11,000x)
-7,587,866 (40.07%)  => optimization/strength_reduction/butterworth.c:butterworthFilterInit (1x)
-  2,109 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
-    454 ( 0.00%)  => ???:malloc (2x)
-      .               fixedpoint_t *outputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-      .           
-      .               // Read input samples from file
-      .               uint16_t sample;
-      .               for (size_t i = 0; i < numSamples; i++)
-      .               {
-      .                   if (fscanf(inputFile, "%hu", &sample) != 1)
-      .                   {
+ .           
+ .           #ifdef DEBUG
+ .               printf("inv_a0:\t%s\n", fixedpoint_str(inv_a0));
+ .           #endif
+ .           
+ .               // Calculate the coefficients:
+ .               filter->a0 = FIXEDPOINT_ONE; // Due to the normalizing around a0, this is always 1.0
+ .               // a1 = (-2.0 * pow(lambda, 2) + 2.0) * inv_a0;
+ 3 ( 0.00%)      filter->a1 = fixedpoint_mul((fixedpoint_mul(fixedpoint_from_int(-2), lambda_squared) + FIXEDPOINT_TWO), inv_a0);
+ .               // a2 = (pow(lambda, 2) - sqrt(2.0) * lambda + 1.0) * inv_a0;
+ 2 ( 0.00%)      filter->a2 = fixedpoint_mul((lambda_squared - sqrt2_lambda + FIXEDPOINT_ONE), inv_a0);
+ .           
+ .               // These are fixed for a second order Butterworth filter using the bilinear transform and adjusted using the value of a0.
+ 2 ( 0.00%)      filter->b0 = inv_a0;
+ .               // b1 = 2.0 * inv_a0
+ 1 ( 0.00%)      filter->b1 = inv_a0 << 1; // OPTIMIZATION: multiply by two converted to left shift.
+ 1 ( 0.00%)      filter->b2 = inv_a0;
+ .           
+ .           // Print the coefficients
+ .           #ifdef DEBUG
+ .               printf("b0:\t%s\n", fixedpoint_str(filter->b0));
+ .               printf("b1:\t%s\n", fixedpoint_str(filter->b1));
+ .               printf("b2:\t%s\n", fixedpoint_str(filter->b2));
+ .           
+ .               printf("a0:\t%s\n", fixedpoint_str(filter->a0));
+ .               printf("a1:\t%s\n", fixedpoint_str(filter->a1));
+ .               printf("a2:\t%s\n", fixedpoint_str(filter->a2));
+ .           #endif
+ .           
+ .               // Initialize the previous input and output values to zero
+ 2 ( 0.00%)      filter->x1 = FIXEDPOINT_ZERO;
+ 1 ( 0.00%)      filter->x2 = FIXEDPOINT_ZERO;
+ 1 ( 0.00%)      filter->y1 = FIXEDPOINT_ZERO;
+ 1 ( 0.00%)      filter->y2 = FIXEDPOINT_ZERO;
+ 1 ( 0.00%)  }
+6,090 ( 3.14%)  => optimization/strength_reduction/butterworth.c:main'2 (1x)
+ .           
+ .           // Function to apply Butterworth filter to a single input
+ .           fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
+ 2 ( 0.00%)  {
+ .               // Calculate the output
+ .               // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
+ 6 ( 0.00%)      fixedpoint_t output = (fixedpoint_mul(f->b0, input) + fixedpoint_mul(f->b1, f->x1) + fixedpoint_mul(f->b2, f->x2)) - (fixedpoint_mul(f->a1, f->y1) + fixedpoint_mul(f->a2, f->y2));
+ .           
+ .               // Update the previous input and output values
+ 1 ( 0.00%)      f->x2 = f->x1;
+ 1 ( 0.00%)      f->x1 = input;
+ .           
+ 1 ( 0.00%)      f->y2 = f->y1;
+ 1 ( 0.00%)      f->y1 = output;
+ .           
+ .               return output;
+ 1 ( 0.00%)  }
+ .           
+ .           uint16_t fixedpoint_to_uint16(fixedpoint_t input)
+ .           {
+ .               // Adjust the range from [0,65535] of the input to [-32727, 32727] of the output
+ 1 ( 0.00%)      fixedpoint_t adjusted = input >> 1; // OPTIMIZATION: divide by two converted to right shift, value is signed so this is an arithmetic shift
+ 2 ( 0.00%)      fixedpoint_t scaled = adjusted + fixedpoint_from_int(32767);
+ .           
+ .           #ifdef DEBUG
+ .               printf("fp val:\t%s\n", fixedpoint_str(input));
+ .               printf("adj:\t%s\n", fixedpoint_str(adjusted));
+ .               printf("uint16:\t%s\n", fixedpoint_str(scaled));
+ .           #endif
+ .               return fixedpoint_to_int(scaled);
+ .           }
+ .           
+ .           int main(int argc, char *argv[])
+ 4 ( 0.00%)  {
+23 ( 0.01%)      printf("Applying Butterworth Filter\n");
+60,222 (31.00%)  => ???:puts (1x)
+14,227 ( 7.32%)  => ???:fopen@@GLIBC_2.4 (1x)
+2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
+ .               if (argc < 3)
+ .               {
+ .                   printf("Usage: %s <input_file> <output_file>\n", argv[0]);
+ .                   return 1;
+ .               }
+ .           
+ 1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
+ 6 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
+13,570 ( 6.99%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+ .           
+ 8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
+ .               {
+ .                   printf("Failed to open input or output file\n");
+ .                   return 1;
+ .               }
+ .           
+ .               // Count the number of lines in the input file
+ .               // TODO: Optimization: dont scan the file, instead apply as reading the file
+ .               size_t numSamples = 0;
+ .               int c;
+72 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
+10,143 ( 5.22%)  => ???:fseek (1x)
+1,026 ( 0.53%)  => ???:_dl_runtime_resolve (1x)
+216 ( 0.11%)  => ???:getc'2 (5x)
+ .               {
+ 2 ( 0.00%)          if (c == '\n')
+ .                   {
+ .                       numSamples++;
+ .                   }
+ .               }
+ .               numSamples++; // Add one for the last line
+ .               // Reset the file pointer to the beginning of the file
+ .               fseek(inputFile, 0, SEEK_SET);
+ .           
+ .               // Allocate memory for input and output buffers
+44 ( 0.02%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
+6,105 ( 3.14%)  => optimization/strength_reduction/butterworth.c:butterworthFilterInit (1x)
+2,109 ( 1.09%)  => ???:_dl_runtime_resolve (2x)
+1,149 ( 0.59%)  => ???:__isoc99_fscanf (1x)
+460 ( 0.24%)  => ???:malloc (2x)
+ .               fixedpoint_t *outputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
+ .           
+ .               // Read input samples from file
+ .               uint16_t sample;
+ .               for (size_t i = 0; i < numSamples; i++)
+ .               {
+ .                   if (fscanf(inputFile, "%hu", &sample) != 1)
+ .                   {
 -- line 164 ----------------------------------------
 -- line 171 ----------------------------------------
-      .                   }
-      .               }
-      .           
-      .               // Initialize the filter
-      .               ButterworthFilter ButterworthFilter;
-      .               butterworthFilterInit(&ButterworthFilter);
-      .           
-      .               // Apply Butterworth filter
- 44,004 ( 0.23%)      for (size_t i = 0; i < numSamples; i++)
-      .               {
- 44,000 ( 0.23%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
-385,000 ( 2.03%)  => optimization/strength_reduction/butterworth.c:butterworthFilterApply (11,000x)
-      .           #ifdef DEBUG
-      .                   printf("Input:\t%s\n", fixedpoint_str(inputBuffer[i]));
-      .                   printf("Output:\t%s\n", fixedpoint_str(outputBuffer[i]));
-      .           #endif
-      .               }
-      .           
-      .               // Write output samples to file
-      2 ( 0.00%)      for (size_t i = 0; i < numSamples; ++i)
-      .               {
-154,017 ( 0.81%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
-6,955,757 (36.74%)  => ???:fprintf (11,000x)
-  2,699 ( 0.01%)  => ???:fclose@@GLIBC_2.4 (1x)
-  2,150 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
-    219 ( 0.00%)  => ???:puts (1x)
-      .               }
-      .           
-      .               printf("Finished Applying Butterworth Filter\n");
-      .           
-      .               // Cleanup
-      .               fclose(inputFile);
-      5 ( 0.00%)      fclose(outputFile);
-  2,075 ( 0.01%)  => ???:fclose@@GLIBC_2.4'2 (1x)
-     18 ( 0.00%)      free(inputBuffer);
-  1,054 ( 0.01%)  => ???:_dl_runtime_resolve (1x)
-    335 ( 0.00%)  => ???:free (2x)
-      .               free(outputBuffer);
-      .           
-      .               return 0;
-      .           }
-      1 ( 0.00%)  <counts for unidentified lines in optimization/strength_reduction/butterworth.c>
+ .                   }
+ .               }
+ .           
+ .               // Initialize the filter
+ .               ButterworthFilter ButterworthFilter;
+ .               butterworthFilterInit(&ButterworthFilter);
+ .           
+ .               // Apply Butterworth filter
+ 8 ( 0.00%)      for (size_t i = 0; i < numSamples; i++)
+ .               {
+ 4 ( 0.00%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
+35 ( 0.02%)  => optimization/strength_reduction/butterworth.c:butterworthFilterApply (1x)
+ .           #ifdef DEBUG
+ .                   printf("Input:\t%s\n", fixedpoint_str(inputBuffer[i]));
+ .                   printf("Output:\t%s\n", fixedpoint_str(outputBuffer[i]));
+ .           #endif
+ .               }
+ .           
+ .               // Write output samples to file
+ 2 ( 0.00%)      for (size_t i = 0; i < numSamples; ++i)
+ .               {
+31 ( 0.02%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
+2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
+2,150 ( 1.11%)  => ???:_dl_runtime_resolve (2x)
+1,091 ( 0.56%)  => ???:fprintf (1x)
+219 ( 0.11%)  => ???:puts (1x)
+ .               }
+ .           
+ .               printf("Finished Applying Butterworth Filter\n");
+ .           
+ .               // Cleanup
+ .               fclose(inputFile);
+ 5 ( 0.00%)      fclose(outputFile);
+1,923 ( 0.99%)  => ???:fclose@@GLIBC_2.4'2 (1x)
+18 ( 0.01%)      free(inputBuffer);
+1,054 ( 0.54%)  => ???:_dl_runtime_resolve (1x)
+168 ( 0.09%)  => ???:free (2x)
+ .               free(outputBuffer);
+ .           
+ .               return 0;
+ .           }
+ 1 ( 0.00%)  <counts for unidentified lines in optimization/strength_reduction/butterworth.c>
 
 --------------------------------------------------------------------------------
-Ir                 
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c
 --------------------------------------------------------------------------------
-1,449,147 ( 7.65%)  events annotated
+  No information has been collected for /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c
+
+--------------------------------------------------------------------------------
+Ir           
+--------------------------------------------------------------------------------
+259 ( 0.13%)  events annotated
 
