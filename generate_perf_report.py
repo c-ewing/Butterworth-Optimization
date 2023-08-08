@@ -52,7 +52,7 @@ CALLGRIND_ANNOTATE_FLAGS = ["--auto=yes",
 # Test signal configuration
 SIGNAL_GEN = "python3"
 SIGNAL_NUM_SAMPLES_HYPER = "66000"
-# Low number is used to reduce benchmarking time on the VM and is still large enough to see the effects of optimization.
+# Used to get the exact instruction count for one call to the filter.
 SIGNAL_NUM_SAMPLES_CALLGRIND = "1"
 SIGNAL_FLAGS = ["testing/generate_test_signals.py", "--sample-rate",
                 "22000", "--num-samples"]
@@ -110,8 +110,7 @@ if not args.skip_callgrind:
 
         # Clean up the executables and *.out files
         print(f"Cleaning callgrind step for {TARGET} with flag {flag}\n")
-        subprocess.run(["rm", f"{TARGET}removeme_{flag}.dat",
-                        f"{TARGET}{EXECUTABLE_NAME}_{flag}", f"{TARGET}{EXECUTABLE_NAME}_{flag}.out"])
+        subprocess.run(["rm", f"{TARGET}removeme_{flag}.dat"])
 
     # Clean up the signal data
     print(f"Cleaning callgrind signal data for target: {TARGET}\n")
