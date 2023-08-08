@@ -108,11 +108,6 @@ if not args.skip_callgrind:
             subprocess.run([CALLGRIND_ANNOTATE, *CALLGRIND_ANNOTATE_FLAGS,
                             f"{TARGET}{EXECUTABLE_NAME}_{flag}.out"], stdout=f)
 
-        # Clean up the executables
-        print(f"Cleaning callgrind step for {TARGET} with flag {flag}\n")
-        subprocess.run(["rm", f"{TARGET}removeme_{flag}.dat",
-                        f"{TARGET}{EXECUTABLE_NAME}_{flag}"])
-
     # Clean up the signal data
     print(f"Cleaning callgrind signal data for target: {TARGET}\n")
     subprocess.run(["rm", f"ts_impulse.dat", f"ts_sine.dat"])
