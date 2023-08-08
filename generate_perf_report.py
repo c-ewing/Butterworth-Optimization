@@ -93,7 +93,7 @@ if not args.skip_callgrind:
     for flag in OPTIMIZATION_FLAGS:
         # Compile the program with the current optimization flag and debug symbols using subprocess
         # print(f"Compiling DEBUG {TARGET} with {flag}")
-        subprocess.run([COMPILER, *COMPILER_FLAGS, *COMPILER_DEBUG_SYMBOLS,
+        subprocess.run([COMPILER, *COMPILER_DEBUG_SYMBOLS, * COMPILER_FLAGS,
                         f"-{flag}", "-o", f"{TARGET}{EXECUTABLE_NAME}_{flag}", f"{TARGET}{EXECUTABLE_NAME}.c"])
 
         # Next we need to run the program with callgrind and generate the callgrind.out file
