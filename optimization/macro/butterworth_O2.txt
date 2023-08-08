@@ -4,9 +4,9 @@ Profile data file 'optimization/macro/butterworth_O2.out' (creator: callgrind-3.
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43074
+Timerange: Basic block 0 - 43076
 Trigger: Program termination
-Profiled target:  ./optimization/macro/butterworth_O2 ts_sine.dat optimization/macro/removeme_O2.dat (PID 1051, part 1)
+Profiled target:  ./optimization/macro/butterworth_O2 ts_sine.dat optimization/macro/removeme_O2.dat (PID 1327, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,14 +18,14 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,224 (100.0%)  PROGRAM TOTALS
+194,230 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,224 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,220 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
-112,408 (57.88%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
+194,230 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,226 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+112,408 (57.87%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
 103,603 (53.34%)  ???:dl_main [/usr/lib/ld-2.28.so]
 103,194 (53.13%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
 102,224 (52.63%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
@@ -34,17 +34,17 @@ Ir                file:function
  90,106 (46.39%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
  87,788 (45.20%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.61%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,078 (41.23%)  ???:0x000107c0 [/root/Butterworth-Optimization/optimization/macro/butterworth_O2]
- 78,945 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 78,708 (40.52%)  /root/Butterworth-Optimization/optimization/macro/butterworth.c:main
- 76,495 (39.38%)  optimization/macro/butterworth.c:main [/root/Butterworth-Optimization/optimization/macro/butterworth_O2]
+ 80,084 (41.23%)  ???:0x000107c0 [/root/Butterworth-Optimization/optimization/macro/butterworth_O2]
+ 78,951 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,714 (40.53%)  /root/Butterworth-Optimization/optimization/macro/butterworth.c:main
+ 76,501 (39.39%)  optimization/macro/butterworth.c:main [/root/Butterworth-Optimization/optimization/macro/butterworth_O2]
  76,394 (39.33%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
  61,627 (31.73%)  ???:malloc [/usr/lib/ld-2.28.so]
- 60,687 (31.25%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
+ 60,687 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
  60,676 (31.24%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
  60,475 (31.14%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
  60,427 (31.11%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,419 (31.11%)  ???:puts [/usr/lib/libc-2.28.so]
+ 60,425 (31.11%)  ???:puts [/usr/lib/libc-2.28.so]
  59,693 (30.73%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
  59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.30%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
@@ -139,7 +139,7 @@ Ir
  .           int main(int argc, char *argv[])
  4 ( 0.00%)  {
 23 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,200 (31.00%)  => ???:puts (1x)
+60,206 (31.00%)  => ???:puts (1x)
 14,238 ( 7.33%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)

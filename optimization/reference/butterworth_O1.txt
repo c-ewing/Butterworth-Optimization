@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43091
 Trigger: Program termination
-Profiled target:  ./optimization/reference/butterworth_O1 ts_sine.dat optimization/reference/removeme_O1.dat (PID 866, part 1)
+Profiled target:  ./optimization/reference/butterworth_O1 ts_sine.dat optimization/reference/removeme_O1.dat (PID 1143, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir

@@ -4,9 +4,9 @@ Profile data file 'optimization/inline/butterworth_O0.out' (creator: callgrind-3
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43211
+Timerange: Basic block 0 - 43213
 Trigger: Program termination
-Profiled target:  ./optimization/inline/butterworth_O0 ts_sine.dat optimization/inline/removeme_O0.dat (PID 974, part 1)
+Profiled target:  ./optimization/inline/butterworth_O0 ts_sine.dat optimization/inline/removeme_O0.dat (PID 1251, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,30 +18,30 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-195,193 (100.0%)  PROGRAM TOTALS
+195,199 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-195,193 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-195,189 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+195,199 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+195,195 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
 112,400 (57.58%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
 103,603 (53.08%)  ???:dl_main [/usr/lib/ld-2.28.so]
 103,194 (52.87%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
 102,224 (52.37%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
- 99,813 (51.14%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
+ 99,813 (51.13%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
  96,461 (49.42%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
  90,106 (46.16%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
  87,788 (44.97%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.39%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 81,037 (41.52%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/inline/butterworth_O0]
- 79,904 (40.94%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 79,667 (40.81%)  /root/Butterworth-Optimization/optimization/inline/butterworth.c:main
- 77,454 (39.68%)  optimization/inline/butterworth.c:main [/root/Butterworth-Optimization/optimization/inline/butterworth_O0]
+ 81,043 (41.52%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/inline/butterworth_O0]
+ 79,910 (40.94%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 79,673 (40.82%)  /root/Butterworth-Optimization/optimization/inline/butterworth.c:main
+ 77,460 (39.68%)  optimization/inline/butterworth.c:main [/root/Butterworth-Optimization/optimization/inline/butterworth_O0]
  76,394 (39.14%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
  61,627 (31.57%)  ???:malloc [/usr/lib/ld-2.28.so]
  60,687 (31.09%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
- 60,676 (31.09%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 60,676 (31.08%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
  60,475 (30.98%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
  60,427 (30.96%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
  60,412 (30.95%)  ???:puts [/usr/lib/libc-2.28.so]
@@ -49,9 +49,9 @@ Ir                file:function
  59,072 (30.26%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.15%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
  58,815 (30.13%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
- 15,184 ( 7.78%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 15,182 ( 7.78%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
- 15,174 ( 7.77%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 15,190 ( 7.78%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 15,188 ( 7.78%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 15,180 ( 7.78%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
  14,534 ( 7.45%)  optimization/inline/butterworth.c:__fopen_internal
  14,523 ( 7.44%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
  13,890 ( 7.12%)  optimization/inline/butterworth.c:__fopen_internal'2
@@ -207,8 +207,8 @@ Ir
  .           int main(int argc, char *argv[])
  5 ( 0.00%)  {
 27 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,208 (30.85%)  => ???:puts (1x)
-15,184 ( 7.78%)  => ???:fopen@@GLIBC_2.4 (1x)
+60,208 (30.84%)  => ???:puts (1x)
+15,190 ( 7.78%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)
  .               {

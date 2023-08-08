@@ -4,9 +4,9 @@ Profile data file 'optimization/reference/butterworth_Ofast.out' (creator: callg
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43084
+Timerange: Basic block 0 - 43086
 Trigger: Program termination
-Profiled target:  ./optimization/reference/butterworth_Ofast ts_sine.dat optimization/reference/removeme_Ofast.dat (PID 902, part 1)
+Profiled target:  ./optimization/reference/butterworth_Ofast ts_sine.dat optimization/reference/removeme_Ofast.dat (PID 1180, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,33 +18,33 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,251 (100.0%)  PROGRAM TOTALS
+194,257 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,251 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,247 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+194,257 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,253 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
 112,408 (57.87%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
 103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
 103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
 102,224 (52.62%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
  99,813 (51.38%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
  96,461 (49.66%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
- 90,106 (46.39%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
+ 90,106 (46.38%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
  87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.60%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,069 (41.22%)  ???:0x00010800 [/root/Butterworth-Optimization/optimization/reference/butterworth_Ofast]
- 78,936 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 78,687 (40.51%)  /root/Butterworth-Optimization/optimization/reference/butterworth.c:main
+ 80,075 (41.22%)  ???:0x00010800 [/root/Butterworth-Optimization/optimization/reference/butterworth_Ofast]
+ 78,942 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,693 (40.51%)  /root/Butterworth-Optimization/optimization/reference/butterworth.c:main
  76,474 (39.37%)  optimization/reference/butterworth.c:main [/root/Butterworth-Optimization/optimization/reference/butterworth_Ofast]
  76,394 (39.33%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
- 61,627 (31.73%)  ???:malloc [/usr/lib/ld-2.28.so]
+ 61,627 (31.72%)  ???:malloc [/usr/lib/ld-2.28.so]
  60,687 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
- 60,676 (31.24%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 60,676 (31.23%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
  60,475 (31.13%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
  60,427 (31.11%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,404 (31.10%)  ???:puts [/usr/lib/libc-2.28.so]
+ 60,404 (31.09%)  ???:puts [/usr/lib/libc-2.28.so]
  59,693 (30.73%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
  59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.29%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
@@ -56,13 +56,13 @@ Ir                file:function
  13,559 ( 6.98%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
  13,070 ( 6.73%)  ???:check_match [/usr/lib/ld-2.28.so]
  12,926 ( 6.65%)  optimization/reference/butterworth.c:__fopen_internal'2
- 11,937 ( 6.15%)  ???:getc [/usr/lib/libc-2.28.so]
+ 11,937 ( 6.14%)  ???:getc [/usr/lib/libc-2.28.so]
  11,926 ( 6.14%)  ???:__uflow [/usr/lib/libc-2.28.so]
  11,915 ( 6.13%)  ???:__aeabi_uidivmod [/usr/lib/ld-2.28.so]
  11,890 ( 6.12%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
  11,439 ( 5.89%)  optimization/reference/butterworth.c:_IO_default_uflow
  11,341 ( 5.84%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
- 11,160 ( 5.75%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
+ 11,160 ( 5.74%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
  11,061 ( 5.69%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
  10,131 ( 5.22%)  ???:fseek [/usr/lib/libc-2.28.so]
   9,855 ( 5.07%)  optimization/reference/butterworth.c:fseek
@@ -84,11 +84,16 @@ Ir                file:function
   2,289 ( 1.18%)  ???:_dl_check_all_versions [/usr/lib/ld-2.28.so]
   2,273 ( 1.17%)  ???:_dl_check_map_versions [/usr/lib/ld-2.28.so]
   2,236 ( 1.15%)  ???:_dl_important_hwcaps [/usr/lib/ld-2.28.so]
-  2,213 ( 1.14%)  ???:exit [/usr/lib/libc-2.28.so]
-  2,213 ( 1.14%)  ???:main
-  2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
+  2,219 ( 1.14%)  ???:exit [/usr/lib/libc-2.28.so]
+  2,219 ( 1.14%)  ???:main
+  2,213 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
   1,928 ( 0.99%)  optimization/reference/butterworth.c:fclose@@GLIBC_2.4
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/reference/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/reference/butterworth.c
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/reference/butterworth.c
@@ -130,7 +135,7 @@ Ir
   .               size_t numSamples = 0;
   .               int c;
  72 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-11,937 ( 6.15%)  => ???:getc (1x)
+11,937 ( 6.14%)  => ???:getc (1x)
 972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
   .               {
   3 ( 0.00%)          if (c == '\n')
@@ -178,11 +183,6 @@ Ir
   .               return 0;
   .           }
   1 ( 0.00%)  <counts for unidentified lines in optimization/reference/butterworth.c>
-
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/reference/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/reference/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           

@@ -4,9 +4,9 @@ Profile data file 'optimization/macro/butterworth_Os.out' (creator: callgrind-3.
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43084
+Timerange: Basic block 0 - 43086
 Trigger: Program termination
-Profiled target:  ./optimization/macro/butterworth_Os ts_sine.dat optimization/macro/removeme_Os.dat (PID 1072, part 1)
+Profiled target:  ./optimization/macro/butterworth_Os ts_sine.dat optimization/macro/removeme_Os.dat (PID 1345, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,26 +18,26 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,244 (100.0%)  PROGRAM TOTALS
+194,250 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,244 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,240 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+194,250 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,246 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
 112,408 (57.87%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
-103,603 (53.34%)  ???:dl_main [/usr/lib/ld-2.28.so]
-103,194 (53.13%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
-102,224 (52.63%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
- 99,813 (51.39%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
+103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
+103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
+102,224 (52.62%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
+ 99,813 (51.38%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
  96,461 (49.66%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
  90,106 (46.39%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
  87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.60%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,098 (41.24%)  ???:0x000106e4 [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
- 78,965 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 78,728 (40.53%)  /root/Butterworth-Optimization/optimization/macro/butterworth.c:main
- 76,515 (39.39%)  optimization/macro/butterworth.c:main [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
+ 80,104 (41.24%)  ???:0x000106e4 [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
+ 78,971 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,734 (40.53%)  /root/Butterworth-Optimization/optimization/macro/butterworth.c:main
+ 76,521 (39.39%)  optimization/macro/butterworth.c:main [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
  76,394 (39.33%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
  61,627 (31.73%)  ???:malloc [/usr/lib/ld-2.28.so]
  60,687 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
@@ -49,29 +49,29 @@ Ir                file:function
  59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.29%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
  58,815 (30.28%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
- 14,242 ( 7.33%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 14,240 ( 7.33%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
- 14,236 ( 7.33%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
- 13,592 ( 7.00%)  optimization/macro/butterworth.c:__fopen_internal
- 13,585 ( 6.99%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
+ 14,248 ( 7.33%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 14,246 ( 7.33%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 14,242 ( 7.33%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 13,598 ( 7.00%)  optimization/macro/butterworth.c:__fopen_internal
+ 13,591 ( 7.00%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
  13,070 ( 6.73%)  ???:check_match [/usr/lib/ld-2.28.so]
- 12,952 ( 6.67%)  optimization/macro/butterworth.c:__fopen_internal'2
- 11,963 ( 6.16%)  ???:getc [/usr/lib/libc-2.28.so]
- 11,952 ( 6.15%)  ???:__uflow [/usr/lib/libc-2.28.so]
- 11,916 ( 6.13%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
+ 12,958 ( 6.67%)  optimization/macro/butterworth.c:__fopen_internal'2
+ 11,969 ( 6.16%)  ???:getc [/usr/lib/libc-2.28.so]
+ 11,958 ( 6.16%)  ???:__uflow [/usr/lib/libc-2.28.so]
+ 11,922 ( 6.14%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
  11,915 ( 6.13%)  ???:__aeabi_uidivmod [/usr/lib/ld-2.28.so]
- 11,465 ( 5.90%)  optimization/macro/butterworth.c:_IO_default_uflow
+ 11,471 ( 5.91%)  optimization/macro/butterworth.c:_IO_default_uflow
  11,341 ( 5.84%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
  11,160 ( 5.75%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
  11,061 ( 5.69%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
- 10,158 ( 5.23%)  ???:fseek [/usr/lib/libc-2.28.so]
-  9,882 ( 5.09%)  optimization/macro/butterworth.c:fseek
+ 10,164 ( 5.23%)  ???:fseek [/usr/lib/libc-2.28.so]
+  9,888 ( 5.09%)  optimization/macro/butterworth.c:fseek
   9,688 ( 4.99%)  ???:strcmp [/usr/lib/ld-2.28.so]
   8,766 ( 4.51%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
   8,338 ( 4.29%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
   7,179 ( 3.70%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
-  6,120 ( 3.15%)  optimization/macro/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
-  6,105 ( 3.14%)  optimization/macro/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
+  6,126 ( 3.15%)  optimization/macro/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
+  6,111 ( 3.15%)  optimization/macro/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/macro/butterworth_Os]
   4,577 ( 2.36%)  ???:openaux [/usr/lib/ld-2.28.so]
   4,294 ( 2.21%)  ???:open_verify.constprop.8 [/usr/lib/ld-2.28.so]
   3,958 ( 2.04%)  ???:_dl_new_object'2 [/usr/lib/ld-2.28.so]
@@ -80,7 +80,7 @@ Ir                file:function
   2,773 ( 1.43%)  ???:do_preload [/usr/lib/ld-2.28.so]
   2,740 ( 1.41%)  ???:_dl_catch_error [/usr/lib/ld-2.28.so]
   2,667 ( 1.37%)  ???:map_doit [/usr/lib/ld-2.28.so]
-  2,547 ( 1.31%)  ???:fclose@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+  2,553 ( 1.31%)  ???:fclose@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
   2,374 ( 1.22%)  ???:memcpy [/usr/lib/ld-2.28.so]
   2,300 ( 1.18%)  ???:version_check_doit [/usr/lib/ld-2.28.so]
   2,289 ( 1.18%)  ???:_dl_check_all_versions [/usr/lib/ld-2.28.so]
@@ -90,7 +90,7 @@ Ir                file:function
   2,213 ( 1.14%)  ???:main
   2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
-  1,928 ( 0.99%)  optimization/macro/butterworth.c:fclose@@GLIBC_2.4
+  1,934 ( 1.00%)  optimization/macro/butterworth.c:fclose@@GLIBC_2.4
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/macro/butterworth.c
@@ -133,7 +133,7 @@ Ir
  1 ( 0.00%)      filter->y1 = FIXEDPOINT_ZERO;
  1 ( 0.00%)      filter->y2 = FIXEDPOINT_ZERO;
  1 ( 0.00%)  }
-6,105 ( 3.14%)  => optimization/macro/butterworth.c:main'2 (1x)
+6,111 ( 3.15%)  => optimization/macro/butterworth.c:main'2 (1x)
  .           
  .           // Function to apply Butterworth filter to a single input
  .           fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
@@ -170,7 +170,7 @@ Ir
  4 ( 0.00%)  {
 23 ( 0.01%)      printf("Applying Butterworth Filter\n");
 60,216 (31.00%)  => ???:puts (1x)
-14,242 ( 7.33%)  => ???:fopen@@GLIBC_2.4 (1x)
+14,248 ( 7.33%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)
  .               {
@@ -180,7 +180,7 @@ Ir
  .           
  1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
  6 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-13,585 ( 6.99%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+13,591 ( 7.00%)  => ???:fopen@@GLIBC_2.4'2 (1x)
  .           
  8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
  .               {
@@ -193,8 +193,9 @@ Ir
  .               size_t numSamples = 0;
  .               int c;
 72 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-11,963 ( 6.16%)  => ???:getc (1x)
-972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
+10,164 ( 5.23%)  => ???:fseek (1x)
+1,026 ( 0.53%)  => ???:_dl_runtime_resolve (1x)
+216 ( 0.11%)  => ???:getc'2 (5x)
  .               {
  2 ( 0.00%)          if (c == '\n')
  .                   {
@@ -207,7 +208,7 @@ Ir
  .           
  .               // Allocate memory for input and output buffers
 44 ( 0.02%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-6,120 ( 3.15%)  => optimization/macro/butterworth.c:butterworthFilterInit (1x)
+6,126 ( 3.15%)  => optimization/macro/butterworth.c:butterworthFilterInit (1x)
 2,109 ( 1.09%)  => ???:_dl_runtime_resolve (2x)
 1,149 ( 0.59%)  => ???:__isoc99_fscanf (1x)
 460 ( 0.24%)  => ???:malloc (2x)
@@ -243,7 +244,7 @@ Ir
  2 ( 0.00%)      for (size_t i = 0; i < numSamples; ++i)
  .               {
 32 ( 0.02%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
-2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
+2,553 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
 2,150 ( 1.11%)  => ???:_dl_runtime_resolve (2x)
 1,091 ( 0.56%)  => ???:fprintf (1x)
 219 ( 0.11%)  => ???:puts (1x)
@@ -255,7 +256,7 @@ Ir
  .               // Cleanup
  .               fclose(inputFile);
  5 ( 0.00%)      fclose(outputFile);
-1,923 ( 0.99%)  => ???:fclose@@GLIBC_2.4'2 (1x)
+1,929 ( 0.99%)  => ???:fclose@@GLIBC_2.4'2 (1x)
 18 ( 0.01%)      free(inputBuffer);
 1,054 ( 0.54%)  => ???:_dl_runtime_resolve (1x)
 168 ( 0.09%)  => ???:free (2x)

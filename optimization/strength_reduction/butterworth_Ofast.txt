@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43081
 Trigger: Program termination
-Profiled target:  ./optimization/strength_reduction/butterworth_Ofast ts_sine.dat optimization/strength_reduction/removeme_Ofast.dat (PID 961, part 1)
+Profiled target:  ./optimization/strength_reduction/butterworth_Ofast ts_sine.dat optimization/strength_reduction/removeme_Ofast.dat (PID 1238, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir

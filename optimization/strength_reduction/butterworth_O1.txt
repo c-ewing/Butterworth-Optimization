@@ -4,9 +4,9 @@ Profile data file 'optimization/strength_reduction/butterworth_O1.out' (creator:
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43084
+Timerange: Basic block 0 - 43086
 Trigger: Program termination
-Profiled target:  ./optimization/strength_reduction/butterworth_O1 ts_sine.dat optimization/strength_reduction/removeme_O1.dat (PID 924, part 1)
+Profiled target:  ./optimization/strength_reduction/butterworth_O1 ts_sine.dat optimization/strength_reduction/removeme_O1.dat (PID 1202, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,13 +18,13 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,250 (100.0%)  PROGRAM TOTALS
+194,256 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,250 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,246 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+194,256 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,252 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
 112,400 (57.86%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
 103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
 103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
@@ -34,12 +34,12 @@ Ir                file:function
  90,106 (46.39%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
  87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.60%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,086 (41.23%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_O1]
- 78,953 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 78,716 (40.52%)  /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c:main
- 76,503 (39.38%)  optimization/strength_reduction/butterworth.c:main [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_O1]
+ 80,092 (41.23%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_O1]
+ 78,959 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,722 (40.52%)  /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c:main
+ 76,509 (39.39%)  optimization/strength_reduction/butterworth.c:main [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_O1]
  76,394 (39.33%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
- 61,627 (31.73%)  ???:malloc [/usr/lib/libc-2.28.so]
+ 61,627 (31.72%)  ???:malloc [/usr/lib/libc-2.28.so]
  60,687 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
  60,676 (31.24%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
  60,475 (31.13%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
@@ -49,20 +49,20 @@ Ir                file:function
  59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.29%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
  58,815 (30.28%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
- 14,238 ( 7.33%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 14,236 ( 7.33%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
- 14,231 ( 7.33%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
- 13,588 ( 7.00%)  optimization/strength_reduction/butterworth.c:__fopen_internal
- 13,580 ( 6.99%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
+ 14,244 ( 7.33%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 14,243 ( 7.33%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 14,242 ( 7.33%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 13,594 ( 7.00%)  optimization/strength_reduction/butterworth.c:__fopen_internal
+ 13,586 ( 6.99%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
  13,070 ( 6.73%)  ???:check_match [/usr/lib/ld-2.28.so]
- 12,947 ( 6.67%)  optimization/strength_reduction/butterworth.c:__fopen_internal'2
+ 12,947 ( 6.66%)  optimization/strength_reduction/butterworth.c:__fopen_internal'2
  11,961 ( 6.16%)  ???:getc [/usr/lib/libc-2.28.so]
  11,950 ( 6.15%)  ???:__uflow [/usr/lib/libc-2.28.so]
  11,915 ( 6.13%)  ???:__aeabi_uidivmod [/usr/lib/libc-2.28.so]
  11,914 ( 6.13%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
  11,463 ( 5.90%)  optimization/strength_reduction/butterworth.c:_IO_default_uflow
  11,341 ( 5.84%)  ???:__udivsi3 [/usr/lib/libc-2.28.so]
- 11,160 ( 5.75%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
+ 11,160 ( 5.74%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
  11,061 ( 5.69%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
  10,157 ( 5.23%)  ???:fseek [/usr/lib/libc-2.28.so]
   9,881 ( 5.09%)  optimization/strength_reduction/butterworth.c:fseek
@@ -91,6 +91,11 @@ Ir                file:function
   2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
   1,928 ( 0.99%)  optimization/strength_reduction/butterworth.c:fclose@@GLIBC_2.4
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/strength_reduction/butterworth.c
@@ -171,8 +176,8 @@ Ir
  .           int main(int argc, char *argv[])
  4 ( 0.00%)  {
 23 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,208 (31.00%)  => ???:puts (1x)
-14,238 ( 7.33%)  => ???:fopen@@GLIBC_2.4 (1x)
+60,208 (30.99%)  => ???:puts (1x)
+14,244 ( 7.33%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)
  .               {
@@ -182,7 +187,7 @@ Ir
  .           
  1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
  7 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-13,580 ( 6.99%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+13,586 ( 6.99%)  => ???:fopen@@GLIBC_2.4'2 (1x)
  .           
  4 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
  .               {
@@ -195,9 +200,8 @@ Ir
  1 ( 0.00%)      size_t numSamples = 0;
  .               int c;
 70 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-10,157 ( 5.23%)  => ???:fseek (1x)
-1,026 ( 0.53%)  => ???:_dl_runtime_resolve (1x)
-216 ( 0.11%)  => ???:getc'2 (5x)
+11,961 ( 6.16%)  => ???:getc (1x)
+972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
  .               {
  1 ( 0.00%)          if (c == '\n')
  .                   {
@@ -269,11 +273,6 @@ Ir
  .               return 0;
  .           }
  1 ( 0.00%)  <counts for unidentified lines in optimization/strength_reduction/butterworth.c>
-
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/strength_reduction/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           

@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43077
 Trigger: Program termination
-Profiled target:  ./optimization/inline/butterworth_O2 ts_sine.dat optimization/inline/removeme_O2.dat (PID 992, part 1)
+Profiled target:  ./optimization/inline/butterworth_O2 ts_sine.dat optimization/inline/removeme_O2.dat (PID 1269, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -89,11 +89,6 @@ Ir                file:function
   2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
   1,928 ( 0.99%)  optimization/inline/butterworth.c:fclose@@GLIBC_2.4
-
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/inline/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/inline/butterworth.c
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/inline/butterworth.c
@@ -183,6 +178,11 @@ Ir
   .               return 0;
   .           }
   1 ( 0.00%)  <counts for unidentified lines in optimization/inline/butterworth.c>
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/inline/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/inline/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           
