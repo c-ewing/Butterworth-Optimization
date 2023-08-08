@@ -4,9 +4,9 @@ Profile data file 'optimization/macro/butterworth_Ofast.out' (creator: callgrind
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 3693128
+Timerange: Basic block 0 - 3693125
 Trigger: Program termination
-Profiled target:  ./optimization/macro/butterworth_Ofast ts_sine.dat optimization/macro/removeme_Ofast.dat (PID 1162, part 1)
+Profiled target:  ./optimization/macro/butterworth_Ofast ts_sine.dat optimization/macro/removeme_Ofast.dat (PID 1411, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,7 +18,7 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir                  
 --------------------------------------------------------------------------------
-18,912,097 (100.0%)  PROGRAM TOTALS
+18,912,083 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                  file:function
@@ -27,7 +27,7 @@ Ir                  file:function
 4,147,058 (21.93%)  ???:vfprintf [/usr/lib/libc-2.28.so]
 2,068,000 (10.93%)  ???:____strtoul_l_internal [/usr/lib/libc-2.28.so]
   888,938 ( 4.70%)  ???:getc'2 [/usr/lib/libc-2.28.so]
-  814,060 ( 4.30%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
+  814,054 ( 4.30%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
   792,073 ( 4.19%)  optimization/macro/butterworth.c:fseek
   715,563 ( 3.78%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
   671,000 ( 3.55%)  ???:_itoa_word [/usr/lib/libc-2.28.so]
@@ -57,7 +57,7 @@ Ir
       .           int main(int argc, char *argv[])
       4 ( 0.00%)  {
      23 ( 0.00%)      printf("Applying Butterworth Filter\n");
-18,732,083 (99.05%)  => ???:fopen@@GLIBC_2.4 (1x)
+18,732,077 (99.05%)  => ???:fopen@@GLIBC_2.4 (1x)
  60,208 ( 0.32%)  => ???:puts (1x)
   2,029 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
       .               if (argc < 3)
@@ -68,7 +68,7 @@ Ir
       .           
       1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
       7 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-18,731,425 (99.04%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+18,731,419 (99.04%)  => ???:fopen@@GLIBC_2.4'2 (1x)
       .           
       8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
       .               {
@@ -81,7 +81,7 @@ Ir
       .               size_t numSamples = 0;
       .               int c;
 635,012 ( 3.36%)      while ((c = fgetc(inputFile)) != EOF)
-18,729,803 (99.04%)  => ???:getc (1x)
+18,729,797 (99.04%)  => ???:getc (1x)
     972 ( 0.01%)  => ???:_dl_runtime_resolve (1x)
       .               {
       3 ( 0.00%)          if (c == '\n')
@@ -95,7 +95,7 @@ Ir
       .           
       .               // Allocate memory for input and output buffers
 792,073 ( 4.19%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-9,446,199 (49.95%)  => ???:__isoc99_fscanf (11,000x)
+9,446,193 (49.95%)  => ???:__isoc99_fscanf (11,000x)
 6,955,727 (36.78%)  => ???:fprintf (11,000x)
   4,259 ( 0.02%)  => ???:_dl_runtime_resolve (4x)
   2,699 ( 0.01%)  => ???:fclose@@GLIBC_2.4 (1x)

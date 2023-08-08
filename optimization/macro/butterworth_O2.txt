@@ -4,9 +4,9 @@ Profile data file 'optimization/macro/butterworth_O2.out' (creator: callgrind-3.
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 3715142
+Timerange: Basic block 0 - 3715128
 Trigger: Program termination
-Profiled target:  ./optimization/macro/butterworth_O2 ts_sine.dat optimization/macro/removeme_O2.dat (PID 1134, part 1)
+Profiled target:  ./optimization/macro/butterworth_O2 ts_sine.dat optimization/macro/removeme_O2.dat (PID 1387, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,16 +18,16 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir                  
 --------------------------------------------------------------------------------
-18,967,130 (100.0%)  PROGRAM TOTALS
+18,967,088 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                  file:function
 --------------------------------------------------------------------------------
 6,055,528 (31.93%)  ???:_IO_vfscanf [/usr/lib/libc-2.28.so]
-4,147,070 (21.86%)  ???:vfprintf [/usr/lib/libc-2.28.so]
+4,147,046 (21.86%)  ???:vfprintf [/usr/lib/libc-2.28.so]
 2,068,000 (10.90%)  ???:____strtoul_l_internal [/usr/lib/libc-2.28.so]
   888,938 ( 4.69%)  ???:getc'2 [/usr/lib/libc-2.28.so]
-  814,108 ( 4.29%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
+  814,072 ( 4.29%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
   715,563 ( 3.77%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
   671,000 ( 3.54%)  ???:_itoa_word [/usr/lib/libc-2.28.so]
   671,000 ( 3.54%)  ???:strchrnul [/usr/lib/libc-2.28.so]
@@ -71,7 +71,7 @@ Ir
       .           
       .               return output;
  11,000 ( 0.06%)  }
-7,631,796 (40.24%)  => optimization/macro/butterworth.c:main'2 (1x)
+7,631,772 (40.24%)  => optimization/macro/butterworth.c:main'2 (1x)
       .           
       .           uint16_t fixedpoint_to_uint16(fixedpoint_t input)
       .           {
@@ -90,7 +90,7 @@ Ir
       .           int main(int argc, char *argv[])
       4 ( 0.00%)  {
      23 ( 0.00%)      printf("Applying Butterworth Filter\n");
-18,787,144 (99.05%)  => ???:fopen@@GLIBC_2.4 (1x)
+18,787,084 (99.05%)  => ???:fopen@@GLIBC_2.4 (1x)
  60,200 ( 0.32%)  => ???:puts (1x)
   2,029 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
       .               if (argc < 3)
@@ -101,7 +101,7 @@ Ir
       .           
       1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
       7 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-18,786,486 (99.05%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+18,786,426 (99.05%)  => ???:fopen@@GLIBC_2.4'2 (1x)
       .           
       8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
       .               {
@@ -114,7 +114,7 @@ Ir
       .               size_t numSamples = 0;
       .               int c;
 635,010 ( 3.35%)      while ((c = fgetc(inputFile)) != EOF)
-18,784,864 (99.04%)  => ???:getc (1x)
+18,784,804 (99.04%)  => ???:getc (1x)
     972 ( 0.01%)  => ???:_dl_runtime_resolve (1x)
       .               {
       3 ( 0.00%)          if (c == '\n')
@@ -128,8 +128,8 @@ Ir
       .           
       .               // Allocate memory for input and output buffers
 176,054 ( 0.93%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-9,446,247 (49.80%)  => ???:__isoc99_fscanf (11,000x)
-7,631,829 (40.24%)  => optimization/macro/butterworth.c:butterworthFilterApply (1x)
+9,446,211 (49.80%)  => ???:__isoc99_fscanf (11,000x)
+7,631,805 (40.24%)  => optimization/macro/butterworth.c:butterworthFilterApply (1x)
   2,109 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
     454 ( 0.00%)  => ???:malloc (2x)
       .               fixedpoint_t *outputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
@@ -164,7 +164,7 @@ Ir
       .               for (size_t i = 0; i < numSamples; ++i)
       .               {
 242,010 ( 1.28%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
-6,955,739 (36.67%)  => ???:fprintf (11,000x)
+6,955,715 (36.67%)  => ???:fprintf (11,000x)
   2,699 ( 0.01%)  => ???:fclose@@GLIBC_2.4 (1x)
   2,150 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
     219 ( 0.00%)  => ???:puts (1x)

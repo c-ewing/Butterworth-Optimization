@@ -4,9 +4,9 @@ Profile data file 'optimization/strength_reduction/butterworth_O0.out' (creator:
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 3910668
+Timerange: Basic block 0 - 3910692
 Trigger: Program termination
-Profiled target:  ./optimization/strength_reduction/butterworth_O0 ts_sine.dat optimization/strength_reduction/removeme_O0.dat (PID 993, part 1)
+Profiled target:  ./optimization/strength_reduction/butterworth_O0 ts_sine.dat optimization/strength_reduction/removeme_O0.dat (PID 1267, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,17 +18,17 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir                  
 --------------------------------------------------------------------------------
-21,415,457 (100.0%)  PROGRAM TOTALS
+21,415,533 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                  file:function
 --------------------------------------------------------------------------------
 6,055,528 (28.28%)  ???:_IO_vfscanf [/usr/lib/libc-2.28.so]
-4,147,046 (19.36%)  ???:vfprintf [/usr/lib/libc-2.28.so]
+4,147,076 (19.36%)  ???:vfprintf [/usr/lib/libc-2.28.so]
 2,068,000 ( 9.66%)  ???:____strtoul_l_internal [/usr/lib/libc-2.28.so]
 1,430,130 ( 6.68%)  optimization/strength_reduction/fixedpoint.h:fixedpoint_mul [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_O0]
   888,938 ( 4.15%)  ???:getc'2 [/usr/lib/libc-2.28.so]
-  814,048 ( 3.80%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
+  814,060 ( 3.80%)  ???:__isoc99_fscanf [/usr/lib/libc-2.28.so]
   795,003 ( 3.71%)  optimization/strength_reduction/butterworth.c:_IO_default_uflow
   726,000 ( 3.39%)  optimization/strength_reduction/butterworth.c:butterworthFilterApply [/root/Butterworth-Optimization/optimization/strength_reduction/butterworth_O0]
   715,563 ( 3.34%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
@@ -43,41 +43,6 @@ Ir                  file:function
   110,000 ( 0.51%)  ???:__strtoul_internal [/usr/lib/libc-2.28.so]
   110,000 ( 0.51%)  ???:mempcpy [/usr/lib/ld-2.28.so]
    65,988 ( 0.31%)  ???:0x0485b064 [???]
-
---------------------------------------------------------------------------------
--- Auto-annotated source: optimization/strength_reduction/fixedpoint.h
---------------------------------------------------------------------------------
-Ir               
-
--- line 75 ----------------------------------------
-      .           
-      .           fixedpoint_t fixedpoint_sub(fixedpoint_t a, fixedpoint_t b)
-      .           {
-      .               // (NOTE: 4)
-      .               return a - b;
-      .           }
-      .           
-      .           fixedpoint_t fixedpoint_mul(fixedpoint_t a, fixedpoint_t b)
-275,025 ( 1.28%)  {
-      .               // First cast up to long to avoid overflow, then shift out the added fractional bits
-990,090 ( 4.62%)      return (fixedpoint_t)(((long_fixedpoint_t)a * (long_fixedpoint_t)b) >> FRACTIONAL_BITS);
-165,015 ( 0.77%)  }
-      .           
-      .           fixedpoint_t fixedpoint_div(fixedpoint_t a, fixedpoint_t b)
-      5 ( 0.00%)  {
-      .               // First cast up to long to avoid overflow
-     14 ( 0.00%)      return (((long_fixedpoint_t)a << FRACTIONAL_BITS) / (long_fixedpoint_t)b);
-    172 ( 0.00%)  => ???:0x00010f18 (1x)
-      3 ( 0.00%)  }
-      .           
-      .           /*
-      .               Define printing functions
-      .           */
-      .           char *fixedpoint_str(fixedpoint_t a)
-      .           {
-      .               static char str[32]; // Arbitrarily chosen string size
-      .           
--- line 100 ----------------------------------------
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/strength_reduction/butterworth.c
@@ -150,7 +115,7 @@ Ir
       3 ( 0.00%)      filter->y1 = FIXEDPOINT_ZERO;
       3 ( 0.00%)      filter->y2 = FIXEDPOINT_ZERO;
       3 ( 0.00%)  }
-9,798,801 (45.76%)  => optimization/strength_reduction/butterworth.c:main'2 (1x)
+9,798,831 (45.76%)  => optimization/strength_reduction/butterworth.c:main'2 (1x)
       .           
       .           // Function to apply Butterworth filter to a single input
       .           fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
@@ -183,12 +148,12 @@ Ir
       .           #endif
  33,000 ( 0.15%)      return fixedpoint_to_int(scaled);
  44,000 ( 0.21%)  }
-7,409,556 (34.60%)  => optimization/strength_reduction/butterworth.c:main'2 (1x)
+7,409,586 (34.60%)  => optimization/strength_reduction/butterworth.c:main'2 (1x)
       .           
       .           int main(int argc, char *argv[])
       5 ( 0.00%)  {
      27 ( 0.00%)      printf("Applying Butterworth Filter\n");
-21,235,440 (99.16%)  => ???:fopen@@GLIBC_2.4 (1x)
+21,235,482 (99.16%)  => ???:fopen@@GLIBC_2.4 (1x)
  60,208 ( 0.28%)  => ???:puts (1x)
   2,029 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
       .               if (argc < 3)
@@ -199,7 +164,7 @@ Ir
       .           
       1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
      11 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-21,234,779 (99.16%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+21,234,821 (99.16%)  => ???:fopen@@GLIBC_2.4'2 (1x)
       .           
       6 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
       .               {
@@ -212,9 +177,8 @@ Ir
       2 ( 0.00%)      size_t numSamples = 0;
       .               int c;
 795,010 ( 3.71%)      while ((c = fgetc(inputFile)) != EOF)
-19,545,261 (91.27%)  => ???:fseek (1x)
-891,367 ( 4.16%)  => ???:getc'2 (63,499x)
-  1,026 ( 0.00%)  => ???:_dl_runtime_resolve (1x)
+21,233,197 (99.15%)  => ???:getc (1x)
+    972 ( 0.00%)  => ???:_dl_runtime_resolve (1x)
       .               {
       3 ( 0.00%)          if (c == '\n')
       .                   {
@@ -227,8 +191,8 @@ Ir
       .           
       .               // Allocate memory for input and output buffers
 297,036 ( 1.39%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-9,799,199 (45.76%)  => optimization/strength_reduction/butterworth.c:butterworthFilterInit (1x)
-9,446,187 (44.11%)  => ???:__isoc99_fscanf (11,000x)
+9,799,229 (45.76%)  => optimization/strength_reduction/butterworth.c:butterworthFilterInit (1x)
+9,446,199 (44.11%)  => ???:__isoc99_fscanf (11,000x)
   2,109 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
     454 ( 0.00%)  => ???:malloc (2x)
       .               fixedpoint_t *outputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
@@ -263,9 +227,9 @@ Ir
       7 ( 0.00%)      for (size_t i = 0; i < numSamples; ++i)
       .               {
 253,019 ( 1.18%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
-40,768,175,690 (190368.0%)  => optimization/strength_reduction/butterworth.c:fixedpoint_to_uint16'2 (10,998x)
-7,409,592 (34.60%)  => optimization/strength_reduction/butterworth.c:fixedpoint_to_uint16 (2x)
-6,955,715 (32.48%)  => ???:fprintf (11,000x)
+40,768,367,726 (190368.2%)  => optimization/strength_reduction/butterworth.c:fixedpoint_to_uint16'2 (10,998x)
+7,409,622 (34.60%)  => optimization/strength_reduction/butterworth.c:fixedpoint_to_uint16 (2x)
+6,955,745 (32.48%)  => ???:fprintf (11,000x)
   2,699 ( 0.01%)  => ???:fclose@@GLIBC_2.4 (1x)
   2,150 ( 0.01%)  => ???:_dl_runtime_resolve (2x)
     204 ( 0.00%)  => ???:puts (1x)
@@ -285,6 +249,41 @@ Ir
       .               return 0;
       .           }
       1 ( 0.00%)  <counts for unidentified lines in optimization/strength_reduction/butterworth.c>
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: optimization/strength_reduction/fixedpoint.h
+--------------------------------------------------------------------------------
+Ir               
+
+-- line 75 ----------------------------------------
+      .           
+      .           fixedpoint_t fixedpoint_sub(fixedpoint_t a, fixedpoint_t b)
+      .           {
+      .               // (NOTE: 4)
+      .               return a - b;
+      .           }
+      .           
+      .           fixedpoint_t fixedpoint_mul(fixedpoint_t a, fixedpoint_t b)
+275,025 ( 1.28%)  {
+      .               // First cast up to long to avoid overflow, then shift out the added fractional bits
+990,090 ( 4.62%)      return (fixedpoint_t)(((long_fixedpoint_t)a * (long_fixedpoint_t)b) >> FRACTIONAL_BITS);
+165,015 ( 0.77%)  }
+      .           
+      .           fixedpoint_t fixedpoint_div(fixedpoint_t a, fixedpoint_t b)
+      5 ( 0.00%)  {
+      .               // First cast up to long to avoid overflow
+     14 ( 0.00%)      return (((long_fixedpoint_t)a << FRACTIONAL_BITS) / (long_fixedpoint_t)b);
+    172 ( 0.00%)  => ???:0x00010f18 (1x)
+      3 ( 0.00%)  }
+      .           
+      .           /*
+      .               Define printing functions
+      .           */
+      .           char *fixedpoint_str(fixedpoint_t a)
+      .           {
+      .               static char str[32]; // Arbitrarily chosen string size
+      .           
+-- line 100 ----------------------------------------
 
 --------------------------------------------------------------------------------
 Ir                 
