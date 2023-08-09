@@ -4,9 +4,9 @@ Profile data file 'optimization/loop_counter/butterworth_Os.out' (creator: callg
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43093
+Timerange: Basic block 0 - 43092
 Trigger: Program termination
-Profiled target:  ./optimization/loop_counter/butterworth_Os ts_sine.dat optimization/loop_counter/removeme_Os.dat (PID 2294, part 1)
+Profiled target:  ./optimization/loop_counter/butterworth_Os ts_sine.dat optimization/loop_counter/removeme_Os.dat (PID 2975, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,14 +18,14 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,280 (100.0%)  PROGRAM TOTALS
+194,272 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,280 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,276 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
-112,408 (57.86%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
+194,272 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,268 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+112,400 (57.86%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
 103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
 103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
 102,224 (52.62%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
@@ -35,9 +35,9 @@ Ir                file:function
  87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.60%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
  80,098 (41.23%)  ???:0x000106e4 [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_Os]
- 78,965 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,965 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
  78,728 (40.52%)  /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c:main
- 76,515 (39.38%)  optimization/loop_counter/butterworth.c:main [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_Os]
+ 76,515 (39.39%)  optimization/loop_counter/butterworth.c:main [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_Os]
  76,394 (39.32%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
  61,627 (31.72%)  ???:malloc [/usr/lib/libc-2.28.so]
  60,687 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
@@ -91,6 +91,11 @@ Ir                file:function
   2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
   1,928 ( 0.99%)  optimization/loop_counter/butterworth.c:fclose@@GLIBC_2.4
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/loop_counter/butterworth.c
@@ -169,7 +174,7 @@ Ir
  .           int main(int argc, char *argv[])
  4 ( 0.00%)  {
 23 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,216 (30.99%)  => ???:puts (1x)
+60,216 (31.00%)  => ???:puts (1x)
 14,242 ( 7.33%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)
@@ -264,11 +269,6 @@ Ir
  .               return 0;
  .           }
  1 ( 0.00%)  <counts for unidentified lines in optimization/loop_counter/butterworth.c>
-
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           

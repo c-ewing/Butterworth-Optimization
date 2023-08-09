@@ -4,9 +4,9 @@ Profile data file 'optimization/loop_counter/butterworth_O1.out' (creator: callg
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43092
+Timerange: Basic block 0 - 43091
 Trigger: Program termination
-Profiled target:  ./optimization/loop_counter/butterworth_O1 ts_sine.dat optimization/loop_counter/removeme_O1.dat (PID 2267, part 1)
+Profiled target:  ./optimization/loop_counter/butterworth_O1 ts_sine.dat optimization/loop_counter/removeme_O1.dat (PID 2948, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,21 +18,21 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,291 (100.0%)  PROGRAM TOTALS
+194,283 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,291 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,287 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
-112,408 (57.86%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
-103,603 (53.32%)  ???:dl_main [/usr/lib/ld-2.28.so]
-103,194 (53.11%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
-102,224 (52.61%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
- 99,813 (51.37%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
+194,283 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,279 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+112,400 (57.85%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
+103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
+103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
+102,224 (52.62%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
+ 99,813 (51.38%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
  96,461 (49.65%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
  90,106 (46.38%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
- 87,788 (45.18%)  ???:init_tls [/usr/lib/ld-2.28.so]
+ 87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.59%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
  80,109 (41.23%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_O1]
  78,976 (40.65%)  ???:(below main) [/usr/lib/libc-2.28.so]
@@ -46,7 +46,7 @@ Ir                file:function
  60,427 (31.10%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
  60,419 (31.10%)  ???:puts [/usr/lib/libc-2.28.so]
  59,693 (30.72%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
- 59,072 (30.40%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
+ 59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.29%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
  58,815 (30.27%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
  14,269 ( 7.34%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
@@ -69,7 +69,7 @@ Ir                file:function
   9,688 ( 4.99%)  ???:strcmp [/usr/lib/ld-2.28.so]
   8,766 ( 4.51%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
   8,338 ( 4.29%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
-  7,179 ( 3.69%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
+  7,179 ( 3.70%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
   6,148 ( 3.16%)  optimization/loop_counter/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_O1]
   6,130 ( 3.16%)  optimization/loop_counter/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_O1]
   4,577 ( 2.36%)  ???:openaux [/usr/lib/ld-2.28.so]
@@ -171,7 +171,7 @@ Ir
  .           int main(int argc, char *argv[])
  4 ( 0.00%)  {
 23 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,200 (30.98%)  => ???:puts (1x)
+60,200 (30.99%)  => ???:puts (1x)
 14,269 ( 7.34%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)
@@ -195,8 +195,9 @@ Ir
  1 ( 0.00%)      size_t numSamples = 0;
  .               int c;
 70 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-11,992 ( 6.17%)  => ???:getc (1x)
-972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
+10,188 ( 5.24%)  => ???:fseek (1x)
+1,026 ( 0.53%)  => ???:_dl_runtime_resolve (1x)
+216 ( 0.11%)  => ???:getc'2 (5x)
  .               {
  1 ( 0.00%)          if (c == '\n')
  .                   {
