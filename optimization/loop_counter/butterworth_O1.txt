@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43091
 Trigger: Program termination
-Profiled target:  ./optimization/loop_counter/butterworth_O1 ts_sine.dat optimization/loop_counter/removeme_O1.dat (PID 2948, part 1)
+Profiled target:  ./optimization/loop_counter/butterworth_O1 ts_sine.dat optimization/loop_counter/removeme_O1.dat (PID 3334, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -192,7 +192,7 @@ Ir
  .           
  .               // Count the number of lines in the input file
  .               // TODO: Optimization: dont scan the file, instead apply as reading the file
- 1 ( 0.00%)      size_t numSamples = 0;
+ 1 ( 0.00%)      uint32_t numSamples = 0;
  .               int c;
 70 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
 10,188 ( 5.24%)  => ???:fseek (1x)
@@ -218,7 +218,7 @@ Ir
  .           
  .               // Read input samples from file
  .               uint16_t sample;
- .               for (size_t i = 0; i < numSamples; i++)
+ .               for (uint32_t i = 0; i < numSamples; i++)
  .               {
  .                   if (fscanf(inputFile, "%hu", &sample) != 1)
  .                   {
@@ -235,7 +235,7 @@ Ir
  1 ( 0.00%)      butterworthFilterInit(&ButterworthFilter);
  .           
  .               // Apply Butterworth filter
- 8 ( 0.00%)      for (size_t i = 0; i < numSamples; i++)
+ 8 ( 0.00%)      for (uint32_t i = 0; i < numSamples; i++)
  .               {
  4 ( 0.00%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
 60 ( 0.03%)  => optimization/loop_counter/butterworth.c:butterworthFilterApply (1x)
@@ -246,7 +246,7 @@ Ir
  .               }
  .           
  .               // Write output samples to file
- .               for (size_t i = 0; i < numSamples; ++i)
+ .               for (uint32_t i = 0; i < numSamples; ++i)
  .               {
 32 ( 0.02%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
 2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)

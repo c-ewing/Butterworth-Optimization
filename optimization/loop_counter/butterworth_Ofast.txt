@@ -4,9 +4,9 @@ Profile data file 'optimization/loop_counter/butterworth_Ofast.out' (creator: ca
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43088
+Timerange: Basic block 0 - 43090
 Trigger: Program termination
-Profiled target:  ./optimization/loop_counter/butterworth_Ofast ts_sine.dat optimization/loop_counter/removeme_Ofast.dat (PID 2984, part 1)
+Profiled target:  ./optimization/loop_counter/butterworth_Ofast ts_sine.dat optimization/loop_counter/removeme_Ofast.dat (PID 3370, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,25 +18,25 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,284 (100.0%)  PROGRAM TOTALS
+194,290 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,284 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,280 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+194,290 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,286 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
 112,408 (57.86%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
-103,603 (53.33%)  ???:dl_main [/usr/lib/ld-2.28.so]
-103,194 (53.12%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
-102,224 (52.62%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
+103,603 (53.32%)  ???:dl_main [/usr/lib/ld-2.28.so]
+103,194 (53.11%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
+102,224 (52.61%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
  99,813 (51.37%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
  96,461 (49.65%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
  90,106 (46.38%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
- 87,788 (45.19%)  ???:init_tls [/usr/lib/ld-2.28.so]
+ 87,788 (45.18%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.59%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,092 (41.22%)  ???:0x00010800 [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_Ofast]
- 78,959 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 78,710 (40.51%)  /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c:main
+ 80,098 (41.23%)  ???:0x00010800 [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_Ofast]
+ 78,965 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,716 (40.51%)  /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c:main
  76,497 (39.37%)  optimization/loop_counter/butterworth.c:main [/root/Butterworth-Optimization/optimization/loop_counter/butterworth_Ofast]
  76,394 (39.32%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
  61,627 (31.72%)  ???:malloc [/usr/lib/libc-2.28.so]
@@ -69,7 +69,7 @@ Ir                file:function
   9,688 ( 4.99%)  ???:strcmp [/usr/lib/ld-2.28.so]
   8,766 ( 4.51%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
   8,338 ( 4.29%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
-  7,179 ( 3.70%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
+  7,179 ( 3.69%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
   4,577 ( 2.36%)  ???:openaux [/usr/lib/ld-2.28.so]
   4,294 ( 2.21%)  ???:open_verify.constprop.8 [/usr/lib/ld-2.28.so]
   3,958 ( 2.04%)  ???:_dl_new_object'2 [/usr/lib/ld-2.28.so]
@@ -84,16 +84,11 @@ Ir                file:function
   2,289 ( 1.18%)  ???:_dl_check_all_versions [/usr/lib/ld-2.28.so]
   2,273 ( 1.17%)  ???:_dl_check_map_versions [/usr/lib/ld-2.28.so]
   2,236 ( 1.15%)  ???:_dl_important_hwcaps [/usr/lib/ld-2.28.so]
-  2,213 ( 1.14%)  ???:exit [/usr/lib/libc-2.28.so]
-  2,213 ( 1.14%)  ???:main
-  2,207 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
+  2,219 ( 1.14%)  ???:exit [/usr/lib/libc-2.28.so]
+  2,219 ( 1.14%)  ???:main
+  2,213 ( 1.14%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
   1,928 ( 0.99%)  optimization/loop_counter/butterworth.c:fclose@@GLIBC_2.4
-
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/loop_counter/butterworth.c
@@ -132,7 +127,7 @@ Ir
   .           
   .               // Count the number of lines in the input file
   .               // TODO: Optimization: dont scan the file, instead apply as reading the file
-  .               size_t numSamples = 0;
+  .               uint32_t numSamples = 0;
   .               int c;
  72 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
 11,952 ( 6.15%)  => ???:getc (1x)
@@ -159,7 +154,7 @@ Ir
   .           
   .               // Read input samples from file
   .               uint16_t sample;
-  .               for (size_t i = 0; i < numSamples; i++)
+  .               for (uint32_t i = 0; i < numSamples; i++)
   .               {
   .                   if (fscanf(inputFile, "%hu", &sample) != 1)
   .                   {
@@ -183,6 +178,11 @@ Ir
   .               return 0;
   .           }
   1 ( 0.00%)  <counts for unidentified lines in optimization/loop_counter/butterworth.c>
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/loop_counter/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           
