@@ -161,18 +161,54 @@ int main(int argc, char *argv[])
     // Apply Butterworth filter
     for (size_t i = 0; i < numSamples; i++)
     {
-        // Calculate the output
-        // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
-        fixedpoint_t output = (fixedpoint_mul(f.b0, inputBuffer[i]) + fixedpoint_mul(f.b1, f.x1) + fixedpoint_mul(f.b2, f.x2)) - (fixedpoint_mul(f.a1, f.y1) + fixedpoint_mul(f.a2, f.y2));
+        fixedpoint_t input_value = inputBuffer[i];
+        fixedpoint_t output;
 
-        // Update the previous input and output values
-        f.x2 = f.x1;
-        f.x1 = inputBuffer[i];
+        asm volatile(
+            // Assembly code
+            "ldr r4, [%[input_ptr]]        \n\t" // Load inputBuffer[i] into r4
+            "ldr r5, [%[filter], #0]      \n\t"  // Load f.b0 into r5
+            "smull r6, r7, r4, r5         \n\t"  // Multiply r4 and r5; result in r6:r7
+            "mov r8, r7, lsr #15          \n\t"  // r8 = (f.b0 * inputBuffer[i]) >> 15
 
-        f.y2 = f.y1;
-        f.y1 = output;
+            "ldr r5, [%[filter], #4]      \n\t"
+            "ldr r4, [%[filter], #8]      \n\t"
+            "smull r6, r7, r4, r5         \n\t"
+            "add r8, r8, r7, lsr #15      \n\t" // Add (f.b1 * f.x1) >> 15 to r8
 
-        outputBuffer[i] = output;
+            "ldr r5, [%[filter], #12]     \n\t"
+            "ldr r4, [%[filter], #16]     \n\t"
+            "smull r6, r7, r4, r5         \n\t"
+            "add r8, r8, r7, lsr #15      \n\t" // Add (f.b2 * f.x2) >> 15 to r8
+
+            "ldr r5, [%[filter], #20]     \n\t"
+            "ldr r4, [%[filter], #24]     \n\t"
+            "smull r6, r7, r4, r5         \n\t"
+            "sub r8, r8, r7, lsr #15      \n\t" // Subtract (f.a1 * f.y1) >> 15 from r8
+
+            "ldr r5, [%[filter], #28]     \n\t"
+            "ldr r4, [%[filter], #32]     \n\t"
+            "smull r6, r7, r4, r5         \n\t"
+            "sub r8, r8, r7, lsr #15      \n\t" // Subtract (f.a2 * f.y2) >> 15 from r8
+
+            // Update the previous input and output values
+            "ldr r4, [%[filter], #8]      \n\t"
+            "str r4, [%[filter], #16]     \n\t" // Store r4 into f.x2
+
+            "str %[input_value], [%[filter], #8] \n\t" // Store input_value into f.x1
+
+            "ldr r4, [%[filter], #24]     \n\t"
+            "str r4, [%[filter], #32]     \n\t" // Store r4 into f.y2
+
+            "str r8, [%[filter], #24]     \n\t" // Store r8 (output) into f.y1
+            "str r8, [%[output_ptr]]      \n\t" // Store r8 into outputBuffer[i]
+
+            // Outputs
+            : [output] "=r"(output)
+            // Inputs
+            : [filter] "r"(&f), [input_ptr] "r"(&inputBuffer[i]), [output_ptr] "r"(&outputBuffer[i]), [input_value] "r"(input_value)
+            // Clobbered registers
+            : "r4", "r5", "r6", "r7", "r8");
     }
 
     // Write output samples to file
