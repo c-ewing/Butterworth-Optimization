@@ -159,26 +159,11 @@ int main(int argc, char *argv[])
     butterworthFilterInit(&f);
 
     // Apply Butterworth filter
-    // Extract filter constants
-    int64_t f_b0 = (int64_t)f.b0;
-    int64_t f_b1 = (int64_t)f.b1;
-    int64_t f_b2 = (int64_t)f.b2;
-    int64_t f_a1 = (int64_t)f.a1;
-    int64_t f_a2 = (int64_t)f.a2;
-
     for (size_t i = 0; i < numSamples; i++)
     {
-        // Function to apply Butterworth filter to a single input
-        fixedpoint_t input = inputBuffer[i];
-
         // Calculate the output
-        int32_t b0 = (int32_t)((f_b0 * (int64_t)input) >> 15);
-        int32_t b1 = (int32_t)((f_b1 * (int64_t)f.x1) >> 15);
-        int32_t b2 = (int32_t)((f_b2 * (int64_t)f.x2) >> 15);
-        int32_t a1 = (int32_t)((f_a1 * (int64_t)f.y1) >> 15);
-        int32_t a2 = (int32_t)((f_a2 * (int64_t)f.y2) >> 15);
-
-        int32_t output = b0 + b1 + b2 - a1 - a2;
+        // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
+        fixedpoint_t output = (fixedpoint_mul(f.b0, inputBuffer[i]) + fixedpoint_mul(f.b1, f.x1) + fixedpoint_mul(f.b2, f.x2)) - (fixedpoint_mul(f.a1, f.y1) + fixedpoint_mul(f.a2, f.y2));
 
         // Update the previous input and output values
         f.x2 = f.x1;
@@ -186,6 +171,8 @@ int main(int argc, char *argv[])
 
         f.y2 = f.y1;
         f.y1 = output;
+
+        outputBuffer[i] = output;
     }
 
     // Write output samples to file
