@@ -184,41 +184,41 @@ int main(int argc, char *argv[])
 
         __asm__ __volatile__(
             // Load only the necessary variables upfront
-            "ldr %[b0], [%[f]]"
-            "ldr %[x1], [%[f], #20]"
-            "ldr %[x2], [%[f], #24]"
-            "ldr %[y1], [%[f], #28]"
-            "ldr %[y2], [%[f], #32]"
+            "ldr %[b0], [%[f]]\n\t"
+            "ldr %[x1], [%[f], #20]\n\t"
+            "ldr %[x2], [%[f], #24]\n\t"
+            "ldr %[y1], [%[f], #28]\n\t"
+            "ldr %[y2], [%[f], #32]\n\t"
 
             // Multiply and accumulate using a mix of registers and memory accesses
-            "smull %[out_low], %[out_high], %[b0], %[input]"
-            "ldr %[b0], [%[f], #4]" // reusing b0 for b1
-            "smull %[temp_low], %[temp_high], %[b0], %[x1]"
-            "adds %[out_low], %[out_low], %[temp_low]"
-            "adc %[out_high], %[out_high], %[temp_high]"
+            "smull %[out_low], %[out_high], %[b0], %[input]\n\t"
+            "ldr %[b0], [%[f], #4]\n\t" // reusing b0 for b1
+            "smull %[temp_low], %[temp_high], %[b0], %[x1]\n\t"
+            "adds %[out_low], %[out_low], %[temp_low]\n\t"
+            "adc %[out_high], %[out_high], %[temp_high]\n\t"
 
-            "ldr %[b0], [%[f], #8]" // reusing b0 for b2
-            "smull %[temp_low], %[temp_high], %[b0], %[x2]"
-            "adds %[out_low], %[out_low], %[temp_low]"
-            "adc %[out_high], %[out_high], %[temp_high]"
+            "ldr %[b0], [%[f], #8]\n\t" // reusing b0 for b2
+            "smull %[temp_low], %[temp_high], %[b0], %[x2]\n\t"
+            "adds %[out_low], %[out_low], %[temp_low]\n\t"
+            "adc %[out_high], %[out_high], %[temp_high]\n\t"
 
-            "ldr %[b0], [%[f], #12]" // reusing b0 for a1
-            "smull %[temp_low], %[temp_high], %[b0], %[y1]"
-            "subs %[out_low], %[out_low], %[temp_low]"
-            "sbc %[out_high], %[out_high], %[temp_high]"
+            "ldr %[b0], [%[f], #12]\n\t" // reusing b0 for a1
+            "smull %[temp_low], %[temp_high], %[b0], %[y1]\n\t"
+            "subs %[out_low], %[out_low], %[temp_low]\n\t"
+            "sbc %[out_high], %[out_high], %[temp_high]\n\t"
 
-            "ldr %[b0], [%[f], #16]" // reusing b0 for a2
-            "smull %[temp_low], %[temp_high], %[b0], %[y2]"
-            "subs %[out_low], %[out_low], %[temp_low]"
-            "sbc %[out_high], %[out_high], %[temp_high]"
+            "ldr %[b0], [%[f], #16]\n\t" // reusing b0 for a2
+            "smull %[temp_low], %[temp_high], %[b0], %[y2]\n\t"
+            "subs %[out_low], %[out_low], %[temp_low]\n\t"
+            "sbc %[out_high], %[out_high], %[temp_high]\n\t"
 
-            "lsr %[out_low], %[out_low], #15"
-            "orr %[out_low], %[out_low], %[out_high], lsl #17"
+            "lsr %[out_low], %[out_low], #15\n\t"
+            "orr %[out_low], %[out_low], %[out_high], lsl #17\n\t"
 
-            "str %[input], [%[f], #24]"
-            "str %[out_low], [%[f], #20]"
-            "str %[y1], [%[f], #32]"
-            "str %[out_low], [%[f], #28]"
+            "str %[input], [%[f], #24]\n\t"
+            "str %[out_low], [%[f], #20]\n\t"
+            "str %[y1], [%[f], #32]\n\t"
+            "str %[out_low], [%[f], #28]\n\t"
             : [out_low] "=r"(out_low), [out_high] "=r"(out_high), [temp_low] "=&r"(temp_low), [temp_high] "=&r"(temp_high),
               [b0] "=&r"(b0), [x1] "=&r"(x1), [x2] "=&r"(x2), [y1] "=&r"(y1), [y2] "=&r"(y2)
             : [input] "r"(inputBuffer[i]), [f] "r"(&ButterworthFilter)
