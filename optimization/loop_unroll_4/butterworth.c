@@ -176,7 +176,7 @@ int main(int argc, char *argv[])
     butterworthFilterInit(&ButterworthFilter);
 
     // Apply Butterworth filter, unrolling the loop for performance
-    for (uint32_t i = 0; i < numSamples / 4; i += 4)
+    for (uint32_t i = 0; i < numSamples; i += 4)
     {
         outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
         outputBuffer[i + 1] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 1]);
