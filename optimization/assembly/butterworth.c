@@ -178,6 +178,7 @@ int main(int argc, char *argv[])
     // Apply Butterworth filter
     for (size_t i = 0; i < numSamples; i++)
     {
+
         fixedpoint_t out_low, out_high, temp_low, temp_high;
         fixedpoint_t b0, b1, b2, a1, a2, x1, x2, y1, y2;
 
