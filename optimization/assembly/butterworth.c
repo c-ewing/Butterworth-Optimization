@@ -88,6 +88,23 @@ void butterworthFilterInit(ButterworthFilter *filter)
     filter->y2 = FIXEDPOINT_ZERO;
 }
 
+// Function to apply Butterworth filter to a single input
+fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
+{
+    // Calculate the output
+    // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
+    fixedpoint_t output = (fixedpoint_mul(f->b0, input) + fixedpoint_mul(f->b1, f->x1) + fixedpoint_mul(f->b2, f->x2)) - (fixedpoint_mul(f->a1, f->y1) + fixedpoint_mul(f->a2, f->y2));
+
+    // Update the previous input and output values
+    f->x2 = f->x1;
+    f->x1 = input;
+
+    f->y2 = f->y1;
+    f->y1 = output;
+
+    return output;
+}
+
 uint16_t fixedpoint_to_uint16(fixedpoint_t input)
 {
     // Adjust the range from [0,65535] of the input to [-32727, 32727] of the output
@@ -155,60 +172,62 @@ int main(int argc, char *argv[])
     }
 
     // Initialize the filter
-    ButterworthFilter f;
-    butterworthFilterInit(&f);
+    ButterworthFilter ButterworthFilter;
+    butterworthFilterInit(&ButterworthFilter);
 
     // Apply Butterworth filter
     for (size_t i = 0; i < numSamples; i++)
     {
-        fixedpoint_t input_value = inputBuffer[i];
-        fixedpoint_t output;
+        fixedpoint_t out_low, out_high, temp_low, temp_high;
+        fixedpoint_t b0, b1, b2, a1, a2, x1, x2, y1, y2;
 
-        __asm volatile(
-            // Assembly code
-            "ldr r4, [%[input_ptr]]        \n\t" // Load inputBuffer[i] into r4
-            "ldr r5, [%[filter], #0]      \n\t"  // Load f.b0 into r5
-            "smull r6, r7, r4, r5         \n\t"  // Multiply r4 and r5; result in r6:r7
-            "mov r8, r7, lsr #15          \n\t"  // r8 = (f.b0 * inputBuffer[i]) >> 15
+        __asm__ __volatile__(
+            "ldr %[b0], [%[f], #0]   \n\t" // Load b0 from ButterworthFilter structure
+            "ldr %[b1], [%[f], #4]   \n\t" // Load b1
+            "ldr %[b2], [%[f], #8]   \n\t" // Load b2
+            "ldr %[a1], [%[f], #12]  \n\t" // Load a1
+            "ldr %[a2], [%[f], #16]  \n\t" // Load a2
+            "ldr %[x1], [%[f], #20]  \n\t" // Load x1
+            "ldr %[x2], [%[f], #24]  \n\t" // Load x2
+            "ldr %[y1], [%[f], #28]  \n\t" // Load y1
+            "ldr %[y2], [%[f], #32]  \n\t" // Load y2
 
-            "ldr r5, [%[filter], #4]      \n\t"
-            "ldr r4, [%[filter], #8]      \n\t"
-            "smull r6, r7, r4, r5         \n\t"
-            "add r8, r8, r7, lsr #15      \n\t" // Add (f.b1 * f.x1) >> 15 to r8
+            "smull %[out_low], %[out_high], %[b0], %[input]   \n\t" // Multiply b0 and input
+            "smull %[temp_low], %[temp_high], %[b1], %[x1]   \n\t"  // Multiply b1 and x1
+            "adds %[out_low], %[out_low], %[temp_low]        \n\t"  // Accumulate result
+            "adc %[out_high], %[out_high], %[temp_high]      \n\t"
 
-            "ldr r5, [%[filter], #12]     \n\t"
-            "ldr r4, [%[filter], #16]     \n\t"
-            "smull r6, r7, r4, r5         \n\t"
-            "add r8, r8, r7, lsr #15      \n\t" // Add (f.b2 * f.x2) >> 15 to r8
+            "smull %[temp_low], %[temp_high], %[b2], %[x2]   \n\t" // Multiply b2 and x2
+            "adds %[out_low], %[out_low], %[temp_low]        \n\t" // Accumulate result
+            "adc %[out_high], %[out_high], %[temp_high]      \n\t"
 
-            "ldr r5, [%[filter], #20]     \n\t"
-            "ldr r4, [%[filter], #24]     \n\t"
-            "smull r6, r7, r4, r5         \n\t"
-            "sub r8, r8, r7, lsr #15      \n\t" // Subtract (f.a1 * f.y1) >> 15 from r8
+            "smull %[temp_low], %[temp_high], %[a1], %[y1]   \n\t" // Multiply a1 and y1
+            "subs %[out_low], %[out_low], %[temp_low]        \n\t" // Subtract result
+            "sbc %[out_high], %[out_high], %[temp_high]      \n\t"
 
-            "ldr r5, [%[filter], #28]     \n\t"
-            "ldr r4, [%[filter], #32]     \n\t"
-            "smull r6, r7, r4, r5         \n\t"
-            "sub r8, r8, r7, lsr #15      \n\t" // Subtract (f.a2 * f.y2) >> 15 from r8
+            "smull %[temp_low], %[temp_high], %[a2], %[y2]   \n\t" // Multiply a2 and y2
+            "subs %[out_low], %[out_low], %[temp_low]        \n\t" // Subtract result
+            "sbc %[out_high], %[out_high], %[temp_high]      \n\t"
 
-            // Update the previous input and output values
-            "ldr r4, [%[filter], #8]      \n\t"
-            "str r4, [%[filter], #16]     \n\t" // Store r4 into f.x2
+            "lsr %[out_low], %[out_low], #15                 \n\t" // Right shift by FRACTIONAL_BITS
+            "orr %[out_low], %[out_low], %[out_high], lsl #17\n\t" // Combine high and low parts
 
-            "str %[input_value], [%[filter], #8] \n\t" // Store input_value into f.x1
+            "str %[input], [%[f], #24]                       \n\t" // Store x2 = x1
+            "str %[out_low], [%[f], #20]                     \n\t" // Store x1 = input
+            "str %[y1], [%[f], #32]                          \n\t" // Store y2 = y1
+            "str %[out_low], [%[f], #28]                     \n\t" // Store y1 = output
+            : [out_low] "=&r"(out_low), [out_high] "=&r"(out_high), [temp_low] "=&r"(temp_low), [temp_high] "=&r"(temp_high),
+              [b0] "=&r"(b0), [b1] "=&r"(b1), [b2] "=&r"(b2), [a1] "=&r"(a1), [a2] "=&r"(a2),
+              [x1] "=&r"(x1), [x2] "=&r"(x2), [y1] "=&r"(y1), [y2] "=&r"(y2)
+            : [input] "r"(inputBuffer[i]), [f] "r"(&ButterworthFilter)
+            : "cc", "memory");
 
-            "ldr r4, [%[filter], #24]     \n\t"
-            "str r4, [%[filter], #32]     \n\t" // Store r4 into f.y2
+        outputBuffer[i] = out_low;
 
-            "str r8, [%[filter], #24]     \n\t" // Store r8 (output) into f.y1
-            "str r8, [%[output_ptr]]      \n\t" // Store r8 into outputBuffer[i]
-
-            // Outputs
-            : [output] "=r"(output)
-            // Inputs
-            : [filter] "r"(&f), [input_ptr] "r"(&inputBuffer[i]), [output_ptr] "r"(&outputBuffer[i]), [input_value] "r"(input_value)
-            // Clobbered registers
-            : "r4", "r5", "r6", "r7", "r8");
+#ifdef DEBUG
+        printf("Input:\t%s\n", fixedpoint_str(inputBuffer[i]));
+        printf("Output:\t%s\n", fixedpoint_str(outputBuffer[i]));
+#endif
     }
 
     // Write output samples to file
