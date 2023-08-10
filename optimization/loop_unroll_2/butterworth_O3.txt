@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43077
 Trigger: Program termination
-Profiled target:  ./optimization/loop_unroll_2/butterworth_O3 ts_sine.dat optimization/loop_unroll_2/removeme_O3.dat (PID 9681, part 1)
+Profiled target:  ./optimization/loop_unroll_2/butterworth_O3 ts_sine.dat optimization/loop_unroll_2/removeme_O3.dat (PID 11090, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -91,11 +91,6 @@ Ir                file:function
   1,928 ( 0.99%)  optimization/loop_unroll_2/butterworth.c:fclose@@GLIBC_2.4
 
 --------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
-
---------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/loop_unroll_2/butterworth.c
 --------------------------------------------------------------------------------
 Ir           
@@ -132,7 +127,7 @@ Ir
   .           
   .               // Count the number of lines in the input file
   .               // TODO: Optimization: dont scan the file, instead apply as reading the file
-  .               uint32_t numSamples = 0;
+  .               size_t numSamples = 0;
   .               int c;
  82 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
 10,208 ( 5.25%)  => ???:fseek (1x)
@@ -160,7 +155,7 @@ Ir
   .           
   .               // Read input samples from file
   .               uint16_t sample;
-  .               for (uint32_t i = 0; i < numSamples; i++)
+  .               for (size_t i = 0; i < numSamples; i++)
   .               {
   .                   if (fscanf(inputFile, "%hu", &sample) != 1)
   .                   {
@@ -184,6 +179,11 @@ Ir
   .               return 0;
   .           }
   1 ( 0.00%)  <counts for unidentified lines in optimization/loop_unroll_2/butterworth.c>
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           

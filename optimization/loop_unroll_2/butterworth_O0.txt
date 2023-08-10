@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43136
 Trigger: Program termination
-Profiled target:  ./optimization/loop_unroll_2/butterworth_O0 ts_sine.dat optimization/loop_unroll_2/removeme_O0.dat (PID 9654, part 1)
+Profiled target:  ./optimization/loop_unroll_2/butterworth_O0 ts_sine.dat optimization/loop_unroll_2/removeme_O0.dat (PID 11063, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -91,6 +91,11 @@ Ir                file:function
   2,207 ( 1.13%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
   2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
   1,928 ( 0.99%)  optimization/loop_unroll_2/butterworth.c:fclose@@GLIBC_2.4
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/loop_unroll_2/butterworth.c
@@ -216,12 +221,11 @@ Ir
   .           
   .               // Count the number of lines in the input file
   .               // TODO: Optimization: dont scan the file, instead apply as reading the file
-  2 ( 0.00%)      uint32_t numSamples = 0;
+  2 ( 0.00%)      size_t numSamples = 0;
   .               int c;
  85 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-10,942 ( 5.61%)  => ???:fseek (1x)
-1,026 ( 0.53%)  => ???:_dl_runtime_resolve (1x)
-216 ( 0.11%)  => ???:getc'2 (5x)
+12,760 ( 6.54%)  => ???:getc (1x)
+972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
   .               {
   3 ( 0.00%)          if (c == '\n')
   .                   {
@@ -242,7 +246,7 @@ Ir
   .           
   .               // Read input samples from file
   .               uint16_t sample;
-  .               for (uint32_t i = 0; i < numSamples; i++)
+  .               for (size_t i = 0; i < numSamples; i++)
   .               {
   .                   if (fscanf(inputFile, "%hu", &sample) != 1)
   .                   {
@@ -256,7 +260,7 @@ Ir
   .               butterworthFilterInit(&ButterworthFilter);
   .           
   .               // Apply Butterworth filter, unrolling the loop for performance
- 14 ( 0.01%)      for (uint32_t i = 0; i < numSamples; i += 2)
+ 14 ( 0.01%)      for (size_t i = 0; i < numSamples; i += 2)
   .               {
  14 ( 0.01%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
 127 ( 0.07%)  => optimization/loop_unroll_2/butterworth.c:butterworthFilterApply (1x)
@@ -265,14 +269,14 @@ Ir
   .               }
   .           
   .               // Apply Butterworth filter to the last sample if there is an odd number of samples
- 15 ( 0.01%)      for (uint32_t i = numSamples - (numSamples % 2); i < numSamples; i++)
+ 15 ( 0.01%)      for (size_t i = numSamples - (numSamples % 2); i < numSamples; i++)
   .               {
  14 ( 0.01%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
 127 ( 0.07%)  => optimization/loop_unroll_2/butterworth.c:butterworthFilterApply (1x)
   .               }
   .           
   .               // Write output samples to file
-  7 ( 0.00%)      for (uint32_t i = 0; i < numSamples; ++i)
+  7 ( 0.00%)      for (size_t i = 0; i < numSamples; ++i)
   .               {
  42 ( 0.02%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
 2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
@@ -296,11 +300,6 @@ Ir
   .               return 0;
   .           }
   1 ( 0.00%)  <counts for unidentified lines in optimization/loop_unroll_2/butterworth.c>
-
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/loop_unroll_2/butterworth.c
 
 --------------------------------------------------------------------------------
 Ir           

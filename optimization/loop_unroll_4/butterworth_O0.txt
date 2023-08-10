@@ -4,9 +4,9 @@ Profile data file 'optimization/loop_unroll_4/butterworth_O0.out' (creator: call
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43135
+Timerange: Basic block 0 - 42546
 Trigger: Program termination
-Profiled target:  ./optimization/loop_unroll_4/butterworth_O0 ts_sine.dat optimization/loop_unroll_4/removeme_O0.dat (PID 4507, part 1)
+Profiled target:  ./optimization/loop_unroll_4/butterworth_O0 ts_sine.dat optimization/loop_unroll_4/removeme_O0.dat (PID 11423, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,79 +18,75 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,775 (100.0%)  PROGRAM TOTALS
+192,261 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,775 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,771 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
-112,408 (57.71%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
-103,603 (53.19%)  ???:dl_main [/usr/lib/ld-2.28.so]
-103,194 (52.98%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
-102,224 (52.48%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
- 99,813 (51.25%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
- 96,461 (49.52%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
- 90,106 (46.26%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
- 87,788 (45.07%)  ???:init_tls [/usr/lib/ld-2.28.so]
- 86,640 (44.48%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,593 (41.38%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
- 79,460 (40.80%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 79,223 (40.67%)  /root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth.c:main
- 77,010 (39.54%)  optimization/loop_unroll_4/butterworth.c:main [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
- 76,394 (39.22%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
- 61,627 (31.64%)  ???:malloc [/usr/lib/ld-2.28.so]
- 60,687 (31.16%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
- 60,676 (31.15%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,475 (31.05%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
- 60,427 (31.02%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,412 (31.02%)  ???:puts [/usr/lib/libc-2.28.so]
- 59,693 (30.65%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
- 59,072 (30.33%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
- 58,843 (30.21%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
- 58,815 (30.20%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
- 14,740 ( 7.57%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 14,738 ( 7.57%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
- 14,730 ( 7.56%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
- 14,090 ( 7.23%)  optimization/loop_unroll_4/butterworth.c:__fopen_internal
- 14,079 ( 7.23%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
- 13,446 ( 6.90%)  optimization/loop_unroll_4/butterworth.c:__fopen_internal'2
- 13,070 ( 6.71%)  ???:check_match [/usr/lib/ld-2.28.so]
- 12,455 ( 6.39%)  ???:getc [/usr/lib/libc-2.28.so]
- 12,444 ( 6.39%)  ???:__uflow [/usr/lib/libc-2.28.so]
- 12,408 ( 6.37%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
- 11,957 ( 6.14%)  optimization/loop_unroll_4/butterworth.c:_IO_default_uflow
- 11,915 ( 6.12%)  ???:__aeabi_uidivmod [/usr/lib/ld-2.28.so]
- 11,341 ( 5.82%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
- 11,160 ( 5.73%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
- 11,061 ( 5.68%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
- 10,637 ( 5.46%)  ???:fseek [/usr/lib/libc-2.28.so]
- 10,361 ( 5.32%)  optimization/loop_unroll_4/butterworth.c:fseek
-  9,688 ( 4.97%)  ???:strcmp [/usr/lib/ld-2.28.so]
-  8,766 ( 4.50%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
-  8,338 ( 4.28%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
-  7,179 ( 3.69%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
-  6,580 ( 3.38%)  optimization/loop_unroll_4/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
-  6,243 ( 3.21%)  optimization/loop_unroll_4/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
-  4,577 ( 2.35%)  ???:openaux [/usr/lib/ld-2.28.so]
-  4,294 ( 2.20%)  ???:open_verify.constprop.8 [/usr/lib/ld-2.28.so]
-  3,958 ( 2.03%)  ???:_dl_new_object'2 [/usr/lib/ld-2.28.so]
-  3,281 ( 1.68%)  ???:_dl_map_object_from_fd [/usr/lib/ld-2.28.so]
-  3,064 ( 1.57%)  ???:_dl_name_match_p [/usr/lib/ld-2.28.so]
-  2,773 ( 1.42%)  ???:do_preload [/usr/lib/ld-2.28.so]
-  2,740 ( 1.41%)  ???:_dl_catch_error [/usr/lib/ld-2.28.so]
-  2,667 ( 1.37%)  ???:map_doit [/usr/lib/ld-2.28.so]
-  2,547 ( 1.31%)  ???:fclose@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
-  2,374 ( 1.22%)  ???:memcpy [/usr/lib/ld-2.28.so]
-  2,300 ( 1.18%)  ???:version_check_doit [/usr/lib/ld-2.28.so]
-  2,289 ( 1.18%)  ???:_dl_check_all_versions [/usr/lib/ld-2.28.so]
-  2,273 ( 1.17%)  ???:_dl_check_map_versions [/usr/lib/ld-2.28.so]
-  2,236 ( 1.15%)  ???:_dl_important_hwcaps [/usr/lib/ld-2.28.so]
-  2,213 ( 1.14%)  ???:exit [/usr/lib/libc-2.28.so]
-  2,213 ( 1.14%)  ???:main
-  2,207 ( 1.13%)  ???:__run_exit_handlers [/usr/lib/libc-2.28.so]
-  2,066 ( 1.06%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
-  1,928 ( 0.99%)  optimization/loop_unroll_4/butterworth.c:fclose@@GLIBC_2.4
+192,261 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+192,257 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+112,388 (58.46%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
+103,591 (53.88%)  ???:dl_main [/usr/lib/ld-2.28.so]
+103,182 (53.67%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
+102,212 (53.16%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
+ 99,801 (51.91%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
+ 96,461 (50.17%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
+ 90,106 (46.87%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
+ 87,788 (45.66%)  ???:init_tls [/usr/lib/ld-2.28.so]
+ 86,640 (45.06%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
+ 78,117 (40.63%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
+ 76,984 (40.04%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 76,747 (39.92%)  /root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth.c:main
+ 76,747 (39.92%)  optimization/loop_unroll_4/butterworth.c:main [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
+ 74,806 (38.91%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
+ 61,627 (32.05%)  ???:malloc [/usr/lib/ld-2.28.so]
+ 60,687 (31.56%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
+ 60,676 (31.56%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 60,475 (31.45%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
+ 60,419 (31.43%)  ???:puts [/usr/lib/libc-2.28.so]
+ 60,309 (31.37%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 59,693 (31.05%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
+ 58,843 (30.61%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
+ 58,815 (30.59%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
+ 57,747 (30.04%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
+ 14,486 ( 7.53%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 14,484 ( 7.53%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 14,476 ( 7.53%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 13,836 ( 7.20%)  optimization/loop_unroll_4/butterworth.c:__fopen_internal
+ 13,825 ( 7.19%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
+ 13,192 ( 6.86%)  optimization/loop_unroll_4/butterworth.c:__fopen_internal'2
+ 12,752 ( 6.63%)  ???:check_match [/usr/lib/ld-2.28.so]
+ 12,201 ( 6.35%)  ???:getc [/usr/lib/libc-2.28.so]
+ 12,190 ( 6.34%)  ???:__uflow [/usr/lib/libc-2.28.so]
+ 12,154 ( 6.32%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
+ 11,703 ( 6.09%)  optimization/loop_unroll_4/butterworth.c:_IO_default_uflow
+ 11,621 ( 6.04%)  ???:__aeabi_uidivmod [/usr/lib/ld-2.28.so]
+ 11,071 ( 5.76%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
+ 10,383 ( 5.40%)  ???:fseek [/usr/lib/libc-2.28.so]
+ 10,107 ( 5.26%)  optimization/loop_unroll_4/butterworth.c:fseek
+  9,455 ( 4.92%)  ???:strcmp [/usr/lib/ld-2.28.so]
+  9,401 ( 4.89%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
+  9,320 ( 4.85%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
+  8,766 ( 4.56%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
+  8,338 ( 4.34%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
+  7,179 ( 3.73%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
+  6,326 ( 3.29%)  optimization/loop_unroll_4/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
+  5,989 ( 3.12%)  optimization/loop_unroll_4/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth_O0]
+  4,577 ( 2.38%)  ???:openaux [/usr/lib/ld-2.28.so]
+  4,294 ( 2.23%)  ???:open_verify.constprop.8 [/usr/lib/ld-2.28.so]
+  3,958 ( 2.06%)  ???:_dl_new_object'2 [/usr/lib/ld-2.28.so]
+  3,281 ( 1.71%)  ???:_dl_map_object_from_fd [/usr/lib/ld-2.28.so]
+  2,992 ( 1.56%)  ???:_dl_name_match_p [/usr/lib/ld-2.28.so]
+  2,773 ( 1.44%)  ???:do_preload [/usr/lib/ld-2.28.so]
+  2,740 ( 1.43%)  ???:_dl_catch_error [/usr/lib/ld-2.28.so]
+  2,667 ( 1.39%)  ???:map_doit [/usr/lib/ld-2.28.so]
+  2,374 ( 1.23%)  ???:memcpy [/usr/lib/ld-2.28.so]
+  2,300 ( 1.20%)  ???:version_check_doit [/usr/lib/ld-2.28.so]
+  2,289 ( 1.19%)  ???:_dl_check_all_versions [/usr/lib/ld-2.28.so]
+  2,273 ( 1.18%)  ???:_dl_check_map_versions [/usr/lib/ld-2.28.so]
+  2,236 ( 1.16%)  ???:_dl_important_hwcaps [/usr/lib/ld-2.28.so]
+  2,066 ( 1.07%)  ???:_dl_map_object_deps'2 [/usr/lib/ld-2.28.so]
+  1,722 ( 0.90%)  ???:_dl_check_map_versions'2 [/usr/lib/ld-2.28.so]
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/loop_unroll_4/butterworth.c
@@ -123,7 +119,7 @@ Ir
  19 ( 0.01%)      fixedpoint_t sqrt2_lambda = fixedpoint_mul(FIXEDPOINT_SQRT2, lambda);
   5 ( 0.00%)      fixedpoint_t a0 = lambda_squared + sqrt2_lambda + FIXEDPOINT_ONE;
  10 ( 0.01%)      fixedpoint_t inv_a0 = fixedpoint_div(FIXEDPOINT_ONE, a0);
-172 ( 0.09%)  => ???:0x000111d0 (1x)
+172 ( 0.09%)  => ???:0x000111cc (1x)
   .           
   .           #ifdef DEBUG
   .               printf("inv_a0:\t%s\n", fixedpoint_str(inv_a0));
@@ -159,24 +155,24 @@ Ir
   3 ( 0.00%)      filter->y1 = FIXEDPOINT_ZERO;
   3 ( 0.00%)      filter->y2 = FIXEDPOINT_ZERO;
   3 ( 0.00%)  }
-6,243 ( 3.21%)  => optimization/loop_unroll_4/butterworth.c:main'2 (1x)
+5,989 ( 3.12%)  => optimization/loop_unroll_4/butterworth.c:main'2 (1x)
   .           
   .           // Function to apply Butterworth filter to a single input
   .           fixedpoint_t butterworthFilterApply(ButterworthFilter *f, fixedpoint_t input)
-  5 ( 0.00%)  {
+ 25 ( 0.01%)  {
   .               // Calculate the output
   .               // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
-104 ( 0.05%)      fixedpoint_t output = (fixedpoint_mul(f->b0, input) + fixedpoint_mul(f->b1, f->x1) + fixedpoint_mul(f->b2, f->x2)) - (fixedpoint_mul(f->a1, f->y1) + fixedpoint_mul(f->a2, f->y2));
+520 ( 0.27%)      fixedpoint_t output = (fixedpoint_mul(f->b0, input) + fixedpoint_mul(f->b1, f->x1) + fixedpoint_mul(f->b2, f->x2)) - (fixedpoint_mul(f->a1, f->y1) + fixedpoint_mul(f->a2, f->y2));
   .           
   .               // Update the previous input and output values
-  4 ( 0.00%)      f->x2 = f->x1;
-  3 ( 0.00%)      f->x1 = input;
+ 20 ( 0.01%)      f->x2 = f->x1;
+ 15 ( 0.01%)      f->x1 = input;
   .           
-  4 ( 0.00%)      f->y2 = f->y1;
-  3 ( 0.00%)      f->y1 = output;
+ 20 ( 0.01%)      f->y2 = f->y1;
+ 15 ( 0.01%)      f->y1 = output;
   .           
-  1 ( 0.00%)      return output;
-  3 ( 0.00%)  }
+  5 ( 0.00%)      return output;
+ 15 ( 0.01%)  }
   .           
   .           uint16_t fixedpoint_to_uint16(fixedpoint_t input)
   4 ( 0.00%)  {
@@ -195,9 +191,9 @@ Ir
   .           int main(int argc, char *argv[])
   5 ( 0.00%)  {
  27 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,208 (30.91%)  => ???:puts (1x)
-14,740 ( 7.57%)  => ???:fopen@@GLIBC_2.4 (1x)
-2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
+60,200 (31.31%)  => ???:puts (1x)
+14,486 ( 7.53%)  => ???:fopen@@GLIBC_2.4 (1x)
+2,029 ( 1.06%)  => ???:_dl_runtime_resolve (2x)
   .               if (argc < 3)
   .               {
   .                   printf("Usage: %s <input_file> <output_file>\n", argv[0]);
@@ -206,7 +202,7 @@ Ir
   .           
   1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
  11 ( 0.01%)      FILE *outputFile = fopen(argv[2], "w");
-14,079 ( 7.23%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+13,825 ( 7.19%)  => ???:fopen@@GLIBC_2.4'2 (1x)
   .           
   6 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
   .               {
@@ -216,11 +212,12 @@ Ir
   .           
   .               // Count the number of lines in the input file
   .               // TODO: Optimization: dont scan the file, instead apply as reading the file
-  2 ( 0.00%)      uint32_t numSamples = 0;
+  2 ( 0.00%)      size_t numSamples = 0;
   .               int c;
  85 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-12,455 ( 6.39%)  => ???:getc (1x)
-972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
+10,383 ( 5.40%)  => ???:fseek (1x)
+1,026 ( 0.53%)  => ???:_dl_runtime_resolve (1x)
+216 ( 0.11%)  => ???:getc'2 (5x)
   .               {
   3 ( 0.00%)          if (c == '\n')
   .                   {
@@ -233,15 +230,15 @@ Ir
   .           
   .               // Allocate memory for input and output buffers
  63 ( 0.03%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-6,580 ( 3.38%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterInit (1x)
-2,109 ( 1.08%)  => ???:_dl_runtime_resolve (2x)
-1,149 ( 0.59%)  => ???:__isoc99_fscanf (1x)
+6,326 ( 3.29%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterInit (1x)
+2,109 ( 1.10%)  => ???:_dl_runtime_resolve (2x)
+1,149 ( 0.60%)  => ???:__isoc99_fscanf (1x)
 460 ( 0.24%)  => ???:malloc (2x)
   .               fixedpoint_t *outputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
   .           
   .               // Read input samples from file
   .               uint16_t sample;
-  .               for (uint32_t i = 0; i < numSamples; i++)
+  .               for (size_t i = 0; i < numSamples; i++)
   .               {
   .                   if (fscanf(inputFile, "%hu", &sample) != 1)
   .                   {
@@ -255,29 +252,33 @@ Ir
   .               butterworthFilterInit(&ButterworthFilter);
   .           
   .               // Apply Butterworth filter, unrolling the loop for performance
-  8 ( 0.00%)      for (uint32_t i = 0; i < numSamples / 4; i += 4)
+ 14 ( 0.01%)      for (size_t i = 0; i < numSamples; i += 4)
   .               {
-  .                   outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
-  .                   outputBuffer[i + 1] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 1]);
-  .                   outputBuffer[i + 2] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 2]);
-  .                   outputBuffer[i + 3] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 3]);
+ 14 ( 0.01%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
+127 ( 0.07%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterApply (1x)
+ 16 ( 0.01%)          outputBuffer[i + 1] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 1]);
+127 ( 0.07%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterApply (1x)
+ 16 ( 0.01%)          outputBuffer[i + 2] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 2]);
+127 ( 0.07%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterApply (1x)
+ 16 ( 0.01%)          outputBuffer[i + 3] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 3]);
+127 ( 0.07%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterApply (1x)
   .               }
   .           
   .               // Apply Butterworth filter to the last samples if there is an odd number of samples
- 15 ( 0.01%)      for (uint32_t i = numSamples - (numSamples % 4); i < numSamples; i++)
+ 15 ( 0.01%)      for (size_t i = numSamples - (numSamples % 4); i < numSamples; i++)
   .               {
  14 ( 0.01%)          outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
 127 ( 0.07%)  => optimization/loop_unroll_4/butterworth.c:butterworthFilterApply (1x)
   .               }
   .           
   .               // Write output samples to file
-  7 ( 0.00%)      for (uint32_t i = 0; i < numSamples; ++i)
+  7 ( 0.00%)      for (size_t i = 0; i < numSamples; ++i)
   .               {
  42 ( 0.02%)          fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
-2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
-2,150 ( 1.10%)  => ???:_dl_runtime_resolve (2x)
-1,091 ( 0.56%)  => ???:fprintf (1x)
-204 ( 0.10%)  => ???:puts (1x)
+2,150 ( 1.12%)  => ???:_dl_runtime_resolve (2x)
+1,702 ( 0.89%)  => ???:fclose@@GLIBC_2.4 (1x)
+1,091 ( 0.57%)  => ???:fprintf (1x)
+219 ( 0.11%)  => ???:puts (1x)
  38 ( 0.02%)  => optimization/loop_unroll_4/butterworth.c:fixedpoint_to_uint16 (1x)
   .               }
   .           
@@ -286,23 +287,19 @@ Ir
   .               // Cleanup
   .               fclose(inputFile);
   5 ( 0.00%)      fclose(outputFile);
-1,923 ( 0.99%)  => ???:fclose@@GLIBC_2.4'2 (1x)
- 18 ( 0.01%)      free(inputBuffer);
-1,054 ( 0.54%)  => ???:_dl_runtime_resolve (1x)
-168 ( 0.09%)  => ???:free (2x)
+1,078 ( 0.56%)  => ???:fclose@@GLIBC_2.4'2 (1x)
+  .               free(inputBuffer);
   .               free(outputBuffer);
   .           
   .               return 0;
   .           }
-  1 ( 0.00%)  <counts for unidentified lines in optimization/loop_unroll_4/butterworth.c>
-
 --------------------------------------------------------------------------------
 -- Auto-annotated source: /root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth.c
 --------------------------------------------------------------------------------
   No information has been collected for /root/Butterworth-Optimization/optimization/loop_unroll_4/butterworth.c
 
 --------------------------------------------------------------------------------
-Ir           
+Ir             
 --------------------------------------------------------------------------------
-642 ( 0.33%)  events annotated
+1,200 ( 0.62%)  events annotated
 
