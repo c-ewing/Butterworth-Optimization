@@ -72,7 +72,7 @@ if not args.skip_hyperfine:
 
         # Verify the output of the program is correct:
         subprocess.run([f"./{TARGET}{EXECUTABLE_NAME}_{flag}",
-                       "ts_sine.dat", f"{TARGET}removeme_{flag}.dat"])
+                       "ts_sine.dat", f"{TARGET}removeme_{flag}.dat"], stdout=subprocess.DEVNULL)
         # Diff with the reference output in the root directory
         subprocess.run(
             ["diff", f"{TARGET}removeme_{flag}.dat", "reference_sine.dat"])
