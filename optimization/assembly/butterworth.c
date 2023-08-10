@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
         fixedpoint_t input_value = inputBuffer[i];
         fixedpoint_t output;
 
-        asm volatile(
+        __asm volatile(
             // Assembly code
             "ldr r4, [%[input_ptr]]        \n\t" // Load inputBuffer[i] into r4
             "ldr r5, [%[filter], #0]      \n\t"  // Load f.b0 into r5

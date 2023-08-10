@@ -6,7 +6,7 @@ D1 cache:
 LL cache: 
 Timerange: Basic block 0 - 43078
 Trigger: Program termination
-Profiled target:  ./optimization/assembly/butterworth_Ofast ts_sine.dat optimization/assembly/removeme_Ofast.dat (PID 6550, part 1)
+Profiled target:  ./optimization/assembly/butterworth_Ofast ts_sine.dat optimization/assembly/removeme_Ofast.dat (PID 7081, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,13 +18,13 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,234 (100.0%)  PROGRAM TOTALS
+194,237 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,234 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,230 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+194,237 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,233 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
 112,408 (57.87%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
 103,603 (53.34%)  ???:dl_main [/usr/lib/ld-2.28.so]
 103,194 (53.13%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
@@ -34,38 +34,38 @@ Ir                file:function
  90,106 (46.39%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
  87,788 (45.20%)  ???:init_tls [/usr/lib/ld-2.28.so]
  86,640 (44.61%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,070 (41.22%)  ???:0x00010800 [/root/Butterworth-Optimization/optimization/assembly/butterworth_Ofast]
- 78,937 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 78,688 (40.51%)  /root/Butterworth-Optimization/optimization/assembly/butterworth.c:main
- 76,475 (39.37%)  optimization/assembly/butterworth.c:main [/root/Butterworth-Optimization/optimization/assembly/butterworth_Ofast]
+ 80,073 (41.22%)  ???:0x00010824 [/root/Butterworth-Optimization/optimization/assembly/butterworth_Ofast]
+ 78,940 (40.64%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 78,691 (40.51%)  /root/Butterworth-Optimization/optimization/assembly/butterworth.c:main
+ 76,478 (39.37%)  optimization/assembly/butterworth.c:main [/root/Butterworth-Optimization/optimization/assembly/butterworth_Ofast]
  76,394 (39.33%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
  61,627 (31.73%)  ???:malloc [/usr/lib/libc-2.28.so]
  60,687 (31.24%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
  60,676 (31.24%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,475 (31.14%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
+ 60,475 (31.13%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
  60,427 (31.11%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,404 (31.10%)  ???:puts [/usr/lib/libc-2.28.so]
+ 60,412 (31.10%)  ???:puts [/usr/lib/libc-2.28.so]
  59,693 (30.73%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
  59,072 (30.41%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
  58,843 (30.29%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
  58,815 (30.28%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
- 14,218 ( 7.32%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 14,216 ( 7.32%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
- 14,211 ( 7.32%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
- 13,568 ( 6.99%)  optimization/assembly/butterworth.c:__fopen_internal
- 13,560 ( 6.98%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
+ 14,213 ( 7.32%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 14,211 ( 7.32%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 14,206 ( 7.31%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 13,563 ( 6.98%)  optimization/assembly/butterworth.c:__fopen_internal
+ 13,555 ( 6.98%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
  13,070 ( 6.73%)  ???:check_match [/usr/lib/ld-2.28.so]
- 12,927 ( 6.66%)  optimization/assembly/butterworth.c:__fopen_internal'2
- 11,938 ( 6.15%)  ???:getc [/usr/lib/libc-2.28.so]
- 11,927 ( 6.14%)  ???:__uflow [/usr/lib/libc-2.28.so]
+ 12,922 ( 6.65%)  optimization/assembly/butterworth.c:__fopen_internal'2
+ 11,933 ( 6.14%)  ???:getc [/usr/lib/libc-2.28.so]
+ 11,922 ( 6.14%)  ???:__uflow [/usr/lib/libc-2.28.so]
  11,915 ( 6.13%)  ???:__aeabi_uidivmod [/usr/lib/libc-2.28.so]
- 11,891 ( 6.12%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
- 11,440 ( 5.89%)  optimization/assembly/butterworth.c:_IO_default_uflow
+ 11,886 ( 6.12%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
+ 11,435 ( 5.89%)  optimization/assembly/butterworth.c:_IO_default_uflow
  11,341 ( 5.84%)  ???:__udivsi3 [/usr/lib/libc-2.28.so]
  11,160 ( 5.75%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
  11,061 ( 5.69%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
- 10,132 ( 5.22%)  ???:fseek [/usr/lib/libc-2.28.so]
-  9,856 ( 5.07%)  optimization/assembly/butterworth.c:fseek
+ 10,129 ( 5.21%)  ???:fseek [/usr/lib/libc-2.28.so]
+  9,853 ( 5.07%)  optimization/assembly/butterworth.c:fseek
   9,688 ( 4.99%)  ???:strcmp [/usr/lib/ld-2.28.so]
   8,766 ( 4.51%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
   8,338 ( 4.29%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
@@ -91,6 +91,11 @@ Ir                file:function
   1,928 ( 0.99%)  optimization/assembly/butterworth.c:fclose@@GLIBC_2.4
 
 --------------------------------------------------------------------------------
+-- Auto-annotated source: /root/Butterworth-Optimization/optimization/assembly/butterworth.c
+--------------------------------------------------------------------------------
+  No information has been collected for /root/Butterworth-Optimization/optimization/assembly/butterworth.c
+
+--------------------------------------------------------------------------------
 -- Auto-annotated source: optimization/assembly/butterworth.c
 --------------------------------------------------------------------------------
 Ir           
@@ -106,8 +111,8 @@ Ir
   .           int main(int argc, char *argv[])
   4 ( 0.00%)  {
  23 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,200 (30.99%)  => ???:puts (1x)
-14,218 ( 7.32%)  => ???:fopen@@GLIBC_2.4 (1x)
+60,208 (31.00%)  => ???:puts (1x)
+14,213 ( 7.32%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
   .               if (argc < 3)
   .               {
@@ -117,7 +122,7 @@ Ir
   .           
   1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
   7 ( 0.00%)      FILE *outputFile = fopen(argv[2], "w");
-13,560 ( 6.98%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+13,555 ( 6.98%)  => ???:fopen@@GLIBC_2.4'2 (1x)
   .           
   8 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
   .               {
@@ -129,8 +134,8 @@ Ir
   .               // TODO: Optimization: dont scan the file, instead apply as reading the file
   .               size_t numSamples = 0;
   .               int c;
- 72 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-11,938 ( 6.15%)  => ???:getc (1x)
+ 70 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
+11,933 ( 6.14%)  => ???:getc (1x)
 972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
   .               {
   3 ( 0.00%)          if (c == '\n')
@@ -143,7 +148,7 @@ Ir
   .               fseek(inputFile, 0, SEEK_SET);
   .           
   .               // Allocate memory for input and output buffers
-146 ( 0.08%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
+143 ( 0.07%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
 4,259 ( 2.19%)  => ???:_dl_runtime_resolve (4x)
 2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
 1,149 ( 0.59%)  => ???:__isoc99_fscanf (1x)
@@ -159,7 +164,7 @@ Ir
   .                   if (fscanf(inputFile, "%hu", &sample) != 1)
   .                   {
 -- line 147 ----------------------------------------
--- line 180 ----------------------------------------
+-- line 216 ----------------------------------------
   .               {
   .                   fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
   .               }
@@ -177,15 +182,11 @@ Ir
   .           
   .               return 0;
   .           }
-  1 ( 0.00%)  <counts for unidentified lines in optimization/assembly/butterworth.c>
 
---------------------------------------------------------------------------------
--- Auto-annotated source: /root/Butterworth-Optimization/optimization/assembly/butterworth.c
---------------------------------------------------------------------------------
-  No information has been collected for /root/Butterworth-Optimization/optimization/assembly/butterworth.c
+  1 ( 0.00%)  <counts for unidentified lines in optimization/assembly/butterworth.c>
 
 --------------------------------------------------------------------------------
 Ir           
 --------------------------------------------------------------------------------
-287 ( 0.15%)  events annotated
+282 ( 0.15%)  events annotated
 

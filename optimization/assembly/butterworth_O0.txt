@@ -4,9 +4,9 @@ Profile data file 'optimization/assembly/butterworth_O0.out' (creator: callgrind
 I1 cache: 
 D1 cache: 
 LL cache: 
-Timerange: Basic block 0 - 43122
+Timerange: Basic block 0 - 43120
 Trigger: Program termination
-Profiled target:  ./optimization/assembly/butterworth_O0 ts_sine.dat optimization/assembly/removeme_O0.dat (PID 6505, part 1)
+Profiled target:  ./optimization/assembly/butterworth_O0 ts_sine.dat optimization/assembly/removeme_O0.dat (PID 7036, part 1)
 Events recorded:  Ir
 Events shown:     Ir
 Event sort order: Ir
@@ -18,60 +18,60 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir               
 --------------------------------------------------------------------------------
-194,706 (100.0%)  PROGRAM TOTALS
+194,640 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
 Ir                file:function
 --------------------------------------------------------------------------------
-194,706 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
-194,702 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
-112,400 (57.73%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
-103,603 (53.21%)  ???:dl_main [/usr/lib/ld-2.28.so]
-103,194 (53.00%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
-102,224 (52.50%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
- 99,813 (51.26%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
- 96,461 (49.54%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
- 90,106 (46.28%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
- 87,788 (45.09%)  ???:init_tls [/usr/lib/ld-2.28.so]
- 86,640 (44.50%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
- 80,560 (41.38%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
- 79,427 (40.79%)  ???:(below main) [/usr/lib/libc-2.28.so]
- 79,190 (40.67%)  /root/Butterworth-Optimization/optimization/assembly/butterworth.c:main
- 76,977 (39.53%)  optimization/assembly/butterworth.c:main [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
- 76,394 (39.24%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
- 61,627 (31.65%)  ???:malloc [/usr/lib/ld-2.28.so]
- 60,687 (31.17%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
- 60,676 (31.16%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,475 (31.06%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
- 60,427 (31.03%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 60,412 (31.03%)  ???:puts [/usr/lib/libc-2.28.so]
- 59,693 (30.66%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
- 59,072 (30.34%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
- 58,843 (30.22%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
- 58,815 (30.21%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
- 14,707 ( 7.55%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
- 14,705 ( 7.55%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
- 14,697 ( 7.55%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
- 14,057 ( 7.22%)  optimization/assembly/butterworth.c:__fopen_internal
- 14,046 ( 7.21%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
- 13,413 ( 6.89%)  optimization/assembly/butterworth.c:__fopen_internal'2
+194,640 (100.0%)  ???:0x00000a80 [/usr/lib/ld-2.28.so]
+194,636 (100.0%)  ???:_dl_start [/usr/lib/ld-2.28.so]
+112,400 (57.75%)  ???:_dl_sysdep_start [/usr/lib/ld-2.28.so]
+103,603 (53.23%)  ???:dl_main [/usr/lib/ld-2.28.so]
+103,194 (53.02%)  ???:_dl_new_object [/usr/lib/ld-2.28.so]
+102,224 (52.52%)  ???:_dl_init_paths [/usr/lib/ld-2.28.so]
+ 99,813 (51.28%)  ???:handle_ld_preload [/usr/lib/ld-2.28.so]
+ 96,461 (49.56%)  ???:_dl_map_object_deps [/usr/lib/ld-2.28.so]
+ 90,106 (46.29%)  ???:_dl_receive_error [/usr/lib/ld-2.28.so]
+ 87,788 (45.10%)  ???:init_tls [/usr/lib/ld-2.28.so]
+ 86,640 (44.51%)  ???:_dl_relocate_object [/usr/lib/ld-2.28.so]
+ 80,494 (41.36%)  ???:0x00010520 [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
+ 79,361 (40.77%)  ???:(below main) [/usr/lib/libc-2.28.so]
+ 79,124 (40.65%)  /root/Butterworth-Optimization/optimization/assembly/butterworth.c:main
+ 76,911 (39.51%)  optimization/assembly/butterworth.c:main [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
+ 76,394 (39.25%)  ???:_dl_lookup_symbol_x [/usr/lib/ld-2.28.so]
+ 61,627 (31.66%)  ???:malloc [/usr/lib/ld-2.28.so]
+ 60,687 (31.18%)  ???:_IO_doallocbuf [/usr/lib/libc-2.28.so]
+ 60,676 (31.17%)  ???:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 60,475 (31.07%)  ???:_IO_file_doallocate [/usr/lib/libc-2.28.so]
+ 60,427 (31.05%)  ???:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 60,419 (31.04%)  ???:puts [/usr/lib/libc-2.28.so]
+ 59,693 (30.67%)  ???:malloc_hook_ini [/usr/lib/libc-2.28.so]
+ 59,072 (30.35%)  ???:do_lookup_x [/usr/lib/ld-2.28.so]
+ 58,843 (30.23%)  ???:ptmalloc_init [/usr/lib/libc-2.28.so]
+ 58,815 (30.22%)  ???:_dl_addr [/usr/lib/libc-2.28.so]
+ 14,649 ( 7.53%)  ???:fopen@@GLIBC_2.4 [/usr/lib/libc-2.28.so]
+ 14,647 ( 7.53%)  ???:__fopen_internal [/usr/lib/libc-2.28.so]
+ 14,639 ( 7.52%)  ???:__fopen_internal'2 [/usr/lib/libc-2.28.so]
+ 13,999 ( 7.19%)  optimization/assembly/butterworth.c:__fopen_internal
+ 13,988 ( 7.19%)  ???:fopen@@GLIBC_2.4'2 [/usr/lib/libc-2.28.so]
+ 13,355 ( 6.86%)  optimization/assembly/butterworth.c:__fopen_internal'2
  13,070 ( 6.71%)  ???:check_match [/usr/lib/ld-2.28.so]
- 12,422 ( 6.38%)  ???:getc [/usr/lib/libc-2.28.so]
- 12,411 ( 6.37%)  ???:__uflow [/usr/lib/libc-2.28.so]
- 12,375 ( 6.36%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
- 11,924 ( 6.12%)  optimization/assembly/butterworth.c:_IO_default_uflow
+ 12,364 ( 6.35%)  ???:getc [/usr/lib/libc-2.28.so]
+ 12,353 ( 6.35%)  ???:__uflow [/usr/lib/libc-2.28.so]
+ 12,317 ( 6.33%)  ???:_IO_default_uflow [/usr/lib/libc-2.28.so]
  11,915 ( 6.12%)  ???:__aeabi_uidivmod [/usr/lib/ld-2.28.so]
- 11,341 ( 5.82%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
+ 11,866 ( 6.10%)  optimization/assembly/butterworth.c:_IO_default_uflow
+ 11,341 ( 5.83%)  ???:__udivsi3 [/usr/lib/ld-2.28.so]
  11,160 ( 5.73%)  ???:_dl_runtime_resolve [/usr/lib/ld-2.28.so]
  11,061 ( 5.68%)  ???:_dl_fixup [/usr/lib/ld-2.28.so]
- 10,604 ( 5.45%)  ???:fseek [/usr/lib/libc-2.28.so]
- 10,328 ( 5.30%)  optimization/assembly/butterworth.c:fseek
+ 10,546 ( 5.42%)  ???:fseek [/usr/lib/libc-2.28.so]
+ 10,270 ( 5.28%)  optimization/assembly/butterworth.c:fseek
   9,688 ( 4.98%)  ???:strcmp [/usr/lib/ld-2.28.so]
   8,766 ( 4.50%)  ???:_dl_catch_exception [/usr/lib/ld-2.28.so]
   8,338 ( 4.28%)  ???:__GI___tunables_init [/usr/lib/ld-2.28.so]
   7,179 ( 3.69%)  ???:_dl_map_object [/usr/lib/ld-2.28.so]
-  6,547 ( 3.36%)  optimization/assembly/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
-  6,210 ( 3.19%)  optimization/assembly/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
+  6,489 ( 3.33%)  optimization/assembly/butterworth.c:butterworthFilterInit [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
+  6,152 ( 3.16%)  optimization/assembly/butterworth.c:main'2 [/root/Butterworth-Optimization/optimization/assembly/butterworth_O0]
   4,577 ( 2.35%)  ???:openaux [/usr/lib/ld-2.28.so]
   4,294 ( 2.21%)  ???:open_verify.constprop.8 [/usr/lib/ld-2.28.so]
   3,958 ( 2.03%)  ???:_dl_new_object'2 [/usr/lib/ld-2.28.so]
@@ -128,7 +128,7 @@ Ir
 19 ( 0.01%)      fixedpoint_t sqrt2_lambda = fixedpoint_mul(FIXEDPOINT_SQRT2, lambda);
  5 ( 0.00%)      fixedpoint_t a0 = lambda_squared + sqrt2_lambda + FIXEDPOINT_ONE;
 10 ( 0.01%)      fixedpoint_t inv_a0 = fixedpoint_div(FIXEDPOINT_ONE, a0);
-172 ( 0.09%)  => ???:0x00011048 (1x)
+172 ( 0.09%)  => ???:0x00010f24 (1x)
  .           
  .           #ifdef DEBUG
  .               printf("inv_a0:\t%s\n", fixedpoint_str(inv_a0));
@@ -164,7 +164,7 @@ Ir
  3 ( 0.00%)      filter->y1 = FIXEDPOINT_ZERO;
  3 ( 0.00%)      filter->y2 = FIXEDPOINT_ZERO;
  3 ( 0.00%)  }
-6,210 ( 3.19%)  => optimization/assembly/butterworth.c:main'2 (1x)
+6,152 ( 3.16%)  => optimization/assembly/butterworth.c:main'2 (1x)
  .           
  .           uint16_t fixedpoint_to_uint16(fixedpoint_t input)
  4 ( 0.00%)  {
@@ -183,8 +183,8 @@ Ir
  .           int main(int argc, char *argv[])
  5 ( 0.00%)  {
 27 ( 0.01%)      printf("Applying Butterworth Filter\n");
-60,208 (30.92%)  => ???:puts (1x)
-14,707 ( 7.55%)  => ???:fopen@@GLIBC_2.4 (1x)
+60,200 (30.93%)  => ???:puts (1x)
+14,649 ( 7.53%)  => ???:fopen@@GLIBC_2.4 (1x)
 2,029 ( 1.04%)  => ???:_dl_runtime_resolve (2x)
  .               if (argc < 3)
  .               {
@@ -194,7 +194,7 @@ Ir
  .           
  1 ( 0.00%)      FILE *inputFile = fopen(argv[1], "r");
 11 ( 0.01%)      FILE *outputFile = fopen(argv[2], "w");
-14,046 ( 7.21%)  => ???:fopen@@GLIBC_2.4'2 (1x)
+13,988 ( 7.19%)  => ???:fopen@@GLIBC_2.4'2 (1x)
  .           
  6 ( 0.00%)      if (inputFile == NULL || outputFile == NULL)
  .               {
@@ -207,7 +207,7 @@ Ir
  2 ( 0.00%)      size_t numSamples = 0;
  .               int c;
 85 ( 0.04%)      while ((c = fgetc(inputFile)) != EOF)
-12,422 ( 6.38%)  => ???:getc (1x)
+12,364 ( 6.35%)  => ???:getc (1x)
 972 ( 0.50%)  => ???:_dl_runtime_resolve (1x)
  .               {
  3 ( 0.00%)          if (c == '\n')
@@ -221,7 +221,7 @@ Ir
  .           
  .               // Allocate memory for input and output buffers
 63 ( 0.03%)      fixedpoint_t *inputBuffer = (fixedpoint_t *)malloc(numSamples * sizeof(fixedpoint_t));
-6,547 ( 3.36%)  => optimization/assembly/butterworth.c:butterworthFilterInit (1x)
+6,489 ( 3.33%)  => optimization/assembly/butterworth.c:butterworthFilterInit (1x)
 2,109 ( 1.08%)  => ???:_dl_runtime_resolve (2x)
 1,149 ( 0.59%)  => ???:__isoc99_fscanf (1x)
 460 ( 0.24%)  => ???:malloc (2x)
@@ -245,18 +245,31 @@ Ir
  .               // Apply Butterworth filter
 14 ( 0.01%)      for (size_t i = 0; i < numSamples; i++)
  .               {
- .                   // Calculate the output
- .                   // output = (f->b0 * input + f->b1 * f->x1 + f->b2 * f->x2) - (f->a1 * f->y1 + f->a2 * f->y2);
-99 ( 0.05%)          fixedpoint_t output = (fixedpoint_mul(f.b0, inputBuffer[i]) + fixedpoint_mul(f.b1, f.x1) + fixedpoint_mul(f.b2, f.x2)) - (fixedpoint_mul(f.a1, f.y1) + fixedpoint_mul(f.a2, f.y2));
+ 6 ( 0.00%)          fixedpoint_t input_value = inputBuffer[i];
+ .                   fixedpoint_t output;
  .           
- .                   // Update the previous input and output values
- 2 ( 0.00%)          f.x2 = f.x1;
- 6 ( 0.00%)          f.x1 = inputBuffer[i];
+30 ( 0.02%)          __asm volatile(
+ .                       // Assembly code
+ .                       "ldr r4, [%[input_ptr]]        \n\t" // Load inputBuffer[i] into r4
+ .                       "ldr r5, [%[filter], #0]      \n\t"  // Load f.b0 into r5
+ .                       "smull r6, r7, r4, r5         \n\t"  // Multiply r4 and r5; result in r6:r7
+ .                       "mov r8, r7, lsr #15          \n\t"  // r8 = (f.b0 * inputBuffer[i]) >> 15
  .           
- 2 ( 0.00%)          f.y2 = f.y1;
- 2 ( 0.00%)          f.y1 = output;
+ .                       "ldr r5, [%[filter], #4]      \n\t"
+ .                       "ldr r4, [%[filter], #8]      \n\t"
+-- line 175 ----------------------------------------
+-- line 201 ----------------------------------------
+ .                       "str r4, [%[filter], #32]     \n\t" // Store r4 into f.y2
  .           
- 6 ( 0.00%)          outputBuffer[i] = output;
+ .                       "str r8, [%[filter], #24]     \n\t" // Store r8 (output) into f.y1
+ .                       "str r8, [%[output_ptr]]      \n\t" // Store r8 into outputBuffer[i]
+ .           
+ .                       // Outputs
+ .                       : [output] "=r"(output)
+ .                       // Inputs
+ 8 ( 0.00%)              : [filter] "r"(&f), [input_ptr] "r"(&inputBuffer[i]), [output_ptr] "r"(&outputBuffer[i]), [input_value] "r"(input_value)
+ .                       // Clobbered registers
+ .                       : "r4", "r5", "r6", "r7", "r8");
  .               }
  .           
  .               // Write output samples to file
@@ -266,7 +279,7 @@ Ir
 2,547 ( 1.31%)  => ???:fclose@@GLIBC_2.4 (1x)
 2,150 ( 1.10%)  => ???:_dl_runtime_resolve (2x)
 1,091 ( 0.56%)  => ???:fprintf (1x)
-204 ( 0.10%)  => ???:puts (1x)
+219 ( 0.11%)  => ???:puts (1x)
 38 ( 0.02%)  => optimization/assembly/butterworth.c:fixedpoint_to_uint16 (1x)
  .               }
  .           
@@ -283,10 +296,11 @@ Ir
  .           
  .               return 0;
  .           }
+
  1 ( 0.00%)  <counts for unidentified lines in optimization/assembly/butterworth.c>
 
 --------------------------------------------------------------------------------
 Ir           
 --------------------------------------------------------------------------------
-609 ( 0.31%)  events annotated
+536 ( 0.28%)  events annotated
 
