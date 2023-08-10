@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
 
     // Count the number of lines in the input file
     // TODO: Optimization: dont scan the file, instead apply as reading the file
-    uint32_t numSamples = 0;
+    size_t numSamples = 0;
     int c;
     while ((c = fgetc(inputFile)) != EOF)
     {
@@ -158,7 +158,7 @@ int main(int argc, char *argv[])
 
     // Read input samples from file
     uint16_t sample;
-    for (uint32_t i = 0; i < numSamples; i++)
+    for (size_t i = 0; i < numSamples; i++)
     {
         if (fscanf(inputFile, "%hu", &sample) != 1)
         {
@@ -176,20 +176,20 @@ int main(int argc, char *argv[])
     butterworthFilterInit(&ButterworthFilter);
 
     // Apply Butterworth filter, unrolling the loop for performance
-    for (uint32_t i = 0; i < numSamples; i += 2)
+    for (size_t i = 0; i < numSamples; i += 2)
     {
         outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
         outputBuffer[i + 1] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i + 1]);
     }
 
     // Apply Butterworth filter to the last sample if there is an odd number of samples
-    for (uint32_t i = numSamples - (numSamples % 2); i < numSamples; i++)
+    for (size_t i = numSamples - (numSamples % 2); i < numSamples; i++)
     {
         outputBuffer[i] = butterworthFilterApply(&ButterworthFilter, inputBuffer[i]);
     }
 
     // Write output samples to file
-    for (uint32_t i = 0; i < numSamples; ++i)
+    for (size_t i = 0; i < numSamples; ++i)
     {
         fprintf(outputFile, "%hu\n", fixedpoint_to_uint16(outputBuffer[i]));
     }
