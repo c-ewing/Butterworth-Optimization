@@ -70,6 +70,13 @@ if not args.skip_hyperfine:
         subprocess.run([COMPILER, *COMPILER_FLAGS,
                         f"-{flag}", "-o", f"{TARGET}{EXECUTABLE_NAME}_{flag}", f"{TARGET}{EXECUTABLE_NAME}.c"])
 
+        # Verify the output of the program is correct:
+        subprocess.run([f"./{TARGET}{EXECUTABLE_NAME}_{flag}",
+                       "ts_sine.dat", f"{TARGET}removeme_{flag}.dat"])
+        # Diff with the reference output in the root directory
+        subprocess.run(
+            ["diff", f"{TARGET}removeme_{flag}.dat", "reference_sine.dat"])
+
     # Run the benchmark using hyperfine
     print(f"Benchmarking target: {TARGET}")
     subprocess.run([HYPERFINE, *HYPERFINE_FLAGS, *HYPERFINE_COMMAND])
