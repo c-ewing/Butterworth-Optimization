@@ -183,46 +183,46 @@ int main(int argc, char *argv[])
         fixedpoint_t b0, b1, b2, a1, a2, x1, x2, y1, y2;
 
         __asm__ __volatile__(
-            "ldr %[b0], [%[f], #0]   \n\t" // Load b0 from ButterworthFilter structure
-            "ldr %[b1], [%[f], #4]   \n\t" // Load b1
-            "ldr %[b2], [%[f], #8]   \n\t" // Load b2
-            "ldr %[a1], [%[f], #12]  \n\t" // Load a1
-            "ldr %[a2], [%[f], #16]  \n\t" // Load a2
-            "ldr %[x1], [%[f], #20]  \n\t" // Load x1
-            "ldr %[x2], [%[f], #24]  \n\t" // Load x2
-            "ldr %[y1], [%[f], #28]  \n\t" // Load y1
-            "ldr %[y2], [%[f], #32]  \n\t" // Load y2
+            // Load only the necessary variables upfront
+            "ldr %[b0], [%[f]]              "
+            "ldr %[x1], [%[f], #20]         "
+            "ldr %[x2], [%[f], #24]         "
+            "ldr %[y1], [%[f], #28]         "
+            "ldr %[y2], [%[f], #32]         "
 
-            "smull %[out_low], %[out_high], %[b0], %[input]   \n\t" // Multiply b0 and input
-            "smull %[temp_low], %[temp_high], %[b1], %[x1]   \n\t"  // Multiply b1 and x1
-            "adds %[out_low], %[out_low], %[temp_low]        \n\t"  // Accumulate result
-            "adc %[out_high], %[out_high], %[temp_high]      \n\t"
+            // Multiply and accumulate using a mix of registers and memory accesses
+            "smull %[out_low], %[out_high], %[b0], %[input]   "
+            "ldr %[b0], [%[f], #4]          " // reusing b0 for b1
+            "smull %[temp_low], %[temp_high], %[b0], %[x1]   "
+            "adds %[out_low], %[out_low], %[temp_low]        "
+            "adc %[out_high], %[out_high], %[temp_high]      "
 
-            "smull %[temp_low], %[temp_high], %[b2], %[x2]   \n\t" // Multiply b2 and x2
-            "adds %[out_low], %[out_low], %[temp_low]        \n\t" // Accumulate result
-            "adc %[out_high], %[out_high], %[temp_high]      \n\t"
+            "ldr %[b0], [%[f], #8]          " // reusing b0 for b2
+            "smull %[temp_low], %[temp_high], %[b0], %[x2]   "
+            "adds %[out_low], %[out_low], %[temp_low]        "
+            "adc %[out_high], %[out_high], %[temp_high]      "
 
-            "smull %[temp_low], %[temp_high], %[a1], %[y1]   \n\t" // Multiply a1 and y1
-            "subs %[out_low], %[out_low], %[temp_low]        \n\t" // Subtract result
-            "sbc %[out_high], %[out_high], %[temp_high]      \n\t"
+            "ldr %[b0], [%[f], #12]         " // reusing b0 for a1
+            "smull %[temp_low], %[temp_high], %[b0], %[y1]   "
+            "subs %[out_low], %[out_low], %[temp_low]        "
+            "sbc %[out_high], %[out_high], %[temp_high]      "
 
-            "smull %[temp_low], %[temp_high], %[a2], %[y2]   \n\t" // Multiply a2 and y2
-            "subs %[out_low], %[out_low], %[temp_low]        \n\t" // Subtract result
-            "sbc %[out_high], %[out_high], %[temp_high]      \n\t"
+            "ldr %[b0], [%[f], #16]         " // reusing b0 for a2
+            "smull %[temp_low], %[temp_high], %[b0], %[y2]   "
+            "subs %[out_low], %[out_low], %[temp_low]        "
+            "sbc %[out_high], %[out_high], %[temp_high]      "
 
-            "lsr %[out_low], %[out_low], #15                 \n\t" // Right shift by FRACTIONAL_BITS
-            "orr %[out_low], %[out_low], %[out_high], lsl #17\n\t" // Combine high and low parts
+            "lsr %[out_low], %[out_low], #15                 "
+            "orr %[out_low], %[out_low], %[out_high], lsl #17"
 
-            "str %[input], [%[f], #24]                       \n\t" // Store x2 = x1
-            "str %[out_low], [%[f], #20]                     \n\t" // Store x1 = input
-            "str %[y1], [%[f], #32]                          \n\t" // Store y2 = y1
-            "str %[out_low], [%[f], #28]                     \n\t" // Store y1 = output
-            : [out_low] "=&r"(out_low), [out_high] "=&r"(out_high), [temp_low] "=&r"(temp_low), [temp_high] "=&r"(temp_high),
-              [b0] "=&r"(b0), [b1] "=&r"(b1), [b2] "=&r"(b2), [a1] "=&r"(a1), [a2] "=&r"(a2),
-              [x1] "=&r"(x1), [x2] "=&r"(x2), [y1] "=&r"(y1), [y2] "=&r"(y2)
+            "str %[input], [%[f], #24]      "
+            "str %[out_low], [%[f], #20]    "
+            "str %[y1], [%[f], #32]         "
+            "str %[out_low], [%[f], #28]    "
+            : [out_low] "=r"(out_low), [out_high] "=r"(out_high), [temp_low] "=&r"(temp_low), [temp_high] "=&r"(temp_high),
+              [b0] "=&r"(b0), [x1] "=&r"(x1), [x2] "=&r"(x2), [y1] "=&r"(y1), [y2] "=&r"(y2)
             : [input] "r"(inputBuffer[i]), [f] "r"(&ButterworthFilter)
             : "cc", "memory");
-
         outputBuffer[i] = out_low;
 
 #ifdef DEBUG
